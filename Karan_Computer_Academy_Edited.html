@@ -363,7 +363,49 @@ let all=[...F.map(x=>[x[0],x[1],x[2],x[3]]),...Object.values(shortcuts).flat().m
 let found=all.filter(x=>x.join(" ").toLowerCase().includes(q));
 let html="<h2 class='heading'>Search Results</h2>";
 found.forEach(x=>html+=`<article class="note"><h3>${x[0]}</h3><p>${x[1]}</p><div class="example">${x[2]} ${x[3]}</div></article>`);
-document.getElementById("content").innerHTML=html+(found.length?"":"<p>कोई Result नहीं मिला।</p>");
+document.getElementById("content").innerHTML=html+(found.length?"":"<p>कोई Result नहीं मिला।</p>");<div class="complaint-box">
+  <h3>📩 शिकायत और सुझाव</h3>
+
+  <p>
+    यदि आपको हमारी वेबसाइट में कोई समस्या मिले या
+    कोई सुझाव देना हो, तो हमें ईमेल करें।
+    आपकी शिकायत और सुझाव हमारे लिए महत्वपूर्ण हैं।
+  </p>
+
+  <a href="mailto:K061500@gmail.com?subject=Karan%20Computer%20Academy%20Complaint&body=Hello%20Karan%20Computer%20Academy%2C%0A%0AI%20want%20to%20share%20a%20complaint%20or%20suggestion%3A%0A">
+    📧 K061500@gmail.com
+  </a>
+</div>
+
+<style>
+.complaint-box {
+  background: #f0f4ff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #4361ee;
+}
+
+.complaint-box h3 {
+  color: #2446c8;
+}
+
+.complaint-box p {
+  color: #333;
+  line-height: 1.6;
+}
+
+.complaint-box a {
+  display: inline-block;
+  background: #4361ee;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
 }
 </script>
 </body>
