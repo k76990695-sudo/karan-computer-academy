@@ -1,1 +1,594 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karan Computer Academy</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f3f6fc;color:#17233b}
+.top{text-align:center;background:#07162e;color:#ffe3a0;padding:10px}
+header{background:radial-gradient(circle at top right,#a64b25,#282044 42%,#071b3b 85%);color:white;text-align:center;padding:45px 15px}
+header h1{font-size:clamp(28px,6vw,52px);margin:10px 0;color:#ffcf70}
+header h2{color:#ffe6ad}
+header p{max-width:700px;margin:15px auto;line-height:1.7}
+.lamps{font-size:27px;letter-spacing:10px;color:#ffd36b;text-shadow:0 0 15px orange}
+button{border:0;border-radius:9px;padding:11px 16px;cursor:pointer;font-weight:bold}
+.primary{background:#ffc857;color:#35200a}
+.blue{background:#123f82;color:white}
+.container{max-width:1150px;margin:auto;padding:22px 16px}
+.notice{background:#fff2d1;border-left:5px solid #e5a12a;padding:16px;border-radius:10px;line-height:1.7}
+h2.section{color:#123b77;margin:28px 0 8px}
+.muted{color:#64748b;line-height:1.6}
+.search{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+input,select{padding:12px;border:1px solid #cbd5e1;border-radius:9px;font-size:15px;flex:1;min-width:180px}
+.classes,.lessons{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:white;padding:18px;border:1px solid #e2e8f0;border-radius:15px;box-shadow:0 5px 18px #142c5010}
+.card h3{color:#123f82;margin:8px 0}
+.card p{color:#64748b;line-height:1.55}
+.class-icon{font-size:30px}
+.roadmap{background:#e9f1fc;padding:17px;border-radius:14px;margin-top:22px}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{background:white;border:1px solid #cbdcf3;border-radius:20px;padding:8px 12px;font-size:13px}
+.tag{background:#fff0d3;color:#85500b;border-radius:20px;padding:5px 9px;font-size:12px;display:inline-block}
+.lesson-card{display:flex;flex-direction:column;gap:10px}
+.lesson-card button{align-self:flex-start;margin-top:auto}
+.modal{display:none;position:fixed;inset:0;background:#06142ddd;z-index:10;overflow:auto;padding:15px}
+.modalbox{background:white;max-width:850px;margin:25px auto;padding:22px;border-radius:16px}
+.close{float:right;background:#edf2f7}
+.notes{line-height:1.8}
+.notes h3{color:#123f82;margin-top:22px}
+.notes li{margin:5px 0}
+.diagram{background:#eff5ff;border:1px dashed #88a8d5;border-radius:12px;padding:16px;margin:16px 0;text-align:center}
+.flow{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.flow span{background:white;border:2px solid #8aa9d6;border-radius:9px;padding:10px;font-weight:bold;color:#123f82}
+.arrow{font-size:22px;color:#d78a22}
+.example{background:#fff8e8;border-left:4px solid #e5a12a;padding:13px;margin:12px 0;border-radius:7px}
+.quiz{background:#fff7e5;border:1px solid #efd49b;padding:15px;border-radius:12px;margin-top:18px}
+.quiz label{display:block;margin:10px 0;line-height:1.5;cursor:pointer}
+.video-btn{background:#d92332;color:white;margin:8px 5px 8px 0}
+.video-note{font-size:13px;color:#64748b}
+footer{background:#071b3b;color:#f4e9d4;text-align:center;padding:28px 12px;line-height:1.8;margin-top:35px}
+@media(max-width:600px){header{padding:32px 12px}.container{padding:17px 12px}.modalbox{padding:16px}}
+</style>
+</head>
+<body>
+
+<div class="top">🪔 दीपावली की हार्दिक शुभकामनाएँ • Happy Diwali 🪔</div>
+
+<header>
+ <div class="lamps">✦ 🪔 ✦ 🪔 ✦</div>
+ <h1>KARAN COMPUTER ACADEMY</h1>
+ <h2>Diwali Learning Special</h2>
+ <p>ज्ञान की रोशनी से अपना भविष्य उज्ज्वल बनाइए। Class 6 से Class 12 तक Computer सीखें आसान हिन्दी और English में।</p>
+ <button class="primary" onclick="document.getElementById('classSection').scrollIntoView({behavior:'smooth'})">Start Learning</button>
+ <div class="lamps" style="margin-top:22px">🪔 ✨ 🪔 ✨ 🪔</div>
+</header>
+
+<main class="container">
+
+<div class="notice">
+ <b>📢 जरूरी सूचना / Important Notice</b><br>
+ Karan Computer Academy एक स्वतंत्र Computer Learning Website है। यहाँ दिए गए Notes, Lessons, Examples और Quizzes स्वयं सीखने-सिखाने के उद्देश्य से तैयार किए गए हैं। यह NCERT या CBSE की आधिकारिक वेबसाइट नहीं है और न ही किसी सरकारी पाठ्यपुस्तक की आधिकारिक प्रति है।
+</div>
+
+<section id="classSection">
+ <h2 class="section">अपनी Class चुनें / Choose Your Class</h2>
+ <p class="muted">अपनी कक्षा चुनकर उसके lessons पढ़ें। Search box से किसी भी topic को खोजें।</p>
+
+ <div class="search">
+  <input id="search" placeholder="🔍 Search lesson..." oninput="showLessons()">
+  <select id="filter" onchange="showLessons()">
+   <option value="all">All Classes</option>
+   <option value="6">Class 6</option>
+   <option value="7">Class 7</option>
+   <option value="8">Class 8</option>
+   <option value="9">Class 9</option>
+   <option value="10">Class 10</option>
+   <option value="11">Class 11</option>
+   <option value="12">Class 12</option>
+  </select>
+ </div>
+
+ <div class="classes" id="classCards"></div>
+
+ <div class="roadmap" id="roadmap">
+  <h3>📚 Class Roadmap</h3>
+  <p class="muted">किसी Class को चुनने पर उसके topics यहाँ दिखाई देंगे।</p>
+ </div>
+</section>
+
+<section>
+ <h2 class="section">Computer Learning Lessons</h2>
+ <p class="muted">हर Chapter में Notes, Diagram, Example, Practical Activity, Quiz और अलग Video Option मिलेगा।</p>
+ <div class="lessons" id="lessonCards"></div>
+</section>
+
+<section>
+ <h2 class="section">हमारा उद्देश्य / Our Mission</h2>
+ <div class="card">
+  <h3>🎯 Learn Today, Lead Tomorrow</h3>
+  <p>हमारा उद्देश्य विद्यार्थियों को Computer की जानकारी सरल भाषा में देना है, ताकि वे Computer को समझ सकें, सुरक्षित रूप से उपयोग कर सकें और अपने छोटे-छोटे Digital Projects बना सकें।</p>
+  <p><b>Courses:</b> Computer Basics • MS Office • Internet • Web Design • Python • Database • Projects</p>
+ </div>
+</section>
+</main>
+
+<footer>
+ <b>KARAN COMPUTER ACADEMY</b><br>
+ Learn Today • Lead Tomorrow<br>
+ 🪔 Happy Diwali — ज्ञान का दीप जलाते रहें 🪔<br>
+ <small>Independent Computer Learning Website</small>
+</footer>
+
+<div class="modal" id="lessonModal">
+ <div class="modalbox">
+  <button class="close" onclick="closeLesson()">✕ Close</button>
+  <div id="lessonContent"></div>
+ </div>
+</div>
+
+<script>
+const classes=[
+{n:6,e:"🖥️",d:"Computer की शुरुआत",topics:["Introduction to Computer","History of Computer","Parts of Computer","Input and Output Devices","Keyboard and Mouse","Hardware and Software","Paint","Typing Practice"]},
+{n:7,e:"⌨️",d:"Computer Fundamentals",topics:["Types of Computer","CPU","RAM and ROM","Storage Devices","Operating System","Windows Basics","Files and Folders","Keyboard Shortcuts"]},
+{n:8,e:"🌐",d:"Internet and Applications",topics:["Internet","Web Browser","Search Engine","Email","Internet Safety","MS Word Basics","MS Excel Basics","PowerPoint Basics"]},
+{n:9,e:"📊",d:"Office Applications",topics:["MS Word Advanced","Document Formatting","Excel Formulas","Excel Functions","PowerPoint","Windows Management","Computer Networks","Cyber Safety"]},
+{n:10,e:"🌍",d:"Web Designing",topics:["Web Designing","HTML Introduction","HTML Tags","HTML Tables and Forms","CSS","CSS Layout","JavaScript Basics","First Website"]},
+{n:11,e:"🐍",d:"Programming and Python",topics:["Programming Basics","Python Introduction","Variables","Data Types","Operators","Conditions","Loops","Functions","Lists"]},
+{n:12,e:"🧠",d:"Advanced Computer",topics:["Advanced Python","Object-Oriented Programming","Database","SQL","Networking","Cybersecurity","Data Handling","Final Project"]}
+];
+
+const lessons=[
+{
+c:6,t:"Introduction to Computer",tag:"Computer Basics",
+intro:"Computer एक electronic machine है जो data लेता है, instructions के अनुसार process करता है और information देता है।",
+notes:[
+["Computer के मुख्य कार्य","Computer के चार मुख्य कार्य हैं: Input, Processing, Output और Storage। Input में data दिया जाता है। Processing में उस पर काम होता है। Output में परिणाम मिलता है और Storage में जानकारी सुरक्षित रखी जाती है।"],
+["Computer की विशेषताएँ","Computer तेज गति से काम करता है, सही instructions मिलने पर सटीक परिणाम देता है और बहुत-सा data store कर सकता है। Computer स्वयं इंसान की तरह नहीं सोचता; वह दिए गए instructions के अनुसार काम करता है।"]
+],
+diagram:["Input","Processing","Output","Storage"],
+example:"आप keyboard से 25 + 15 लिखते हैं। Computer गणना करता है और परिणाम 40 दिखाता है।",
+activity:"अपने घर या स्कूल में उपयोग होने वाले 5 computer devices के नाम लिखिए।",
+q:"Computer का मुख्य काम क्या है?",opts:["केवल गाना चलाना","Data को process करके information देना","केवल print करना"],a:1
+},
+{
+c:6,t:"Parts of Computer",tag:"Hardware",
+intro:"Computer कई physical parts से मिलकर बनता है। जिन्हें हम छू सकते हैं, उन्हें Hardware कहते हैं।",
+notes:[
+["मुख्य Parts","Monitor स्क्रीन पर जानकारी दिखाता है। CPU instructions process करता है। Keyboard से text और numbers लिखते हैं। Mouse से pointer चलाते हैं और items select करते हैं।"],
+["अन्य Parts","Printer कागज पर output देता है। Speaker आवाज सुनाता है। Microphone आवाज input करता है। Webcam तस्वीर और video लेने में मदद करता है।"]
+],
+diagram:["Keyboard / Mouse","CPU","Monitor"],
+example:"Keyboard से लिखना, monitor पर देखना और speaker से आवाज सुनना computer parts के अलग-अलग काम हैं।",
+activity:"अपने आसपास 5 input और 5 output devices पहचानिए।",
+q:"कौन-सा device output दिखाता है?",opts:["Keyboard","Mouse","Monitor"],a:2
+},
+{
+c:6,t:"Input and Output Devices",tag:"Computer Devices",
+intro:"Input devices computer को data देते हैं। Output devices computer से प्राप्त परिणाम उपयोगकर्ता तक पहुँचाते हैं।",
+notes:[
+["Input Devices","Keyboard, Mouse, Scanner, Microphone और Webcam input devices के उदाहरण हैं।"],
+["Output Devices","Monitor, Printer, Speaker और Projector output devices हैं। Touchscreen जैसे कुछ devices input और output दोनों का काम कर सकते हैं।"]
+],
+diagram:["Input Device","Computer","Output Device"],
+example:"Scanner से photo computer में भेजना Input है। Printer से photo कागज पर निकालना Output है।",
+activity:"Input और Output devices के दो अलग-अलग columns बनाइए।",
+q:"Microphone किस प्रकार का device है?",opts:["Input","Output","Storage"],a:0
+},
+{
+c:6,t:"Keyboard, Mouse and Paint",tag:"Practical Basics",
+intro:"Keyboard और Mouse computer को नियंत्रित करने के मुख्य उपकरण हैं। Paint एक basic drawing program है।",
+notes:[
+["Keyboard और Mouse","Keyboard से letters, numbers और symbols लिखते हैं। Mouse से click, double-click, right-click और drag कर सकते हैं।"],
+["Paint","Paint में Pencil, Brush, Shapes, Fill Colour और Eraser जैसे tools मिलते हैं। इससे simple drawings बनाई जा सकती हैं।"]
+],
+diagram:["Keyboard → Typing","Mouse → Selecting","Paint → Drawing"],
+example:"Paint खोलकर Shapes tool से घर बनाइए और Fill Colour से उसमें रंग भरिए।",
+activity:"Paint में एक घर, पेड़ और सूरज बनाइए।",
+q:"किस tool से Paint में रंग भरा जाता है?",opts:["Eraser","Fill Colour","Text"],a:1
+},
+
+{
+c:7,t:"Types of Computer",tag:"Computer Fundamentals",
+intro:"Computer को आकार, क्षमता और उपयोग के आधार पर अलग-अलग प्रकारों में बाँटा जा सकता है।",
+notes:[
+["मुख्य प्रकार","Desktop, Laptop, Tablet और Smartphone सामान्य personal computing devices हैं। Supercomputer बहुत जटिल और बड़े calculations के लिए उपयोग होता है।"],
+["उपयोग","Desktop office और school में, Laptop यात्रा के समय, Tablet पढ़ाई और presentation के लिए उपयोग किया जा सकता है।"]
+],
+diagram:["Desktop","Laptop","Tablet","Supercomputer"],
+example:"School computer lab में Desktop और यात्रा में Laptop उपयोग किया जा सकता है।",
+activity:"चार प्रकार के computers के नाम और उनके उपयोग लिखिए।",
+q:"इनमें से portable computer कौन-सा है?",opts:["Laptop","Mainframe room","Printer"],a:0
+},
+{
+c:7,t:"CPU, RAM and ROM",tag:"Hardware and Memory",
+intro:"CPU instructions process करता है। RAM और ROM computer की महत्वपूर्ण memories हैं।",
+notes:[
+["CPU","CPU का पूरा नाम Central Processing Unit है। ALU arithmetic और logical operations करता है। Control Unit computer के कार्यों को नियंत्रित करती है।"],
+["RAM और ROM","RAM temporary/volatile memory है। बिजली बंद होने पर इसका unsaved data मिट जाता है। ROM non-volatile memory है और बिजली बंद होने पर भी अपना data बनाए रखती है।"]
+],
+diagram:["CPU","ALU + Control Unit","Memory: RAM / ROM"],
+example:"2 + 3 की गणना में ALU जोड़ करता है।",
+activity:"CPU, RAM और ROM के कार्यों की तुलना लिखिए।",
+q:"कौन-सी memory volatile होती है?",opts:["ROM","RAM","DVD"],a:1
+},
+{
+c:7,t:"Storage Devices and Files",tag:"Storage",
+intro:"Storage devices में files और information लंबे समय तक रखी जा सकती हैं।",
+notes:[
+["Storage Devices","Hard Disk, SSD, Pen Drive, Memory Card और DVD storage devices के उदाहरण हैं।"],
+["Files and Folders","File में information होती है। Folder files को व्यवस्थित रखता है। File extension जैसे .pdf, .jpg और .txt file का प्रकार बताने में मदद करते हैं।"]
+],
+diagram:["Storage Device","Folder","Files"],
+example:"School नाम का folder बनाकर उसके अंदर Notes और Projects नाम के folders रख सकते हैं।",
+activity:"अपने computer में Practice नाम का folder बनाइए।",
+q:"Folder का उपयोग किसलिए होता है?",opts:["Files व्यवस्थित रखने के लिए","Computer बंद करने के लिए","Internet चलाने के लिए"],a:0
+},
+{
+c:7,t:"Operating System and Windows",tag:"Operating System",
+intro:"Operating System ऐसा software है जो computer hardware और अन्य programs को manage करता है।",
+notes:[
+["Operating System","Windows, Linux, macOS और Android operating systems के उदाहरण हैं। यह files, memory, devices और applications को manage करता है।"],
+["Windows Basics","Desktop, Start Menu, Taskbar, File Explorer और Recycle Bin Windows के सामान्य हिस्से हैं।"]
+],
+diagram:["User","Operating System","Hardware"],
+example:"File Explorer से आप computer में documents और folders खोज सकते हैं।",
+activity:"Desktop, Taskbar और Start Menu पहचानकर उनके काम लिखिए।",
+q:"इनमें से Operating System कौन-सा है?",opts:["Windows","Keyboard","Printer"],a:0
+},
+
+{
+c:8,t:"Internet and Web Browser",tag:"Internet",
+intro:"Internet दुनिया भर के computers और networks को जोड़ने वाला विशाल network है।",
+notes:[
+["Internet के उपयोग","Online learning, information search, email, video meetings और digital services internet के उपयोग हैं।"],
+["Browser और Search Engine","Chrome, Firefox और Edge web browsers हैं। Google और Bing search engines हैं। Browser website खोलता है और search engine जानकारी खोजने में मदद करता है।"]
+],
+diagram:["Your Device","Internet","Website"],
+example:"Chrome खोलकर search engine में 'Solar System for students' खोजना।",
+activity:"तीन browsers और दो search engines के नाम लिखिए।",
+q:"इनमें से Web Browser कौन-सा है?",opts:["Google Chrome","MS Excel","Calculator"],a:0
+},
+{
+c:8,t:"Email and Digital Communication",tag:"Email",
+intro:"Email का अर्थ Electronic Mail है। इससे internet के माध्यम से messages और files भेजी जा सकती हैं।",
+notes:[
+["Email Address","Email address का उदाहरण student@example.com है। इसमें username, @ चिन्ह और domain होता है। अपना password किसी के साथ साझा नहीं करना चाहिए।"],
+["Email के भाग","To में receiver का address, Subject में विषय और Message में मुख्य संदेश लिखा जाता है। Attachment से file जोड़ी जा सकती है।"]
+],
+diagram:["Compose","To + Subject + Message","Send"],
+example:"Subject: Science Homework. Message: Dear Teacher, I am sending my assignment.",
+activity:"एक काल्पनिक email का subject और message लिखने का अभ्यास करें।",
+q:"Email में Subject का काम क्या है?",opts:["संदेश का विषय बताना","Password बदलना","File delete करना"],a:0
+},
+{
+c:8,t:"Internet Safety",tag:"Digital Safety",
+intro:"Internet का सुरक्षित उपयोग करने के लिए privacy, strong passwords और सोच-समझकर sharing करना जरूरी है।",
+notes:[
+["Safety Rules","मजबूत password रखें। OTP या password किसी को न बताएं। अनजान links न खोलें। Software updates लगाएँ और website का सही address जाँचें।"],
+["Digital Footprint","Internet पर की गई posts और comments का record रह सकता है। निजी जानकारी सार्वजनिक रूप से साझा न करें। संदिग्ध संदेश मिलने पर भरोसेमंद बड़े व्यक्ति को बताएं।"]
+],
+diagram:["Think","Check","Share Safely"],
+example:"अगर कोई अनजान व्यक्ति prize के नाम पर OTP माँगे, तो OTP न दें।",
+activity:"Internet Safety के 5 नियमों का poster बनाइए।",
+q:"OTP किसे बताना चाहिए?",opts:["अनजान व्यक्ति को","किसी को नहीं","Online friend को"],a:1
+},
+{
+c:8,t:"MS Word, Excel and PowerPoint",tag:"Office Applications",
+intro:"Office applications documents, calculations और presentations बनाने में मदद करते हैं।",
+notes:[
+["MS Word","Word processor में letters, applications और reports बनाई जाती हैं। Bold, Italic, Underline और Alignment formatting options हैं।"],
+["MS Excel और PowerPoint","Excel spreadsheet में calculations और data management किया जाता है। PowerPoint slides के माध्यम से presentation बनाने में मदद करता है।"]
+],
+diagram:["Word → Documents","Excel → Calculations","PowerPoint → Slides"],
+example:"Word में application, Excel में marksheet और PowerPoint में school project बनाया जा सकता है।",
+activity:"तीनों applications के एक-एक उपयोग लिखिए।",
+q:"Presentation बनाने के लिए कौन-सा software उपयोग होता है?",opts:["PowerPoint","Paint","Notepad"],a:0
+},
+
+{
+c:9,t:"MS Word and Document Formatting",tag:"Office Tools",
+intro:"MS Word ऐसा software है जिससे documents बनाए, edit और format किए जाते हैं।",
+notes:[
+["Formatting","Font, font size, Bold, Italic, Underline, text colour और alignment से document का रूप बदला जाता है।"],
+["Page Setup","Margins page के किनारों की खाली जगह हैं। Orientation Portrait या Landscape हो सकती है। Print Preview से print से पहले document देखा जाता है।"]
+],
+diagram:["Type Text","Format Text","Save / Print"],
+example:"School notice में heading को Bold और Centre Align करें।",
+activity:"My School नाम से एक document बनाइए और उसमें 4 bullet points जोड़िए।",
+q:"Text को गाढ़ा करने के लिए कौन-सा option है?",opts:["Bold","Undo","Save"],a:0
+},
+{
+c:9,t:"MS Excel Formulas and Functions",tag:"Spreadsheet",
+intro:"MS Excel spreadsheet software है। इसमें data rows और columns में रखा जाता है।",
+notes:[
+["Workbook and Worksheet","Workbook Excel की file है। उसके अंदर worksheets होती हैं। Column को letters और Row को numbers से पहचाना जाता है। B3 का अर्थ column B और row 3 का cell है।"],
+["Formulas and Functions","Formula सामान्यतः = से शुरू होता है। =A1+B1 दो cells की values जोड़ता है। =SUM(A1:A5) पाँच cells का total निकाल सकता है।"]
+],
+diagram:["A1: 10","B1: 20","C1: =A1+B1 → 30"],
+example:"A1 में 10 और B1 में 20 लिखें। C1 में =A1+B1 लिखने पर 30 आएगा।",
+activity:"तीन subjects के marks Excel में डालकर SUM से total निकालिए।",
+q:"Excel formula किस चिन्ह से शुरू होता है?",opts:["#","=","@"],a:1
+},
+{
+c:9,t:"PowerPoint Presentation",tag:"Presentation",
+intro:"PowerPoint presentation बनाने वाला software है। Presentation अलग-अलग slides से मिलकर बनती है।",
+notes:[
+["Slide Design","हर slide पर एक मुख्य विचार रखें। छोटे वाक्य, पढ़ने योग्य font और साफ रंगों का उपयोग करें।"],
+["Presentation Skills","बोलते समय audience की ओर देखें। Slide को शब्दशः न पढ़ें और शुरुआत, मुख्य भाग तथा conclusion का क्रम रखें।"]
+],
+diagram:["Title Slide","Content Slides","Conclusion"],
+example:"Water Conservation पर 5 slides: Title, Importance, Problems, Solutions और Conclusion।",
+activity:"किसी विषय पर 5 slides की presentation तैयार करें।",
+q:"PowerPoint की एक screen/page को क्या कहते हैं?",opts:["Cell","Slide","Folder"],a:1
+},
+{
+c:9,t:"Computer Networks and Cyber Safety",tag:"Networking",
+intro:"Computer Network devices को data और resources share करने के लिए जोड़ता है।",
+notes:[
+["Network","LAN सीमित क्षेत्र जैसे school lab में उपयोग होता है। WAN बड़े भौगोलिक क्षेत्र में फैला होता है। Internet सबसे बड़ा network उदाहरण है।"],
+["Cyber Safety","Strong passwords, updates, backups और phishing की पहचान digital safety के उपयोगी तरीके हैं।"]
+],
+diagram:["Computer A","Network","Computer B"],
+example:"School lab के computers एक printer साझा करने के लिए network से जुड़ सकते हैं।",
+activity:"LAN और WAN के दो-दो उदाहरण लिखिए।",
+q:"LAN सामान्यतः किस क्षेत्र में उपयोग होता है?",opts:["छोटे स्थानीय क्षेत्र में","पूरी दुनिया में ही","केवल satellites में"],a:0
+},
+
+{
+c:10,t:"Introduction to Web Designing and HTML",tag:"Web Design",
+intro:"HTML का पूरा नाम HyperText Markup Language है। इसका उपयोग web page की structure बनाने के लिए किया जाता है।",
+notes:[
+["HTML Structure","HTML document में सामान्यतः html, head और body elements होते हैं। Body में दिखाई देने वाली सामग्री रखी जाती है।"],
+["HTML Tags","<h1> मुख्य heading के लिए और <p> paragraph के लिए उपयोग होता है। अधिकतर elements में opening और closing tags होते हैं।"]
+],
+diagram:["HTML Document","Head: Title","Body: Heading + Text"],
+example:"<h1>Welcome</h1> एक heading बनाता है। <p>Hello Students</p> paragraph बनाता है।",
+activity:"Notepad में एक HTML page बनाइए जिसमें अपना परिचय हो।",
+q:"HTML का उपयोग किसलिए होता है?",opts:["Web page structure","केवल गणना","Photo editing"],a:0
+},
+{
+c:10,t:"HTML Tables and Forms",tag:"HTML",
+intro:"HTML Tables data को rows और columns में दिखाती हैं। Forms user से जानकारी लेने के लिए उपयोग होते हैं।",
+notes:[
+["HTML Table","table tag table बनाता है। tr table row, th heading cell और td सामान्य cell के लिए उपयोग होता है।"],
+["HTML Form","form के अंदर input, label और button जैसे elements हो सकते हैं। Form का उपयोग नाम या अन्य जानकारी भरने के लिए होता है।"]
+],
+diagram:["Table","Rows + Columns","Data"],
+example:"एक Student table में Roll Number, Name और Class columns रखे जा सकते हैं।",
+activity:"तीन विद्यार्थियों के नाम वाली एक छोटी HTML table बनाइए।",
+q:"HTML में table row के लिए कौन-सा tag है?",opts:["<tr>","<p>","<h1>"],a:0
+},
+{
+c:10,t:"CSS and Website Design",tag:"CSS",
+intro:"CSS का पूरा नाम Cascading Style Sheets है। इसका उपयोग HTML page के रंग, fonts, spacing और layout को सुंदर बनाने के लिए किया जाता है।",
+notes:[
+["CSS Rule","CSS rule में selector और declaration block होता है। p { color: blue; } paragraphs के text को नीला कर सकता है।"],
+["CSS के तरीके","Inline CSS element में, Internal CSS style tag में और External CSS अलग .css file में लिखी जाती है।"]
+],
+diagram:["HTML: Structure","CSS: Style","Styled Page"],
+example:"body { background-color: lightyellow; } page का background हल्का पीला कर सकता है।",
+activity:"अपनी HTML page की heading का रंग CSS से बदलिए।",
+q:"CSS का मुख्य काम क्या है?",opts:["Website को style करना","Database delete करना","Keyboard चलाना"],a:0
+},
+{
+c:10,t:"JavaScript and First Website",tag:"JavaScript",
+intro:"JavaScript web pages में interaction और dynamic behaviour जोड़ने वाली programming language है।",
+notes:[
+["JavaScript","Button click पर message दिखाना, form input जाँचना और page की सामग्री बदलना JavaScript के उदाहरण हैं।"],
+["Variables","let और const से variables बनाए जा सकते हैं। उदाहरण: let score = 10;"]
+],
+diagram:["User Action","JavaScript","Page Response"],
+example:"Button click होने पर alert('Welcome!') से message दिखाया जा सकता है।",
+activity:"एक button बनाइए जो click करने पर Welcome message दिखाए।",
+q:"Web page में interaction जोड़ने के लिए कौन-सी language उपयोग होती है?",opts:["JavaScript","HTML only","SQL"],a:0
+},
+
+{
+c:11,t:"Programming and Python Introduction",tag:"Python",
+intro:"Python एक लोकप्रिय high-level programming language है। इसका syntax शुरुआती विद्यार्थियों के लिए सरल है।",
+notes:[
+["Programming","Program instructions का समूह होता है। Python का उपयोग automation, data analysis, web development और learning में किया जाता है।"],
+["First Program","print() function screen पर output दिखाता है। Python में indentation यानी line की शुरुआत की spacing महत्वपूर्ण है।"]
+],
+diagram:["Write Code","Python Interpreter","Output"],
+example:"print('Hello, World!') चलाने पर Hello, World! दिखाई देगा।",
+activity:"Python में अपना नाम print करने का program लिखिए।",
+q:"Python में output दिखाने के लिए कौन-सा function है?",opts:["input()","print()","save()"],a:1
+},
+{
+c:11,t:"Python Variables and Data Types",tag:"Python",
+intro:"Variable एक नाम है जिसमें program के दौरान कोई value रखी जाती है।",
+notes:[
+["Variables","उदाहरण: name = 'Student' और age = 15। Variable का नाम अर्थपूर्ण रखें।"],
+["Data Types","int पूर्णांक, float दशमलव संख्या, str text और bool True/False के लिए उपयोग होता है। type() से value का type जाँचा जा सकता है।"]
+],
+diagram:["Variable Name","Stored Value","Data Type"],
+example:"marks = 85 में marks variable है और 85 एक integer value है।",
+activity:"name, age और marks नाम के variables बनाकर उनकी values print करें।",
+q:"'Hello' किस data type का उदाहरण है?",opts:["int","str","bool"],a:1
+},
+{
+c:11,t:"Python Conditions and Loops",tag:"Python",
+intro:"if-else condition के आधार पर निर्णय लेने में मदद करता है। Loops किसी काम को बार-बार दोहराते हैं।",
+notes:[
+["If-Else","if condition True होने पर if block चलता है। अन्यथा else block चल सकता है।"],
+["Loops","for loop sequence पर चलता है। while loop तब तक चलता है जब तक condition True रहती है।"]
+],
+diagram:["Condition","True → If Block","False → Else Block"],
+example:"for number in range(1,4): print(number) से 1, 2 और 3 print होंगे।",
+activity:"1 से 10 तक numbers print करने का program लिखिए।",
+q:"Condition जाँचने के लिए कौन-सा statement है?",opts:["if","print","import"],a:0
+},
+{
+c:11,t:"Python Functions and Lists",tag:"Python",
+intro:"Function code का ऐसा भाग है जिसे जरूरत पड़ने पर दोबारा चलाया जा सकता है। List कई values को एक साथ रखती है।",
+notes:[
+["Functions","Python में def keyword से function बनाया जाता है। Function code को व्यवस्थित और reusable बनाता है।"],
+["Lists","List square brackets में लिखी जाती है। उदाहरण: fruits = ['Apple','Mango','Banana']। Index से list के items access कर सकते हैं।"]
+],
+diagram:["Define Function","Call Function","Get Result"],
+example:"def greet(): print('Hello') — greet() चलाने पर Hello दिखाई देगा।",
+activity:"तीन fruits वाली list बनाकर उसे print करें।",
+q:"Python में function बनाने के लिए कौन-सा keyword है?",opts:["def","for","class"],a:0
+},
+
+{
+c:12,t:"Database and SQL",tag:"Database",
+intro:"Database व्यवस्थित रूप से रखे गए data का संग्रह है। DBMS database को बनाने और manage करने में मदद करता है।",
+notes:[
+["Tables and Records","Database table में rows और columns होते हैं। Row को record और column को field कहा जा सकता है।"],
+["SQL","SQL का पूरा नाम Structured Query Language है। SELECT query database से data देखने के लिए उपयोग होती है।"]
+],
+diagram:["Database","Table","Records + Fields"],
+example:"SELECT Name FROM Students; Students table से Name column माँगने का उदाहरण है।",
+activity:"Student table का design बनाइए जिसमें Roll No, Name और Class columns हों।",
+q:"SQL का उपयोग किसलिए होता है?",opts:["Database के साथ काम करने के लिए","Image paint करने के लिए","Video चलाने के लिए"],a:0
+},
+{
+c:12,t:"Object-Oriented Programming",tag:"Programming",
+intro:"Object-Oriented Programming यानी OOP programming का एक तरीका है जिसमें classes और objects का उपयोग होता है।",
+notes:[
+["Class","Class एक blueprint की तरह होती है जो बताती है कि objects में कौन-से data और methods हो सकते हैं।"],
+["Object","Object class का एक instance होता है। उदाहरण के लिए Student class से अलग-अलग student objects बनाए जा सकते हैं।"]
+],
+diagram:["Class","Object 1","Object 2"],
+example:"Car एक class हो सकती है और लाल रंग की एक specific car उसका object हो सकती है।",
+activity:"Student class के लिए name, class और roll number जैसे attributes लिखिए।",
+q:"Object किसका instance होता है?",opts:["Class","Folder","Browser"],a:0
+},
+{
+c:12,t:"Networking and Cybersecurity",tag:"Networking",
+intro:"Network devices को data और resources साझा करने के लिए जोड़ता है। Cybersecurity digital systems की सुरक्षा से जुड़ी है।",
+notes:[
+["Network Types","LAN सीमित क्षेत्र में और WAN बड़े भौगोलिक क्षेत्र में उपयोग होता है। Router network devices के बीच data भेजने में मदद करता है।"],
+["Cybersecurity","Strong passwords, multi-factor authentication, software updates और backups सुरक्षा के उपयोगी तरीके हैं।"]
+],
+diagram:["Device A","Router / Network","Device B"],
+example:"School computer lab में computers network के माध्यम से एक printer साझा कर सकते हैं।",
+activity:"Cyber safety के पाँच नियम लिखिए।",
+q:"LAN का उपयोग सामान्यतः कहाँ होता है?",opts:["छोटे स्थानीय क्षेत्र में","पूरी दुनिया में ही","केवल satellites में"],a:0
+},
+{
+c:12,t:"Final Computer Project",tag:"Project",
+intro:"इस project में आप सीखी हुई computer skills का उपयोग करके एक छोटी educational website की योजना बनाएँगे।",
+notes:[
+["Planning","पहले website का उद्देश्य तय करें। फिर Home, About, Lessons, Quiz और Contact जैसे pages की योजना बनाएँ।"],
+["Testing","Links जाँचें, spelling ठीक करें और mobile screen पर layout देखें। किसी की निजी जानकारी बिना अनुमति प्रकाशित न करें।"]
+],
+diagram:["Plan","Build","Test","Improve"],
+example:"Computer Academy website में Home page पर introduction और Lessons page पर topics रखे जा सकते हैं।",
+activity:"अपनी website के पाँच pages का flowchart बनाइए।",
+q:"Website बनाने के बाद जरूरी कदम क्या है?",opts:["बिना जाँचे publish करना","Testing करना","Files delete करना"],a:1
+}
+];
+
+function renderClasses(){
+ document.getElementById("classCards").innerHTML=classes.map(x=>`
+ <div class="card">
+  <div class="class-icon">${x.e}</div>
+  <h3>Class ${x.n}</h3>
+  <p>${x.d}</p>
+  <button class="blue" onclick="selectClass(${x.n})">Open Class ${x.n}</button>
+ </div>`).join("");
+}
+
+function selectClass(n){
+ document.getElementById("filter").value=String(n);
+ const x=classes.find(a=>a.n===n);
+ document.getElementById("roadmap").innerHTML=`
+ <h3>${x.e} Class ${x.n} — Topic Roadmap</h3>
+ <div class="pills">${x.topics.map(t=>`<span class="pill">${t}</span>`).join("")}</div>
+ <p class="muted">नीचे इस Class के detailed lessons पढ़ें। हर lesson में अलग video search option भी है।</p>`;
+ showLessons();
+ document.querySelector(".section").scrollIntoView({behavior:"smooth"});
+}
+
+function showLessons(){
+ const f=document.getElementById("filter").value;
+ const s=document.getElementById("search").value.toLowerCase();
+ const found=lessons.filter(l=>
+  (f==="all"||String(l.c)===f) &&
+  (l.t+" "+l.tag+" "+l.intro).toLowerCase().includes(s)
+ );
+ document.getElementById("lessonCards").innerHTML=found.length?found.map(l=>`
+ <div class="card lesson-card">
+  <span class="tag">Class ${l.c} • ${l.tag}</span>
+  <h3>${l.t}</h3>
+  <p>${l.intro}</p>
+  <button class="blue" onclick="openLesson(${lessons.indexOf(l)})">📖 Read Lesson</button>
+ </div>`).join(""):"<p>कोई lesson नहीं मिला। दूसरा शब्द खोजें।</p>";
+}
+
+function openLesson(i){
+ const l=lessons[i];
+ const videoQuery=encodeURIComponent(l.t+" computer tutorial Hindi");
+ document.getElementById("lessonContent").innerHTML=`
+ <span class="tag">Class ${l.c} • ${l.tag}</span>
+ <h2>${l.t}</h2>
+ <p class="muted">${l.intro}</p>
+
+ <div class="notes">
+ ${l.notes.map(n=>`<h3>${n[0]}</h3><p>${n[1]}</p>`).join("")}
+ </div>
+
+ <h3 style="color:#123f82">📊 Diagram</h3>
+ <div class="diagram">
+  <div class="flow">
+   ${l.diagram.map((d,j)=>`${j?'<span class="arrow">➜</span>':''}<span>${d}</span>`).join("")}
+  </div>
+ </div>
+
+ <h3 style="color:#123f82">💡 Example</h3>
+ <div class="example">${l.example}</div>
+
+ <h3 style="color:#123f82">🧪 Practical Activity</h3>
+ <div class="card">${l.activity}</div>
+
+ <h3 style="color:#123f82">📺 इस Chapter की Video देखें</h3>
+ <p class="muted">इस बटन से इसी Chapter की Hindi explanation videos YouTube पर खोजें। अपनी जरूरत के अनुसार सही video चुनें।</p>
+ <a href="https://www.youtube.com/results?search_query=${videoQuery}" target="_blank" rel="noopener">
+  <button class="video-btn">▶ Video समझें – Class ${l.c}</button>
+ </a>
+ <p class="video-note">Video YouTube पर खुलेगी। सभी videos Karan Computer Academy द्वारा बनाई गई हों, यह जरूरी नहीं।</p>
+
+ <div class="quiz">
+  <h3>📝 Quick Quiz</h3>
+  <p>${l.q}</p>
+  ${l.opts.map((o,j)=>`
+   <label><input type="radio" name="quiz${i}" value="${j}"> ${o}</label>
+  `).join("")}
+  <button class="blue" onclick="checkAnswer(${i})">Check Answer</button>
+  <p id="result${i}"></p>
+ </div>`;
+ document.getElementById("lessonModal").style.display="block";
+}
+
+function checkAnswer(i){
+ const l=lessons[i];
+ const selected=document.querySelector(`input[name="quiz${i}"]:checked`);
+ const result=document.getElementById("result"+i);
+ if(!selected){result.innerHTML="पहले एक उत्तर चुनें।";return;}
+ if(Number(selected.value)===l.a){
+  result.innerHTML="✅ बिल्कुल सही! शाबाश!";
+  result.style.color="green";
+ }else{
+  result.innerHTML="❌ फिर से कोशिश करें। Notes पढ़कर दोबारा उत्तर दें।";
+  result.style.color="red";
+ }
+}
+
+function closeLesson(){
+ document.getElementById("lessonModal").style.display="none";
+}
+document.getElementById("lessonModal").addEventListener("click",function(e){
+ if(e.target===this)closeLesson();
+});
+renderClasses();
+showLessons();
+</script>
+</body>
+</html>
+
