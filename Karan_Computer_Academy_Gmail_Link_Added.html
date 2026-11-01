@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Karan Computer Academy</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef1ff;color:#14204a}
+.diwali{text-align:center;padding:20px;background:linear-gradient(110deg,#410047,#a20b61,#ed8a20);color:white;border-bottom:4px solid #ffd44a}
+.diwali h1{color:#ffe16b;font-size:clamp(26px,4vw,42px);margin:5px}
+.diwali p{line-height:1.6;margin:6px}
+.brand{background:linear-gradient(110deg,#061333,#173d83,#061333);color:white;padding:20px;display:flex;align-items:center;justify-content:center;gap:25px;flex-wrap:wrap;text-align:center}
+.logo{width:105px;height:105px;border:5px solid #f6d46d;border-radius:50%;background:#fff;color:#13214c;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:23px;font-weight:bold}
+.brand h1{font-size:clamp(25px,5vw,48px);margin:5px}
+.brand h1 span{color:#ffda36}
+.brand p{letter-spacing:3px;color:#ffdf59;font-weight:bold}
+nav{background:#07183d;display:flex;justify-content:center;gap:5px;flex-wrap:wrap;padding:12px;position:sticky;top:0;z-index:5}
+nav a{color:white;text-decoration:none;padding:11px;border-radius:20px;font-weight:bold}
+nav a:hover{background:#ffd33b;color:#111}
+.hero{background:linear-gradient(110deg,#071d60,#1264c5,#20205f);color:white;padding:35px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.hero h2{font-size:clamp(27px,4vw,42px);margin:7px}
+.hero .gold{color:#ffe044}
+.hero p{font-size:19px}
+.screen{font-size:90px}
+main{max-width:1200px;margin:auto;padding:20px}
+.search{width:100%;padding:15px;border:2px solid #7050d0;border-radius:25px;font-size:16px;margin:15px 0}
+.heading{text-align:center;background:#101d51;color:white;border-radius:30px;padding:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px}
+.course{padding:22px;border:0;border-radius:18px;color:white;text-align:center;cursor:pointer;box-shadow:0 5px 14px #bbc3e1}
+.course h2{margin:6px}
+.course:hover{transform:translateY(-3px)}
+.c1{background:linear-gradient(135deg,#175bea,#192c9d)}
+.c2{background:linear-gradient(135deg,#00a86b,#075d3a)}
+.c3{background:linear-gradient(135deg,#ff9c19,#d94b00)}
+.c4{background:linear-gradient(135deg,#a52bd2,#54109c)}
+.c5{background:linear-gradient(135deg,#00a6ca,#07538e)}
+.c6{background:linear-gradient(135deg,#344c9f,#17204c)}
+.note{background:white;border-radius:13px;padding:17px;margin:13px 0;border-left:5px solid #7046cb;box-shadow:0 3px 10px #d4d9eb;overflow-wrap:anywhere}
+.note h3{color:#4f32a7;margin-top:0}
+.example{background:#eff3ff;border-radius:9px;padding:12px;line-height:1.7;margin:10px 0}
+.copy{background:#5133b2;color:white;border:0;padding:9px 14px;border-radius:8px;cursor:pointer}
+.about{background:white;padding:22px;border-radius:15px;margin-top:20px;line-height:1.7}
+footer{text-align:center;background:#07183d;color:white;padding:25px;margin-top:25px}
+.small{font-size:13px;color:#555}
+</style>
+</head>
+<body>
+
+<section class="diwali">
+<h1>🪔✨ शुभ दीपावली ✨🪔</h1>
+<h2>ज्ञान का दीप जलाएँ, सफलता की ओर बढ़ें!</h2>
+<p>दीपों की यह पावन रोशनी आपके घर-आँगन को खुशियों से भर दे, आपके मन में नई उम्मीदें जगाए और जीवन में सफलता के नए रास्ते खोले।</p>
+<p>माँ लक्ष्मी और भगवान गणेश की कृपा से आपके परिवार में सुख, शांति, स्वास्थ्य और समृद्धि बनी रहे।</p>
+<p>इस दीपावली पर आइए, हम ज्ञान का दीप जलाएँ, अज्ञानता का अंधकार दूर करें और अपने सपनों को साकार करने के लिए नई शुरुआत करें।</p>
+<h3>आपको और आपके पूरे परिवार को दीपावली की हार्दिक शुभकामनाएँ!</h3>
+<p><b>Karan Computer Academy की पूरी टीम की ओर से ❤️</b></p>
+</section>
+
+<header class="brand">
+<div class="logo">🎓<strong>KCA</strong>📖</div>
+<div>
+<h1><span>KARAN</span> COMPUTER ACADEMY</h1>
+<p>LEARN • PRACTICE • GROW</p>
+<h3>Founder & Owner: Karan</h3>
+</div>
+</header>
+
+<nav>
+<a href="#home">Home</a><a href="#courses">Courses</a>
+<a href="#about">About</a><a href="#notice">Notice</a><a href="#complaint">शिकायत</a>
+</nav>
+
+<section class="hero" id="home">
+<div>
+<h2>Learn Computer Skills.</h2>
+<h2 class="gold">Build Your Future.</h2>
+<p>कंप्यूटर सीखें आसान भाषा में, Examples के साथ!</p>
+</div>
+<div class="screen">🖥️</div>
+</section>
+
+<main>
+<h2 class="heading" id="courses">⭐ Explore Our Courses ⭐</h2>
+<input class="search" id="search" placeholder="🔍 Formula, Shortcut या Topic खोजें..." oninput="searchAll()">
+
+<div class="grid">
+<button type="button" class="course c1" onclick="showExcel()"><h2>📊 MS Excel</h2><p>100+ Formulas & Solutions</p></button>
+<button type="button" class="course c2" onclick="showShort('word')"><h2>📝 MS Word</h2><p>Shortcut Keys & Tools</p></button>
+<button type="button" class="course c3" onclick="showShort('excelkeys')"><h2>📈 Excel Shortcuts</h2><p>Keyboard Shortcuts</p></button>
+<button type="button" class="course c4" onclick="showShort('ppt')"><h2>📽️ PowerPoint</h2><p>Slide Shortcuts</p></button>
+<button type="button" class="course c5" onclick="showShort('windows')"><h2>🪟 Windows</h2><p>System Shortcuts</p></button>
+<button type="button" class="course c6" onclick="showShort('computer')"><h2>💻 Computer Basics</h2><p>A to Z Knowledge</p></button>
+<button type="button" class="course c1" onclick="showShort('web')"><h2>🌐 HTML & CSS</h2><p>Web Designing</p></button>
+<button type="button" class="course c2" onclick="showShort('python')"><h2>🐍 Python</h2><p>Programming</p></button>
+<button type="button" class="course c3" onclick="showShort('sql')"><h2>🗄️ SQL</h2><p>Database Commands</p></button>
+</div>
+
+<div id="content">
+<div class="note"><h2>Welcome to Karan Computer Academy!</h2><p>ऊपर किसी Subject पर क्लिक करके Notes, Formulas और Examples सीखें।</p></div>
+</div>
+
+<section class="about" id="about">
+<h2>🏫 About Karan Computer Academy</h2>
+<p>Karan Computer Academy की स्थापना विद्यार्थियों तक सरल, उपयोगी और गुणवत्तापूर्ण कंप्यूटर शिक्षा पहुँचाने के उद्देश्य से की गई है। हमारा प्रयास है कि हर विद्यार्थी तकनीक को समझे, सीखे और अपने भविष्य को बेहतर बनाए।</p>
+<h3>Karan — Founder & Owner</h3>
+</section>
+<section class="about" id="notice">
+<h2>📢 Important Notice</h2>
+<p>यह वेबसाइट NCERT या CBSE की आधिकारिक वेबसाइट नहीं है। इसे Karan Computer Academy द्वारा कंप्यूटर शिक्षा और स्व-अध्ययन में सहायता के उद्देश्य से तैयार किया गया है।</p>
+</section>
+
+<section class="about" id="complaint">
+  <h2>📩 शिकायत और सुझाव</h2>
+  <p>यदि आपको हमारी वेबसाइट में कोई समस्या मिले या कोई सुझाव देना हो, तो हमें ईमेल करें। आपकी शिकायत और सुझाव हमारे लिए महत्वपूर्ण हैं।</p>
+  <p><a href="mailto:K061500@gmail.com?subject=Karan%20Computer%20Academy%20Complaint&body=Hello%20Karan%20Computer%20Academy%2C%0A%0AI%20want%20to%20share%20a%20complaint%20or%20suggestion%3A%0A">📧 K061500@gmail.com — शिकायत या सुझाव भेजें</a></p>
+</section>
+</main>
+<footer><h2>KARAN COMPUTER ACADEMY</h2><p>Learn • Practice • Grow</p>© 2026 Karan Computer Academy</footer>
+
+<script>
+const F = [
+["ABS","Absolute Value","=ABS(-25)","25"],
+["ACOS","Inverse Cosine","=ACOS(1)","0"],
+["ACOSH","Inverse Hyperbolic Cosine","=ACOSH(1)","0"],
+["AND","सभी शर्तें सही हैं?","=AND(5>2,8>4)","TRUE"],
+["ARABIC","Roman को Number","=ARABIC(\"X\")","10"],
+["ASIN","Inverse Sine","=ASIN(0)","0"],
+["ATAN","Inverse Tangent","=ATAN(0)","0"],
+["AVERAGE","औसत","=AVERAGE(10,20,30)","20"],
+["AVERAGEA","Values का औसत","=AVERAGEA(10,20,30)","20"],
+["AVERAGEIF","शर्त के अनुसार औसत","=AVERAGEIF(A1:A3,\">10\")","Range में 10 से बड़ी Values का औसत"],
+["AVERAGEIFS","कई शर्तों से औसत","=AVERAGEIFS(C1:C5,A1:A5,\">10\")","शर्तों के अनुसार औसत"],
+["BASE","Number को Base में बदलना","=BASE(10,2)","1010"],
+["CEILING","ऊपर की ओर Round","=CEILING(12,5)","15"],
+["CHAR","Code से Character","=CHAR(65)","A"],
+["CHOOSE","सूची से Value चुनना","=CHOOSE(2,\"Red\",\"Blue\")","Blue"],
+["CLEAN","Non-printing Characters हटाना","=CLEAN(A1)","साफ Text"],
+["CODE","Character का Code","=CODE(\"A\")","65"],
+["COLUMN","Column Number","=COLUMN(C1)","3"],
+["COLUMNS","Columns गिनना","=COLUMNS(A1:C1)","3"],
+["CONCAT","Text जोड़ना","=CONCAT(\"Karan\",\" Academy\")","Karan Academy"],
+["CONCATENATE","Text जोड़ना","=CONCATENATE(\"A\",\"B\")","AB"],
+["COUNT","Numbers गिनना","=COUNT(10,20,30)","3"],
+["COUNTA","भरे Cells गिनना","=COUNTA(A1:A5)","भरे हुए Cells की संख्या"],
+["COUNTBLANK","खाली Cells गिनना","=COUNTBLANK(A1:A5)","खाली Cells की संख्या"],
+["COUNTIF","शर्त से गिनना","=COUNTIF(A1:A5,\">10\")","10 से बड़ी Values की संख्या"],
+["COUNTIFS","कई शर्तों से गिनना","=COUNTIFS(A1:A5,\">10\",B1:B5,\"Pass\")","दोनों शर्तें पूरी करने वाले Cells"],
+["DATE","Date बनाना","=DATE(2026,11,1)","01-Nov-2026"],
+["DATEDIF","दो Dates का अंतर","=DATEDIF(DATE(2020,1,1),DATE(2026,1,1),\"Y\")","6 वर्ष"],
+["DAY","दिन निकालना","=DAY(DATE(2026,11,1))","1"],
+["DAYS","दिनों का अंतर","=DAYS(DATE(2026,1,10),DATE(2026,1,1))","9"],
+["DECIMAL","Base से Decimal","=DECIMAL(\"1010\",2)","10"],
+["DEGREES","Radians से Degree","=DEGREES(PI())","180"],
+["EDATE","महीने आगे की Date","=EDATE(DATE(2026,1,1),2)","01-Mar-2026"],
+["EOMONTH","महीने का अंतिम दिन","=EOMONTH(DATE(2026,1,1),0)","31-Jan-2026"],
+["EVEN","अगला Even Number","=EVEN(3)","4"],
+["EXACT","Text बराबर जाँचना","=EXACT(\"ABC\",\"ABC\")","TRUE"],
+["EXP","Exponential Value","=EXP(1)","2.71828..."],
+["FACT","Factorial","=FACT(5)","120"],
+["FALSE","False Value","=FALSE()","FALSE"],
+["FILTER","Data Filter","=FILTER(A2:B5,B2:B5>50)","50 से अधिक वाली Rows"],
+["FIND","Text की Position","=FIND(\"A\",\"KARAN\")","2"],
+["FLOOR","नीचे की ओर Round","=FLOOR(14,5)","10"],
+["FORMULATEXT","Cell का Formula दिखाना","=FORMULATEXT(B2)","B2 का Formula"],
+["HLOOKUP","Horizontal Lookup","=HLOOKUP(2,A1:E2,2,FALSE)","मिलान वाला Result"],
+["HOUR","घंटा निकालना","=HOUR(TIME(10,30,0))","10"],
+["HYPERLINK","Clickable Link बनाना","=HYPERLINK(\"https://example.com\",\"Open\")","Open"],
+["IF","शर्त लगाना","=IF(40>=33,\"Pass\",\"Fail\")","Pass"],
+["IFERROR","Error संभालना","=IFERROR(10/0,\"Error\")","Error"],
+["IFNA","N/A Error संभालना","=IFNA(NA(),\"Not Found\")","Not Found"],
+["IFS","कई शर्तें","=IFS(90>=80,\"A\",90>=60,\"B\")","A"],
+["INDEX","Position से Value","=INDEX(A1:A3,2)","दूसरी Value"],
+["INDIRECT","Text Reference","=INDIRECT(\"A1\")","A1 की Value"],
+["INT","पूर्णांक निकालना","=INT(12.8)","12"],
+["ISBLANK","Cell खाली है?","=ISBLANK(A1)","खाली होने पर TRUE"],
+["ISERROR","Error जाँचना","=ISERROR(1/0)","TRUE"],
+["ISNUMBER","Number जाँचना","=ISNUMBER(123)","TRUE"],
+["ISTEXT","Text जाँचना","=ISTEXT(\"Hello\")","TRUE"],
+["LARGE","दूसरी सबसे बड़ी संख्या","=LARGE({10,50,30},2)","30"],
+["LEFT","बाएँ से अक्षर","=LEFT(\"KARAN\",2)","KA"],
+["LEN","अक्षर गिनना","=LEN(\"KARAN\")","5"],
+["LN","Natural Log","=LN(10)","2.302585..."],
+["LOG","Logarithm","=LOG(100,10)","2"],
+["LOWER","छोटे अक्षर","=LOWER(\"KARAN\")","karan"],
+["MATCH","Position खोजना","=MATCH(20,{10,20,30},0)","2"],
+["MAX","सबसे बड़ी संख्या","=MAX(10,50,30)","50"],
+["MAXIFS","शर्त से अधिकतम","=MAXIFS(B1:B5,A1:A5,\"A\")","शर्त वाली अधिकतम Value"],
+["MEDIAN","मध्य संख्या","=MEDIAN(10,20,30)","20"],
+["MID","बीच से अक्षर","=MID(\"KARAN\",2,3)","ARA"],
+["MIN","सबसे छोटी संख्या","=MIN(10,50,30)","10"],
+["MINIFS","शर्त से न्यूनतम","=MINIFS(B1:B5,A1:A5,\"A\")","शर्त वाली न्यूनतम Value"],
+["MINUTE","मिनट निकालना","=MINUTE(TIME(10,30,0))","30"],
+["MOD","शेषफल","=MOD(10,3)","1"],
+["MONTH","महीना निकालना","=MONTH(DATE(2026,11,1))","11"],
+["MROUND","निकटतम Multiple","=MROUND(13,5)","15"],
+["NOT","शर्त उलटना","=NOT(TRUE)","FALSE"],
+["NOW","वर्तमान Date और Time","=NOW()","वर्तमान Date-Time"],
+["NPER","किस्तों की संख्या","=NPER(0.1,-100,500)","किस्तों की संख्या"],
+["ODD","अगला Odd Number","=ODD(4)","5"],
+["OR","कोई एक शर्त सही","=OR(5>2,2>8)","TRUE"],
+["PI","Pi Value","=PI()","3.141592..."],
+["POWER","घात निकालना","=POWER(2,3)","8"],
+["PRODUCT","गुणा करना","=PRODUCT(2,3,4)","24"],
+["PROPER","हर शब्द का पहला अक्षर बड़ा","=PROPER(\"karan academy\")","Karan Academy"],
+["QUOTIENT","पूर्णांक भागफल","=QUOTIENT(10,3)","3"],
+["RADIANS","Degree से Radians","=RADIANS(180)","3.141592..."],
+["RAND","Random Number","=RAND()","0 और 1 के बीच"],
+["RANDBETWEEN","दो संख्याओं के बीच","=RANDBETWEEN(1,10)","1 से 10 के बीच"],
+["RANK.EQ","Rank निकालना","=RANK.EQ(90,{70,90,80})","1"],
+["REPLACE","Text बदलना","=REPLACE(\"KARAN\",1,2,\"MO\")","MORAN"],
+["REPT","Text दोहराना","=REPT(\"Hi\",3)","HiHiHi"],
+["RIGHT","दाएँ से अक्षर","=RIGHT(\"KARAN\",2)","AN"],
+["ROUND","Round करना","=ROUND(12.456,2)","12.46"],
+["ROUNDDOWN","नीचे Round","=ROUNDDOWN(12.349,2)","12.34"],
+["ROUNDUP","ऊपर Round","=ROUNDUP(12.341,2)","12.35"],
+["ROW","Row Number","=ROW(A5)","5"],
+["ROWS","Rows गिनना","=ROWS(A1:A5)","5"],
+["SEARCH","Text खोजना","=SEARCH(\"a\",\"KARAN\")","2"],
+["SECOND","Second निकालना","=SECOND(TIME(10,30,15))","15"],
+["SIGN","Number का Sign","=SIGN(-10)","-1"],
+["SMALL","दूसरी सबसे छोटी संख्या","=SMALL({10,50,30},2)","30"],
+["SORT","Data Sort करना","=SORT(A1:A5)","Sorted Data"],
+["SQRT","Square Root","=SQRT(81)","9"],
+["STDEV.S","Sample Standard Deviation","=STDEV.S({2,4,6})","2"],
+["SUBSTITUTE","Text बदलना","=SUBSTITUTE(\"Red Car\",\"Red\",\"Blue\")","Blue Car"],
+["SUBTOTAL","Subtotal","=SUBTOTAL(9,A1:A5)","चुने गए Data का जोड़"],
+["SUM","जोड़ निकालना","=SUM(10,20,30)","60"],
+["SUMIF","शर्त से जोड़","=SUMIF(A1:A3,\">10\",B1:B3)","शर्त वाली Values का जोड़"],
+["SUMIFS","कई शर्तों से जोड़","=SUMIFS(C1:C5,A1:A5,\">10\")","शर्तों वाला जोड़"],
+["TAN","Tangent","=TAN(0)","0"],
+["TEXT","Number Format","=TEXT(1234,\"0,000\")","1,234"],
+["TEXTJOIN","Text जोड़ना","=TEXTJOIN(\",\",TRUE,\"A\",\"B\")","A,B"],
+["TIME","Time बनाना","=TIME(10,30,0)","10:30 AM"],
+["TODAY","आज की Date","=TODAY()","आज की तारीख"],
+["TRANSPOSE","Rows और Columns बदलना","=TRANSPOSE(A1:B2)","बदला हुआ Data"],
+["TRIM","Extra Spaces हटाना","=TRIM(\" Hello \")","Hello"],
+["TRUE","True Value","=TRUE()","TRUE"],
+["UNIQUE","Unique Values","=UNIQUE({1,2,2,3})","1,2,3"],
+["UPPER","बड़े अक्षर","=UPPER(\"karan\")","KARAN"],
+["VALUE","Text को Number","=VALUE(\"123\")","123"],
+["VAR.S","Sample Variance","=VAR.S({2,4,6})","4"],
+["VLOOKUP","Vertical Lookup","=VLOOKUP(2,{1,10;2,20;3,30},2,FALSE)","20"],
+["WEEKDAY","Week का दिन","=WEEKDAY(DATE(2026,11,1))","1"],
+["WEEKNUM","Week Number","=WEEKNUM(DATE(2026,11,1))","सप्ताह संख्या"],
+["WORKDAY","कार्य दिवस की Date","=WORKDAY(DATE(2026,1,1),5)","अगली कार्य Date"],
+["XLOOKUP","नया Lookup","=XLOOKUP(2,{1,2,3},{10,20,30})","20"],
+["XMATCH","नया Match","=XMATCH(20,{10,20,30})","2"],
+["XOR","Exclusive OR","=XOR(TRUE,FALSE)","TRUE"],
+["YEAR","वर्ष निकालना","=YEAR(DATE(2026,11,1))","2026"],
+["YEARFRAC","वर्ष का Fraction","=YEARFRAC(DATE(2026,1,1),DATE(2027,1,1))","1"],
+["GEOMEAN","Geometric Mean","=GEOMEAN(2,8)","4"],
+["GCD","सबसे बड़ा Common Divisor","=GCD(12,18)","6"],
+["LCM","सबसे छोटा Common Multiple","=LCM(4,6)","12"],
+["COMBIN","Combination","=COMBIN(5,2)","10"],
+["PERMUT","Permutation","=PERMUT(5,2)","20"],
+["CORREL","Correlation","=CORREL({1,2,3},{2,4,6})","1"],
+["FREQUENCY","Frequency Distribution","=FREQUENCY({1,2,2,3},{2})","आवृत्ति की Array"],
+["PERCENTILE.INC","Percentile","=PERCENTILE.INC({1,2,3,4,5},0.5)","3"],
+["QUARTILE.INC","Quartile","=QUARTILE.INC({1,2,3,4,5},2)","3"],
+["SKEW","Skewness","=SKEW({1,2,3,4,5})","Skewness Result"],
+["TRUNC","Decimal हटाना","=TRUNC(12.89)","12"],
+["ROMAN","Number को Roman","=ROMAN(10)","X"],
+["DOLLAR","Currency Text","=DOLLAR(1234,2)","$1,234.00"],
+["FIXED","Decimal Format","=FIXED(1234.567,2)","1,234.57"],
+["ISLOGICAL","Logical Value जाँचना","=ISLOGICAL(TRUE)","TRUE"],
+["ISNONTEXT","Non-Text जाँचना","=ISNONTEXT(123)","TRUE"],
+["ISODD","Odd Number जाँचना","=ISODD(5)","TRUE"],
+["ISEVEN","Even Number जाँचना","=ISEVEN(4)","TRUE"],
+["NETWORKDAYS","कार्य दिवस गिनना","=NETWORKDAYS(DATE(2026,1,1),DATE(2026,1,7))","5"],
+["WEEKNUM","साल का Week Number","=WEEKNUM(DATE(2026,1,1))","1"],
+["HYPERLINK","वेबसाइट Link","=HYPERLINK(\"https://example.com\",\"Visit\")","Visit"],
+["SUBTOTAL","Visible Data जोड़ना","=SUBTOTAL(9,A1:A5)","Subtotal"],
+["SEQUENCE","क्रमांक बनाना","=SEQUENCE(5)","1,2,3,4,5"],
+["SORTBY","दूसरे Range से Sort","=SORTBY(A2:A5,B2:B5)","Sorted Values"],
+["TAKE","शुरुआती Rows लेना","=TAKE(A1:A5,2)","पहली दो Rows"],
+["DROP","Rows हटाना","=DROP(A1:A5,2)","बाकी Rows"],
+["CHOOSECOLS","Columns चुनना","=CHOOSECOLS(A1:C3,1,3)","पहला और तीसरा Column"],
+["CHOOSEROWS","Rows चुनना","=CHOOSEROWS(A1:C3,1,3)","पहली और तीसरी Row"],
+["TOCOL","एक Column में बदलना","=TOCOL(A1:B2)","Single Column"],
+["TOROW","एक Row में बदलना","=TOROW(A1:B2)","Single Row"],
+["WRAPROWS","Rows में Wrap","=WRAPROWS({1,2,3,4},2)","दो-दो Values वाली Rows"],
+["WRAPCOLS","Columns में Wrap","=WRAPCOLS({1,2,3,4},2)","दो-दो Values वाले Columns"]
+];
+
+const shortcuts = {
+word:[
+["Ctrl+A","पूरा Document Select"],["Ctrl+B","Bold"],["Ctrl+C","Copy"],["Ctrl+D","Font Dialog"],["Ctrl+E","Center Align"],["Ctrl+F","Find"],["Ctrl+G","Go To"],["Ctrl+H","Replace"],["Ctrl+I","Italic"],["Ctrl+J","Justify"],["Ctrl+K","Hyperlink"],["Ctrl+L","Left Align"],["Ctrl+M","Indent"],["Ctrl+N","New Document"],["Ctrl+O","Open"],["Ctrl+P","Print"],["Ctrl+R","Right Align"],["Ctrl+S","Save"],["Ctrl+T","Hanging Indent"],["Ctrl+U","Underline"],["Ctrl+V","Paste"],["Ctrl+W","Close Document"],["Ctrl+X","Cut"],["Ctrl+Y","Redo"],["Ctrl+Z","Undo"],["Ctrl+Enter","Page Break"],["Ctrl+Home","Document की शुरुआत"],["Ctrl+End","Document का अंत"],["F7","Spelling Check"],["F12","Save As"],["Shift+F3","Case बदलना"],["Ctrl+Shift+>","Font Size बढ़ाना"],["Ctrl+Shift+<","Font Size घटाना"]
+],
+excelkeys:[
+["Ctrl+A","Select All"],["Ctrl+B","Bold"],["Ctrl+C","Copy"],["Ctrl+D","Fill Down"],["Ctrl+E","Flash Fill"],["Ctrl+F","Find"],["Ctrl+G","Go To"],["Ctrl+H","Replace"],["Ctrl+I","Italic"],["Ctrl+K","Hyperlink"],["Ctrl+N","New Workbook"],["Ctrl+O","Open Workbook"],["Ctrl+P","Print"],["Ctrl+R","Fill Right"],["Ctrl+S","Save"],["Ctrl+T","Create Table"],["Ctrl+U","Underline"],["Ctrl+V","Paste"],["Ctrl+X","Cut"],["Ctrl+Y","Redo"],["Ctrl+Z","Undo"],["F2","Edit Active Cell"],["F4","Repeat / Absolute Reference"],["F9","Calculate Workbooks"],["F11","Chart Sheet"],["Ctrl+1","Format Cells"],["Ctrl+;","Current Date"],["Ctrl+Shift+;","Current Time"],["Alt+=","AutoSum"],["Ctrl+Space","Select Column"],["Shift+Space","Select Row"],["Ctrl+PageUp","Previous Sheet"],["Ctrl+PageDown","Next Sheet"],["Ctrl+Arrow","Data Range के किनारे जाना"],["Ctrl+Shift+L","Filter On/Off"],["Ctrl+`","Show Formulas"],["Alt+Enter","Cell में नई Line"]
+],
+ppt:[
+["Ctrl+M","New Slide"],["Ctrl+D","Duplicate Object / Slide"],["F5","Start Slide Show"],["Shift+F5","Current Slide से Show"],["Esc","Slide Show बंद"],["B","Black Screen"],["W","White Screen"],["N","Next Slide"],["P","Previous Slide"],["Ctrl+S","Save"],["Ctrl+P","Print"],["Ctrl+K","Hyperlink"],["Ctrl+G","Group Objects"],["Ctrl+Shift+G","Ungroup"],["Ctrl+A","Select All"],["Ctrl+C","Copy"],["Ctrl+V","Paste"],["Ctrl+Z","Undo"],["Ctrl+Y","Redo"],["F7","Spelling Check"]
+],
+windows:[
+["Win+E","File Explorer"],["Win+D","Desktop दिखाना"],["Win+L","Computer Lock"],["Win+R","Run Dialog"],["Win+I","Settings"],["Win+S","Search"],["Win+A","Quick Settings / Action Center"],["Win+Tab","Task View"],["Win+M","Minimize Windows"],["Win+Shift+M","Restore Windows"],["Win+P","Project Display"],["Win+X","Quick Link Menu"],["Win+V","Clipboard History"],["Win+Shift+S","Screenshot Snipping"],["Win+Left","Window Left Snap"],["Win+Right","Window Right Snap"],["Alt+Tab","Apps Switch"],["Alt+F4","Close Active Window"],["Ctrl+Shift+Esc","Task Manager"],["Ctrl+Alt+Delete","Security Options"],["F2","Rename"],["F5","Refresh"],["Ctrl+C","Copy"],["Ctrl+V","Paste"],["Ctrl+X","Cut"],["Ctrl+Z","Undo"],["Shift+Delete","Permanent Delete"]
+]
+};
+
+function renderRows(title,rows,formula=false){
+let html="<h2 class='heading'>"+title+"</h2>";
+rows.forEach((r,i)=>{
+html+=`<article class="note"><h3>${i+1}. ${r[0]}</h3>
+<p><b>काम:</b> ${r[1]}</p>
+<div class="example"><b>${formula?"Formula":"Shortcut"}:</b> <code>${r[2]||r[0]}</code><br>
+${formula?"<b>Example Result:</b> "+r[3]:"<b>उपयोग:</b> "+r[1]}</div>
+<button class="copy" onclick="copyText('${(r[2]||r[0]).replace(/'/g,"\\'")}')">Copy</button></article>`;
+});
+document.getElementById("content").innerHTML=html;
+document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
+function showExcel(){
+const basic = new Set([
+"ABS","AND","AVERAGE","CONCAT","COUNT","COUNTA","COUNTBLANK","COUNTIF","COUNTIFS",
+"DATE","DAY","IF","LEFT","LEN","LOWER","MAX","MIN","MOD","MONTH","NOT","NOW",
+"OR","PROPER","ROUND","ROUNDDOWN","ROUNDUP","RIGHT","SUM","SUMIF","SUMIFS","TODAY",
+"TRIM","UPPER","YEAR"
+]);
+const medium = new Set([
+"AVERAGEIF","AVERAGEIFS","CHOOSE","CLEAN","EXACT","FIND","IFERROR","IFS","INDEX",
+"MATCH","MAXIFS","MID","MINIFS","NETWORKDAYS","RANK.EQ","SEARCH","SUBSTITUTE",
+"SUBTOTAL","TEXT","TEXTJOIN","VALUE","VLOOKUP","HLOOKUP","XLOOKUP","WORKDAY",
+"EDATE","EOMONTH","FILTER","SORT","SORTBY","UNIQUE","TRANSPOSE","LARGE","SMALL",
+"MEDIAN","PRODUCT","RANDBETWEEN","INT","CEILING","FLOOR"
+]);
+const basicRows=F.filter(r=>basic.has(r[0]));
+const mediumRows=F.filter(r=>medium.has(r[0])&&!basic.has(r[0]));
+const advancedRows=F.filter(r=>!basic.has(r[0])&&!medium.has(r[0]));
+let html="<h2 class='heading'>📊 MS Excel Formulas – Basic to Advanced</h2>";
+function addSection(title,rows){
+ html+=`<h2 class="heading">${title} (${rows.length})</h2>`;
+ rows.forEach((r,i)=>{
+  html+=`<article class="note"><h3>${i+1}. ${r[0]}</h3>
+  <p><b>काम:</b> ${r[1]}</p>
+  <div class="example"><b>Formula:</b> <code>${r[2]||r[0]}</code><br><b>Example Result:</b> ${r[3]}</div>
+  <button class="copy" onclick="copyText('${(r[2]||r[0]).replace(/'/g,"\\'")}')">Copy</button></article>`;
+ });
+}
+addSection("🟢 Basic Excel Formulas – आसान",basicRows);
+addSection("🟡 Intermediate Excel Formulas – मध्यम",mediumRows);
+addSection("🔴 Advanced Excel Formulas – कठिन",advancedRows);
+document.getElementById("content").innerHTML=html;
+document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
+function showShort(key){
+let names={word:"MS Word Shortcut Keys",excelkeys:"MS Excel Shortcut Keys",ppt:"PowerPoint Shortcut Keys",windows:"Windows Shortcut Keys"};
+if(shortcuts[key])renderRows("⌨️ "+names[key],shortcuts[key]);
+else{
+let topics={
+computer:[["Hardware","कंप्यूटर के भौतिक Parts","Keyboard, Mouse, Monitor"],["Software","Programs और Applications","Windows, MS Word"],["CPU","Central Processing Unit","कंप्यूटर का मुख्य Processing भाग"],["RAM","Temporary Memory","काम करते समय Data रखती है"],["ROM","Read Only Memory","स्थायी Instructions रखती है"],["Input Device","Data देने वाले उपकरण","Keyboard, Mouse"],["Output Device","Result दिखाने वाले उपकरण","Monitor, Printer"],["Operating System","कंप्यूटर चलाने वाला System","Windows, Linux"]],
+web:[["HTML","वेब पेज का Structure","<h1>Hello</h1>"],["CSS","वेब पेज का Design","color:blue;"],["JavaScript","वेब पेज में Interaction","alert('Hello');"]],
+python:[["print()","Text दिखाना","print('Hello Karan')"],["Addition","जोड़ करना","print(10+20)"],["Variable","Value रखना","name='Karan'"],["if","Condition लगाना","if 10>5: print('Yes')"]],
+sql:[["SELECT","Data देखना","SELECT * FROM Students;"],["INSERT","Data जोड़ना","INSERT INTO Students VALUES (1,'Karan');"],["UPDATE","Data बदलना","UPDATE Students SET name='Karan' WHERE id=1;"],["DELETE","Data हटाना","DELETE FROM Students WHERE id=1;"],["WHERE","Condition लगाना","SELECT * FROM Students WHERE marks>50;"]]
+};
+let title={computer:"Computer Basics A–Z",web:"HTML & CSS Basics",python:"Python Examples",sql:"SQL Commands"};
+renderRows(title[key],topics[key].map(x=>[x[0],x[1],x[2]]));
+}
+}
+function copyText(t){
+if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert("Copied!"));
+else alert("Text select करके Copy करें: "+t);
+}
+function searchAll(){
+let q=document.getElementById("search").value.toLowerCase().trim();
+if(!q){document.getElementById("content").innerHTML="<div class='note'>किसी Subject को चुनें।</div>";return;}
+let all=[...F.map(x=>[x[0],x[1],x[2],x[3]]),...Object.values(shortcuts).flat().map(x=>[x[0],x[1],"",x[1]])];
+let found=all.filter(x=>x.join(" ").toLowerCase().includes(q));
+let html="<h2 class='heading'>Search Results</h2>";
+found.forEach(x=>html+=`<article class="note"><h3>${x[0]}</h3><p>${x[1]}</p><div class="example">${x[2]} ${x[3]}</div></article>`);
+document.getElementById("content").innerHTML=html+(found.length?"":"<p>कोई Result नहीं मिला।</p>");
+}
+</script>
+</body>
+</html>
