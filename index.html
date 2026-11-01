@@ -3,355 +3,474 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karan Computer Academy - Complete Computer Book</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karan Computer Academy</title>
 <style>
+:root{--p:#5947df;--p2:#8978ff;--bg:#f5f6fc;--card:#fff;--ink:#24263b;--muted:#777d92;--line:#e9eaf2}
 *{box-sizing:border-box}
-body{margin:0;background:#eef3fa;color:#17233d;font-family:Arial,sans-serif;line-height:1.75}
-header{background:linear-gradient(120deg,#10245c,#0875c9);color:white;text-align:center;padding:35px 15px}
-header h1{margin:0;font-size:30px}
-nav{background:#10245c;padding:12px;text-align:center;position:sticky;top:0;z-index:10}
-nav a{color:white;text-decoration:none;margin:8px;font-weight:bold}
-.container{max-width:1100px;margin:auto;padding:16px}
-.panel,.chapter,.card{background:white;padding:20px;border-radius:13px;margin:15px 0;box-shadow:0 3px 12px #0001}
-h2{color:#0755a5}
-h3{color:#0755a5}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.card{margin:0;border:1px solid #dbeafe}
-button{background:#0755a5;color:white;border:0;padding:10px 15px;border-radius:8px;cursor:pointer;margin:5px}
-button:hover{background:#063b79}
-.chapter{display:none}
-.chapter.active{display:block}
-.diagram{background:#f0f7ff;border:2px solid #b7d7f5;border-radius:12px;padding:18px;text-align:center;margin:15px 0}
-.diagram-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;align-items:center}
-.diagram-box{background:#dceeff;border:2px solid #3685c8;border-radius:8px;padding:12px;min-width:100px}
-.arrow{font-size:25px;color:#0755a5;font-weight:bold}
-.note{background:#fff8df;border-left:5px solid #e5a600;padding:12px;margin:12px 0}
-.answer{background:#eff6ff;border-left:4px solid #1684d4;padding:12px;margin:10px 0}
-.english{color:#334155}
-.chapter-title{border-bottom:3px solid #1684d4;padding-bottom:10px}
-footer{text-align:center;background:#10245c;color:white;padding:20px}
-.small{color:#64748b;font-size:14px}
-@media print{
-nav,header,footer,.no-print{display:none!important}
-body{background:white;color:black}
-.chapter{display:block!important;box-shadow:none;page-break-after:always}
-}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Noto Sans Devanagari",sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #aaa0ff}
+.hidden{display:none!important}
+#register{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(130deg,#29219e,#6857e8,#b09cff)}
+.form{background:#fff;width:min(440px,100%);padding:32px;border-radius:22px;box-shadow:0 20px 55px #17134b44}
+.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--p),var(--p2));display:grid;place-items:center;color:white;font-size:25px}
+.form h1{font-size:25px;margin:16px 0 8px}
+.form p{color:#777d92;line-height:1.6}
+.form label{display:block;font-size:13px;font-weight:bold;margin:16px 0 7px}
+.form input,.form select{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:white}
+.primary{background:var(--p);color:white;padding:12px 18px;border-radius:10px;font-weight:bold}
+.submit{width:100%;margin-top:22px}
+#app{display:none}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:white;border-right:1px solid var(--line);padding:22px 15px;z-index:10;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:bold;font-size:16px;margin:0 5px 30px}
+.nav-label{font-size:11px;color:#a0a3b4;letter-spacing:1px;font-weight:bold;margin:20px 10px 8px}
+.nav button{width:100%;text-align:left;padding:12px;border:0;background:transparent;color:#62677d;border-radius:10px;margin:3px 0}
+.nav button:hover,.nav button.active{background:#efedff;color:var(--p);font-weight:bold}
+.main{margin-left:245px;min-height:100vh}
+.topbar{height:70px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}
+.topbar small{color:var(--muted)}
+.profile-area{position:relative}
+.profile-btn{display:flex;align-items:center;gap:9px;background:white;color:var(--ink);font-weight:bold;border:0}
+.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#efedff;color:var(--p)}
+.dropdown{display:none;position:absolute;right:0;top:47px;width:180px;background:white;border:1px solid var(--line);border-radius:12px;padding:7px;box-shadow:0 12px 30px #2222}
+.dropdown.show{display:block}
+.dropdown button{display:block;width:100%;text-align:left;padding:11px;background:white;border:0;border-radius:8px}
+.dropdown button:hover{background:#f0efff;color:var(--p)}
+.content{max-width:1200px;margin:auto;padding:28px 30px 55px}
+.hero{padding:32px;border-radius:22px;color:white;background:linear-gradient(115deg,#4033c3,#7060ed 65%,#a18bff);position:relative;overflow:hidden}
+.hero:after{content:"💻";position:absolute;right:7%;top:18px;font-size:100px;opacity:.22}
+.hero h1{font-size:29px;margin:0 0 10px;max-width:700px}
+.hero p{line-height:1.7;color:#efedff;max-width:650px}
+.whitebtn{background:white;color:var(--p);padding:12px 17px;border-radius:9px;font-weight:bold}
+.lightbtn{background:#efedff;color:var(--p);padding:10px 14px;border-radius:9px;font-weight:bold}
+.section{display:flex;justify-content:space-between;align-items:center;margin:28px 0 15px}
+.section h2{font-size:20px;margin:0}
+.muted{font-size:13px;color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 20px #24245a09}
+.card h3{margin:10px 0 7px;font-size:16px}
+.card p{color:var(--muted);font-size:13px;line-height:1.7}
+.icon{width:46px;height:46px;border-radius:13px;background:#efedff;display:grid;place-items:center;font-size:24px}
+.stat{font-size:27px;font-weight:bold;color:var(--p);margin:9px 0}
+.class-card{cursor:pointer;transition:.2s}
+.class-card:hover{transform:translateY(-3px);border-color:#a69aff}
+.search{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;margin:18px 0;background:white}
+.chapter{display:flex;gap:13px;align-items:center;margin-bottom:12px;cursor:pointer}
+.chapter:hover{border-color:#aaa0ff}
+.chapter-no{width:42px;height:42px;flex-shrink:0;border-radius:12px;background:#efedff;color:var(--p);display:grid;place-items:center;font-weight:bold}
+.chapter-info{flex:1}
+.chapter-info h3{margin:0 0 5px}
+.chapter-info p{margin:0}
+.reader{background:white;border:1px solid var(--line);border-radius:16px;padding:25px;line-height:1.8}
+.reader h2{font-size:24px}
+.reader h3{color:var(--p);margin-top:25px}
+.reader p,.reader li{color:#555b70;line-height:1.9}
+.note{background:#f1efff;border-left:4px solid var(--p);padding:14px;border-radius:8px;margin:18px 0}
+.reader-actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.progress{height:9px;background:#ececf4;border-radius:20px;overflow:hidden;margin:12px 0}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p2))}
+.welcome{display:none;position:fixed;inset:0;background:#211b85dc;z-index:30;place-items:center;padding:20px}
+.welcome-box{background:white;border-radius:20px;padding:30px;text-align:center;width:min(440px,100%)}
+.welcome-box p{color:#777d92;line-height:1.8}
+.flower{font-size:38px}
+.badge{display:inline-block;background:#fff3d7;color:#805b10;padding:7px 10px;border-radius:20px;font-size:12px;margin:5px}
+footer{border-top:1px solid var(--line);margin-top:35px;padding:22px 0;color:var(--muted);font-size:12px;line-height:1.8}
+.mobile{display:none;background:#efedff;color:var(--p);padding:9px;border:0;border-radius:8px}
+.dark{--bg:#171827;--card:#24263b;--ink:#f4f4ff;--muted:#b2b5c8;--line:#383a50}
+.dark .sidebar,.dark .topbar,.dark .dropdown,.dark .dropdown button,.dark .profile-btn{background:#202237;color:var(--ink)}
+.dark .reader{background:#24263b}
+.dark .reader p,.dark .reader li{color:#d2d3e0}
+@media(max-width:900px){.sidebar{transform:translateX(-100%);transition:.2s}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.mobile{display:block}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.content{padding:18px 13px}.topbar{padding:0 13px}.grid{grid-template-columns:1fr}.hero{padding:23px}.hero h1{font-size:23px}.reader{padding:16px}}
 </style>
 </head>
 <body>
 
-<header>
-<h1>💻 KARAN COMPUTER ACADEMY</h1>
-<p>Complete Computer Course – आसान हिंदी और English में</p>
-<p>Learn Computer Step by Step</p>
-</header>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#contents">Contents</a>
-<a href="#about">About</a>
-</nav>
-
-<div class="container" id="home">
-<div class="panel">
-<h2>स्वागत है! Welcome to Your Digital Computer Book</h2>
-<p>इस डिजिटल पुस्तक में आप कंप्यूटर को बिल्कुल शुरुआत से सीखेंगे। हर विषय को आसान हिंदी, English, चित्र और उदाहरणों के साथ समझाया गया है।</p>
-<p class="english">This digital book teaches computer fundamentals from the beginning with simple explanations, diagrams and examples.</p>
-<div class="note"><b>कैसे पढ़ें?</b> पहले Chapter चुनें, फिर विषय पढ़ें, Diagram समझें और अंत में प्रश्नों का अभ्यास करें।</div>
+<div id="register">
+ <form class="form" id="registerForm">
+  <div class="logo">🎓</div>
+  <h1>Karan Computer Academy</h1>
+  <p>सीखिए कंप्यूटर की दुनिया। अपनी सीखने की यात्रा आज ही शुरू करें!</p>
+  <label>आपका नाम</label>
+  <input id="nameInput" maxlength="45" placeholder="अपना नाम लिखें" required>
+  <label>अपनी कक्षा चुनें</label>
+  <select id="classInput">
+   <option value="6">कक्षा 6</option><option value="7">कक्षा 7</option>
+   <option value="8">कक्षा 8</option><option value="9" selected>कक्षा 9</option>
+   <option value="10">कक्षा 10</option><option value="11">कक्षा 11</option><option value="12">कक्षा 12</option>
+  </select>
+  <label>भाषा चुनें</label>
+  <select id="languageInput"><option value="hi">हिंदी</option><option value="en">English</option></select>
+  <button class="primary submit" type="submit">Submit — शुरू करें →</button>
+  <p class="muted">आपकी प्रोफाइल इसी ब्राउज़र में सेव होगी।</p>
+ </form>
 </div>
 
-<div class="panel" id="contents">
-<h2>📚 विषय सूची / Table of Contents</h2>
-<div class="grid" id="chapterList"></div>
+<div id="welcome" class="welcome">
+ <div class="welcome-box">
+  <div class="flower">🌸 🌼 🌸</div>
+  <h2 id="welcomeName">आपका स्वागत है!</h2>
+  <p>हमें खुशी है कि आपने Karan Computer Academy चुनी। आइए, कुछ नया सीखते हैं!</p>
+  <button class="primary" onclick="closeWelcome()">📖 किताब खोलें</button>
+ </div>
 </div>
 
-<div id="lessons"></div>
-
-<div class="panel" id="about">
-<h2>About Karan Computer Academy</h2>
-<p>यह एक शैक्षिक वेबसाइट है जिसका उद्देश्य कंप्यूटर की जानकारी को सरल और उपयोगी तरीके से सिखाना है।</p>
-<p><b>Founder:</b> Karan</p>
+<div id="app">
+ <aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">🎓</div><span>Karan Computer<br>Academy</span></div>
+  <div class="nav">
+   <div class="nav-label">LEARNING</div>
+   <button data-page="home" class="active" onclick="go('home',this)">🏠 Home / Dashboard</button>
+   <button data-page="books" onclick="go('books',this)">📚 मेरी किताबें</button>
+   <button data-page="quiz" onclick="go('quiz',this)">🧠 Quiz Challenge</button>
+   <button data-page="progress" onclick="go('progress',this)">📈 मेरी प्रगति</button>
+   <button data-page="badges" onclick="go('badges',this)">🏅 मेरे Badges</button>
+   <div class="nav-label">COMMUNITY</div>
+   <button data-page="invite" onclick="go('invite',this)">👥 दोस्तों को बुलाएँ</button>
+   <button data-page="about" onclick="go('about',this)">ℹ️ हमारे बारे में</button>
+   <button data-page="settings" onclick="go('settings',this)">⚙️ Settings</button>
+  </div>
+ </aside>
+ <main class="main">
+  <header class="topbar">
+   <div style="display:flex;align-items:center;gap:12px">
+    <button class="mobile" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+    <small>Karan Computer Academy</small>
+   </div>
+   <div class="profile-area">
+    <button class="profile-btn" onclick="toggleProfile()"><span class="avatar" id="avatar">K</span><span id="topName">Student</span> ▾</button>
+    <div class="dropdown" id="dropdown">
+     <button onclick="editProfile()">✏️ Edit Profile</button>
+     <button onclick="signOut()">↪ Sign Out</button>
+    </div>
+   </div>
+  </header>
+  <div class="content" id="view"></div>
+ </main>
 </div>
-</div>
-
-<footer>
-<p>© 2026 Karan Computer Academy</p>
-<p>Learn Today, Lead Tomorrow!</p>
-</footer>
 
 <script>
-const chapters=[
-{
-title:"कंप्यूटर का परिचय | Introduction to Computer",
-intro:"कंप्यूटर एक इलेक्ट्रॉनिक मशीन है। यह हमारे द्वारा दिए गए डेटा को स्वीकार करता है, निर्देशों के अनुसार उस पर काम करता है और परिणाम देता है। इसका उपयोग स्कूल, बैंक, अस्पताल, कार्यालय और घरों में होता है।",
-eng:"A computer is an electronic machine. It accepts data, processes it according to instructions and produces useful results. Computers are used in schools, banks, hospitals, offices and homes.",
-topics:[
-["कंप्यूटर क्या है?","कंप्यूटर एक इलेक्ट्रॉनिक उपकरण है जो डेटा को प्रोसेस करके उपयोगी जानकारी देता है। उदाहरण: स्कूल में विद्यार्थियों के अंक कंप्यूटर में रखे जा सकते हैं।","A computer is an electronic device that processes data to produce useful information."],
-["डेटा और सूचना","Data कच्चे तथ्य होते हैं। जब डेटा को व्यवस्थित करके अर्थपूर्ण बनाया जाता है तो उसे Information कहते हैं। उदाहरण: 80, 90 और 70 अंक डेटा हैं; इनका औसत सूचना है।","Data means raw facts. Processed and meaningful data is called information."],
-["कंप्यूटर की विशेषताएँ","कंप्यूटर तेज गति से काम करता है, सही निर्देश मिलने पर सटीक परिणाम देता है, बड़ी मात्रा में डेटा रखता है और बार-बार काम कर सकता है।","Computers offer speed, accuracy, storage and consistency."],
-["कंप्यूटर की सीमाएँ","कंप्यूटर अपने आप इंसान की तरह नहीं सोचता। यह दिए गए निर्देशों के अनुसार काम करता है और बिजली या बैटरी पर निर्भर करता है।","A computer follows instructions and depends on electrical power or a battery."]
-],
-diagram:"<div class='diagram-row'><div class='diagram-box'>⌨️<br>Input<br>इनपुट</div><div class='arrow'>➜</div><div class='diagram-box'>⚙️<br>Processing<br>प्रोसेसिंग</div><div class='arrow'>➜</div><div class='diagram-box'>🖥️<br>Output<br>आउटपुट</div></div><p>Storage: डेटा को भविष्य के उपयोग के लिए सुरक्षित रखा जाता है।</p>",
-example:"आप Keyboard से 2 + 3 लिखते हैं। कंप्यूटर गणना करता है और स्क्रीन पर 5 दिखाता है।",
-qa:[["कंप्यूटर क्या है?","कंप्यूटर एक इलेक्ट्रॉनिक मशीन है जो डेटा को प्रोसेस करके परिणाम देती है।"],["डेटा क्या है?","कच्चे तथ्यों और आंकड़ों को डेटा कहते हैं।"],["कंप्यूटर के चार मुख्य कार्य क्या हैं?","Input, Processing, Output और Storage।"]],
-mcq:["कंप्यूटर किस प्रकार की मशीन है?","इलेक्ट्रॉनिक","हाथ से चलने वाली","यांत्रिक","इलेक्ट्रॉनिक"]
-},
-{
-title:"कंप्यूटर का इतिहास | History of Computer",
-intro:"कंप्यूटर का विकास धीरे-धीरे हुआ। पहले लोग गिनती के लिए पत्थरों और अबेकस का उपयोग करते थे। बाद में यांत्रिक और इलेक्ट्रॉनिक गणना मशीनें बनीं।",
-eng:"Computers developed gradually. Early people used counting tools such as the abacus. Mechanical and electronic calculating machines came later.",
-topics:[
-["अबेकस (Abacus)","अबेकस एक प्राचीन गणना उपकरण है। इसमें मोतियों को खिसकाकर जोड़ और घटाव जैसी गणनाएँ की जाती थीं।","The abacus is an ancient calculating tool. Beads are moved to perform calculations."],
-["चार्ल्स बैबेज","चार्ल्स बैबेज ने Analytical Engine की योजना बनाई। उन्हें Father of Computer कहा जाता है।","Charles Babbage designed the Analytical Engine and is known as the Father of Computer."],
-["एडा लवलेस","एडा लवलेस को शुरुआती कंप्यूटर प्रोग्रामर के रूप में जाना जाता है।","Ada Lovelace is widely recognized as an early computer programmer."],
-["आधुनिक कंप्यूटर","समय के साथ कंप्यूटर छोटे, तेज, सस्ते और अधिक शक्तिशाली होते गए।","Over time, computers became smaller, faster, more affordable and more powerful."]
-],
-diagram:"<div class='diagram-row'><div class='diagram-box'>🧮<br>Abacus</div><div class='arrow'>➜</div><div class='diagram-box'>⚙️<br>Mechanical Machines</div><div class='arrow'>➜</div><div class='diagram-box'>💻<br>Modern Computer</div></div>",
-example:"जैसे पहले गणना के लिए अबेकस का उपयोग होता था, आज वही काम कैलकुलेटर और कंप्यूटर से किया जाता है।",
-qa:[["कंप्यूटर का जनक किसे कहा जाता है?","चार्ल्स बैबेज को।"],["अबेकस क्या है?","यह एक प्राचीन गणना उपकरण है।"],["एडा लवलेस कौन थीं?","उन्हें शुरुआती कंप्यूटर प्रोग्रामर के रूप में जाना जाता है।"]],
-mcq:["कंप्यूटर का जनक कौन है?","चार्ल्स बैबेज","आइजैक न्यूटन","अल्बर्ट आइंस्टीन","चार्ल्स बैबेज"]
-},
-{
-title:"कंप्यूटर की पीढ़ियाँ | Generations of Computer",
-intro:"कंप्यूटर की पीढ़ियाँ उनके निर्माण में उपयोग की गई तकनीक के आधार पर बाँटी गई हैं। सामान्य रूप से पाँच पीढ़ियों का वर्णन किया जाता है।",
-eng:"Computer generations are classified according to the technology used to build computers. Five generations are commonly described.",
-topics:[
-["पहली पीढ़ी","इस पीढ़ी में Vacuum Tubes का उपयोग हुआ। ये कंप्यूटर आकार में बड़े और अधिक बिजली खर्च करने वाले थे।","First-generation computers used vacuum tubes. They were large and consumed much electricity."],
-["दूसरी पीढ़ी","इस पीढ़ी में Transistors का उपयोग हुआ। कंप्यूटर पहले से छोटे और अधिक भरोसेमंद बने।","Second-generation computers used transistors and became smaller and more reliable."],
-["तीसरी पीढ़ी","इस पीढ़ी में Integrated Circuits (IC) का उपयोग हुआ।","Third-generation computers used integrated circuits."],
-["चौथी पीढ़ी","इस पीढ़ी में Microprocessors का उपयोग हुआ। Personal Computers का विकास हुआ।","Fourth-generation computers used microprocessors and personal computers developed."],
-["पाँचवीं पीढ़ी","इस पीढ़ी का संबंध Artificial Intelligence और उन्नत कंप्यूटिंग तकनीकों से है।","The fifth generation is associated with artificial intelligence and advanced computing."]
-],
-diagram:"<div class='diagram-row'><div class='diagram-box'>1️⃣<br>Vacuum Tube</div><div class='diagram-box'>2️⃣<br>Transistor</div><div class='diagram-box'>3️⃣<br>IC</div><div class='diagram-box'>4️⃣<br>Microprocessor</div><div class='diagram-box'>5️⃣<br>AI</div></div>",
-example:"पुराने बड़े कंप्यूटरों की तुलना में आज का लैपटॉप छोटा और अधिक शक्तिशाली है।",
-qa:[["पहली पीढ़ी में किसका उपयोग हुआ?","Vacuum Tubes का।"],["दूसरी पीढ़ी में किसका उपयोग हुआ?","Transistors का।"],["Microprocessor किस पीढ़ी की विशेषता है?","चौथी पीढ़ी की।"]],
-mcq:["पहली पीढ़ी में किसका उपयोग हुआ?","Vacuum Tubes","Transistors","Microprocessors","Vacuum Tubes"]
-},
-{
-title:"कंप्यूटर के प्रकार | Types of Computer",
-intro:"कंप्यूटर को उनकी क्षमता, आकार और उपयोग के आधार पर अलग-अलग प्रकारों में बाँटा जाता है।",
-eng:"Computers are classified into different types based on their size, capability and purpose.",
-topics:[
-["Supercomputer","यह बहुत तेज गति से जटिल गणनाएँ करता है। इसका उपयोग मौसम की भविष्यवाणी और वैज्ञानिक अनुसंधान में होता है।","A supercomputer performs very complex calculations and is used in weather forecasting and scientific research."],
-["Mainframe Computer","इसका उपयोग बड़ी संस्थाओं में बहुत अधिक डेटा प्रोसेस करने के लिए होता है।","Mainframe computers process large amounts of data for big organizations."],
-["Minicomputer","ये मध्यम स्तर के कंप्यूटर होते हैं जिनका उपयोग कुछ संस्थागत कार्यों में किया जाता रहा है।","Minicomputers are mid-sized systems historically used for organizational tasks."],
-["Microcomputer","Desktop, Laptop और Tablet व्यक्तिगत उपयोग के उदाहरण हैं।","Desktop computers, laptops and tablets are examples of personal computers."]
-],
-diagram:"<div class='diagram-row'><div class='diagram-box'>🚀<br>Supercomputer</div><div class='diagram-box'>🏢<br>Mainframe</div><div class='diagram-box'>🖥️<br>Desktop</div><div class='diagram-box'>💻<br>Laptop</div></div>",
-example:"घर में ऑनलाइन पढ़ाई करने के लिए Laptop या Desktop का उपयोग किया जा सकता है।",
-qa:[["Supercomputer का उपयोग कहाँ होता है?","वैज्ञानिक अनुसंधान और जटिल गणनाओं में।"],["दो Personal Computers के नाम लिखिए।","Desktop और Laptop।"]],
-mcq:["लैपटॉप किसका उदाहरण है?","Microcomputer","Mainframe","Supercomputer","Microcomputer"]
-},
-{
-title:"हार्डवेयर और सॉफ्टवेयर | Hardware and Software",
-intro:"कंप्यूटर दो मुख्य भागों से मिलकर काम करता है: Hardware और Software। हार्डवेयर को हम छू सकते हैं, जबकि सॉफ्टवेयर निर्देशों और प्रोग्रामों का समूह है।",
-eng:"A computer works through hardware and software. Hardware is physical, while software is a set of programs and instructions.",
-topics:[
-["Hardware","कंप्यूटर के भौतिक भाग जिन्हें हम देख और छू सकते हैं, Hardware कहलाते हैं। जैसे Keyboard, Mouse, Monitor और CPU Cabinet।","Hardware means the physical parts of a computer that can be seen and touched."],
-["Software","सॉफ्टवेयर प्रोग्राम और निर्देशों का समूह है जो कंप्यूटर को बताता है कि क्या करना है।","Software is a collection of programs and instructions that tells a computer what to do."],
-["System Software","यह कंप्यूटर के हार्डवेयर और अन्य प्रोग्रामों को चलाने में मदद करता है। Windows इसका उदाहरण है।","System software helps manage hardware and run other programs. Windows is an example."],
-["Application Software","यह किसी विशेष काम के लिए बनाया जाता है। MS Word और Excel इसके उदाहरण हैं।","Application software is designed for specific tasks. MS Word and Excel are examples."]
-],
-diagram:"<div class='diagram-row'><div class='diagram-box'>🖥️<br>Computer</div><div class='arrow'>➜</div><div class='diagram-box'>Hardware<br>Physical Parts</div><div class='diagram-box'>Software<br>Programs</div></div>",
-example:"Keyboard हार्डवेयर है और उसमें टाइप करने के लिए उपयोग किया जाने वाला MS Word सॉफ्टवेयर है।",
-qa:[["Hardware क्या है?","कंप्यूटर के भौतिक भाग Hardware कहलाते हैं।"],["Software क्या है?","प्रोग्राम और निर्देशों का समूह Software कहलाता है।"],["दो Application Software के नाम लिखिए।","MS Word और MS Excel।"]],
-mcq:["इनमें से Hardware कौन है?","Keyboard","Windows","MS Word","Keyboard"]
-},
-{
-title:"इनपुट और आउटपुट डिवाइस | Input and Output Devices",
-intro:"कंप्यूटर से काम करवाने के लिए हम डेटा देते हैं। डेटा देने वाले उपकरण Input Devices और परिणाम दिखाने वाले उपकरण Output Devices कहलाते हैं।",
-eng:"Input devices enter data into a computer. Output devices present the processed results.",
-topics:[
-["Keyboard","Keyboard का उपयोग अक्षर, संख्या और चिन्ह टाइप करने के लिए होता है।","A keyboard is used to type letters, numbers and symbols."],
-["Mouse","Mouse एक Pointing Device है। इसका उपयोग स्क्रीन पर वस्तुओं को चुनने और क्लिक करने के लिए होता है।","A mouse is a pointing device used to select and click items on the screen."],
-["Scanner","Scanner कागज पर लिखे या छपे चित्र और टेक्स्ट को डिजिटल रूप में बदलता है।","A scanner converts printed text and images into digital form."],
-["Monitor और Printer","Monitor परिणाम स्क्रीन पर दिखाता है। Printer कागज पर परिणाम छापता है।","A monitor displays results on screen. A printer prints results on paper."],
-["Speaker","Speaker कंप्यूटर की आवाज सुनाने वाला Output Device है।","A speaker is an output device that produces sound."]
-],
-diagram:"<div class='diagram-row'><div class='diagram-box'>⌨️ Keyboard</div><div class='diagram-box'>🖱️ Mouse</div><div class='diagram-box'>📷 Scanner</div></div><p class='arrow'>⬇ Processing ⬇</p><div class='diagram-row'><div class='diagram-box'>🖥️ Monitor</div><div class='diagram-box'>🖨️ Printer</div><div class='diagram-box'>🔊 Speaker</div></div>",
-example:"आप Keyboard से नाम लिखते हैं और Monitor पर वही नाम दिखाई देता है।",
-qa:[["दो Input Devices के नाम लिखिए।","Keyboard और Mouse।"],["दो Output Devices के नाम लिखिए।","Monitor और Printer।"],["Scanner का क्या कार्य है?","कागज के चित्र या टेक्स्ट को डिजिटल रूप में बदलना।"]],
-mcq:["इनमें से Output Device कौन है?","Monitor","Keyboard","Mouse","Monitor"]
-},
-{
-title:"CPU और उसकी इकाइयाँ | CPU and Its Units",
-intro:"CPU का पूरा नाम Central Processing Unit है। इसे कंप्यूटर का मस्तिष्क कहा जाता है क्योंकि यह निर्देशों को प्रोसेस करता है और कंप्यूटर के कार्यों को नियंत्रित करने में मदद करता है।",
-eng:"CPU stands for Central Processing Unit. It is called the brain of the computer because it processes instructions and helps control computer operations.",
-topics:[
-["ALU","Arithmetic Logic Unit गणितीय कार्य जैसे जोड़-घटाव और तार्किक तुलना करती है।","The Arithmetic Logic Unit performs arithmetic operations and logical comparisons."],
-["CU","Control Unit कंप्यूटर के विभिन्न भागों के कार्यों को नियंत्रित और समन्वित करती है।","The Control Unit controls and coordinates the operations of computer components."],
-["Registers और Memory","Registers CPU के अंदर तेज अस्थायी संग्रह स्थान होते हैं। Memory डेटा और निर्देश सुरक्षित रखती है।","Registers are small, fast storage locations inside the CPU. Memory stores data and instructions."]
-],
-diagram:"<div class='diagram-box' style='background:#cce5ff'><b>CPU</b><div class='diagram-row'><div class='diagram-box'>ALU<br>गणना</div><div class='diagram-box'>CU<br>नियंत्रण</div><div class='diagram-box'>Registers<br>तेज संग्रह</div></div></div>",
-example:"जब आप 5 + 3 करते हैं, तो CPU के ALU भाग द्वारा गणना की जाती है।",
-qa:[["CPU का पूरा नाम क्या है?","Central Processing Unit।"],["ALU का कार्य क्या है?","गणितीय और तार्किक कार्य करना।"],["CU का कार्य क्या है?","कंप्यूटर के विभिन्न भागों को नियंत्रित करना।"]],
-mcq:["CPU को क्या कहा जाता है?","कंप्यूटर का मस्तिष्क","कंप्यूटर की स्क्रीन","मेमोरी कार्ड","कंप्यूटर का मस्तिष्क"]
-},
-{
-title:"मेमोरी और स्टोरेज | Memory and Storage",
-intro:"कंप्यूटर को डेटा और निर्देश रखने के लिए मेमोरी की आवश्यकता होती है। कुछ मेमोरी अस्थायी होती है और कुछ में जानकारी लंबे समय तक सुरक्षित रखी जा सकती है।",
-eng:"Computers need memory to store data and instructions. Some memory is temporary, while storage devices keep information for longer periods.",
-topics:[
-["RAM","RAM का पूरा नाम Random Access Memory है। यह अस्थायी मेमोरी है। कंप्यूटर बंद होने पर इसमें मौजूद डेटा सामान्यतः मिट जाता है।","RAM stands for Random Access Memory. It is temporary memory and its contents are normally lost when power is turned off."],
-["ROM","ROM का पूरा नाम Read Only Memory है। इसमें आवश्यक निर्देश सुरक्षित रखे जा सकते हैं।","ROM stands for Read Only Memory. It stores important instructions."],
-["Hard Disk और SSD","इनका उपयोग कंप्यूटर में फाइलें और डेटा लंबे समय तक रखने के लिए होता है।","Hard disks and SSDs store files and data for long periods."],
-["Pen Drive और Memory Card","ये छोटे Portable Storage Devices हैं। इनसे डेटा एक डिवाइस से दूसरे डिवाइस में ले जाया जा सकता है।","Pen drives and memory cards are portable storage devices used to transfer data."]
-],
-diagram:"<div class='diagram-row'><div class='diagram-box'>RAM<br>Temporary</div><div class='diagram-box'>ROM<br>Read Only</div><div class='diagram-box'>SSD / HDD<br>Storage</div><div class='diagram-box'>USB<br>Portable</div></div>",
-example:"कंप्यूटर में काम करते समय RAM उपयोग होती है और अपनी फोटो को Pen Drive में सेव किया जा सकता है।",
-qa:[["RAM का पूरा नाम क्या है?","Random Access Memory।"],["ROM का पूरा नाम क्या है?","Read Only Memory।"],["दो Storage Devices के नाम लिखिए।","Hard Disk और Pen Drive।"]],
-mcq:["कौन-सी अस्थायी मेमोरी है?","RAM","ROM","DVD","RAM"]
-},
-{
-title:"ऑपरेटिंग सिस्टम | Operating System",
-intro:"Operating System एक System Software है। यह उपयोगकर्ता और कंप्यूटर हार्डवेयर के बीच काम करता है। इसके बिना सामान्य रूप से कंप्यूटर का उपयोग करना कठिन होता है।",
-eng:"An operating system is system software that works between the user and computer hardware and manages computer resources.",
-topics:[
-["Operating System के कार्य","यह Memory, Files, Devices और Programs को प्रबंधित करता है।","It manages memory, files, devices and programs."],
-["Windows","Windows Microsoft द्वारा विकसित एक लोकप्रिय Operating System है।","Windows is a popular operating system developed by Microsoft."],
-["अन्य Operating Systems","Linux, macOS और Android भी Operating Systems के उदाहरण हैं।","Linux, macOS and Android are other examples of operating systems."],
-["Desktop और Taskbar","Windows में Desktop मुख्य कार्य क्षेत्र होता है और Taskbar से खुले प्रोग्राम तथा अन्य विकल्प देखे जा सकते हैं।","The desktop is the main workspace, while the taskbar provides access to open programs and options."]
-],
-diagram:"<div class='diagram-box'>👤 User</div><p class='arrow'>⬇</p><div class='diagram-box'>Operating System</div><p class='arrow'>⬇</p><div class='diagram-box'>Computer Hardware</div>",
-example:"जब आप कंप्यूटर चालू करके Windows में कोई फाइल खोलते हैं, तो Operating System उस काम को करने में मदद करता है।",
-qa:[["Operating System क्या है?","यह कंप्यूटर के संसाधनों को प्रबंधित करने वाला System Software है।"],["दो Operating Systems के नाम लिखिए।","Windows और Linux।"]],
-mcq:["Windows क्या है?","Operating System","Input Device","Output Device","Operating System"]
-},
-{
-title:"फाइल और फोल्डर | Files and Folders",
-intro:"कंप्यूटर में जानकारी को व्यवस्थित रखने के लिए Files और Folders का उपयोग होता है। File में डेटा होता है और Folder में फाइलें रखी जा सकती हैं।",
-eng:"Files and folders help organize information on a computer. A file contains data, and a folder can contain files and other folders.",
-topics:[
-["File","File नाम दिया हुआ डेटा या जानकारी का संग्रह है। जैसे photo.jpg और notes.txt।","A file is a named collection of data or information."],
-["Folder","Folder का उपयोग संबंधित फाइलों को एक जगह व्यवस्थित रखने के लिए होता है।","A folder organizes related files in one place."],
-["File Extension","File के नाम के अंत में आने वाला भाग उसके प्रकार को पहचानने में मदद करता है। जैसे .pdf, .jpg और .txt।","A file extension helps identify the type of file."],
-["Copy, Move और Delete","Copy से दूसरी प्रति बनती है, Move से स्थान बदलता है और Delete से फाइल हटती है।","Copy makes another version, Move changes location and Delete removes a file."]
-],
-diagram:"<div class='diagram-box'>📁 Computer</div><p class='arrow'>⬇</p><div class='diagram-row'><div class='diagram-box'>📁 Study</div><div class='diagram-box'>📁 Photos</div></div><p class='arrow'>⬇</p><div class='diagram-row'><div class='diagram-box'>📄 Notes.pdf</div><div class='diagram-box'>🖼️ Photo.jpg</div></div>",
-example:"आप एक Study नाम का Folder बनाकर उसमें Science, Maths और English की फाइलें रख सकते हैं।",
-qa:[["Folder का क्या उपयोग है?","फाइलों को व्यवस्थित रखने के लिए।"],["File Extension क्या बताता है?","यह फाइल के प्रकार की पहचान में मदद करता है।"]],
-mcq:["फाइलों को व्यवस्थित रखने के लिए क्या उपयोग होता है?","Folder","Mouse","Monitor","Folder"]
-},
-{
-title:"MS Word | Microsoft Word",
-intro:"MS Word एक Word Processing Software है। इसका उपयोग पत्र, आवेदन, रिपोर्ट और अन्य दस्तावेज बनाने, संपादित करने और प्रिंट करने के लिए होता है।",
-eng:"MS Word is word-processing software used to create, edit, format and print documents.",
-topics:[
-["Document बनाना","MS Word खोलकर Blank Document चुनें और टाइप करना शुरू करें।","Open MS Word, choose Blank Document and start typing."],
-["Font Formatting","Font, Font Size, Bold, Italic और Underline से टेक्स्ट का रूप बदला जाता है।","Font, font size, bold, italic and underline change the appearance of text."],
-["Alignment","Left, Center, Right और Justify से टेक्स्ट की स्थिति बदली जाती है।","Alignment options position text on the page."],
-["Save और Print","Save से दस्तावेज सुरक्षित होता है। Print से कागज पर उसकी प्रति निकलती है।","Save stores a document. Print produces a paper copy."]
-],
-diagram:"<div class='diagram-box'>MS Word Document</div><div class='diagram-row'><div class='diagram-box'>B<br>Bold</div><div class='diagram-box'><i>I<br>Italic</i></div><div class='diagram-box'><u>U<br>Underline</u></div></div><p>Alignment: Left | Center | Right | Justify</p>",
-example:"स्कूल में छुट्टी के लिए आवेदन पत्र MS Word में टाइप करके प्रिंट किया जा सकता है।",
-qa:[["MS Word का उपयोग किसलिए होता है?","दस्तावेज बनाने और संपादित करने के लिए।"],["Bold का उपयोग क्या है?","टेक्स्ट को मोटा दिखाने के लिए।"],["Save का क्या काम है?","दस्तावेज को सुरक्षित रखना।"]],
-mcq:["MS Word किस प्रकार का Software है?","Word Processing","Operating System","Antivirus","Word Processing"]
-},
-{
-title:"MS Excel | Microsoft Excel",
-intro:"MS Excel एक Spreadsheet Software है। इसका उपयोग डेटा को Rows और Columns में रखने, गणना करने, तालिका बनाने और चार्ट तैयार करने के लिए होता है।",
-eng:"MS Excel is spreadsheet software used to organize data in rows and columns, perform calculations, create tables and make charts.",
-topics:[
-["Workbook और Worksheet","Excel फाइल को Workbook कहते हैं। Workbook में एक या अधिक Worksheets हो सकती हैं।","An Excel file is called a workbook. A workbook can contain one or more worksheets."],
-["Rows और Columns","क्षैतिज पंक्तियाँ Rows और लंबवत स्तंभ Columns कहलाते हैं।","Horizontal lines are rows and vertical lines are columns."],
-["Cell और Cell Address","Row और Column के मिलने से Cell बनता है। जैसे A1 एक Cell Address है।","A cell is formed where a row and column meet. A1 is an example of a cell address."],
-["Formula और Function","Formula गणना के लिए उपयोग होता है। उदाहरण: =A1+B1। SUM एक Function है जो संख्याओं का जोड़ करता है।","Formulas perform calculations. For example, =A1+B1. SUM is a function that adds numbers."]
-],
-diagram:"<table border='1' cellpadding='10' style='margin:auto;border-collapse:collapse;background:white'><tr><th></th><th>A</th><th>B</th><th>C</th></tr><tr><th>1</th><td style='background:#cce5ff'>A1</td><td>B1</td><td>C1</td></tr><tr><th>2</th><td>A2</td><td>B2</td><td>C2</td></tr><tr><th>3</th><td>A3</td><td>B3</td><td>C3</td></tr></table><p>A1 एक Cell है: Column A + Row 1</p>",
-example:"यदि A1 में 10 और B1 में 20 लिखा है, तो =A1+B1 लगाने पर 30 प्राप्त होगा।",
-qa:[["Excel का उपयोग किसलिए होता है?","डेटा, टेबल और गणना के लिए।"],["Formula किस चिन्ह से शुरू होता है?","बराबर (=) चिन्ह से।"],["Cell Address का उदाहरण दीजिए।","A1।"]],
-mcq:["Excel में Formula किससे शुरू होता है?","=","+","#","="]
-},
-{
-title:"PowerPoint | Presentation",
-intro:"Microsoft PowerPoint एक Presentation Software है। इसमें जानकारी को Slides के माध्यम से दिखाया जाता है। इसका उपयोग स्कूल प्रोजेक्ट और मीटिंग में होता है।",
-eng:"Microsoft PowerPoint is presentation software. It displays information through slides and is used for school projects and meetings.",
-topics:[
-["Slide","Slide Presentation का एक पेज होता है। इसमें टेक्स्ट, चित्र और चार्ट रखे जा सकते हैं।","A slide is one page of a presentation. It can contain text, images and charts."],
-["Design","Design विकल्पों से Slides का रंग, पृष्ठभूमि और रूप बदला जाता है।","Design options change the colors, background and appearance of slides."],
-["Transition और Animation","Transition एक Slide से दूसरी Slide पर जाने का प्रभाव है। Animation Slide के अंदर मौजूद वस्तुओं पर प्रभाव लगाता है।","Transition is an effect between slides. Animation applies effects to objects within a slide."],
-["Slide Show","Slide Show से Presentation को दर्शकों के सामने दिखाया जाता है।","Slide Show displays the presentation to an audience."]
-],
-diagram:"<div class='diagram-row'><div class='diagram-box'>Slide 1<br>Title</div><div class='arrow'>➜</div><div class='diagram-box'>Slide 2<br>Text + Image</div><div class='arrow'>➜</div><div class='diagram-box'>Slide 3<br>Conclusion</div></div>",
-example:"आप Science Project के लिए पानी के चक्र पर 5 Slides की Presentation बना सकते हैं।",
-qa:[["PowerPoint क्या है?","यह Presentation बनाने वाला Software है।"],["Slide क्या होती है?","Presentation का एक पेज।"],["Transition क्या है?","एक Slide से दूसरी Slide पर जाने का प्रभाव।"]],
-mcq:["PowerPoint का उपयोग किसलिए होता है?","Presentation बनाने के लिए","गणना के लिए","फाइल मिटाने के लिए","Presentation बनाने के लिए"]
-},
-{
-title:"Internet, Email और Cyber Safety",
-intro:"Internet दुनिया भर के कंप्यूटर नेटवर्कों को जोड़ता है। इसके माध्यम से जानकारी खोजी जा सकती है, संदेश भेजे जा सकते हैं और ऑनलाइन पढ़ाई की जा सकती है। इंटरनेट का सुरक्षित उपयोग करना बहुत जरूरी है।",
-eng:"The Internet connects computer networks around the world. It helps people find information, send messages and study online. Safe internet use is important.",
-topics:[
-["Internet","Internet दुनिया भर में जुड़े हुए नेटवर्कों का विशाल समूह है।","The Internet is a worldwide network of connected networks."],
-["Web Browser और Search Engine","Browser वेबसाइट खोलने के लिए उपयोग होता है। Search Engine इंटरनेट पर जानकारी खोजने में मदद करता है।","A browser opens websites. A search engine helps find information online."],
-["Email","Email का पूरा नाम Electronic Mail है। इससे इंटरनेट के माध्यम से संदेश भेजे और प्राप्त किए जाते हैं।","Email stands for Electronic Mail. It is used to send and receive messages online."],
-["Cyber Safety","मजबूत पासवर्ड रखें, OTP किसी से साझा न करें, अनजान लिंक न खोलें और निजी जानकारी सुरक्षित रखें।","Use strong passwords, never share OTPs, avoid unknown links and protect personal information."],
-["Digital Citizenship","ऑनलाइन दूसरों से सम्मानपूर्वक बात करें, सही जानकारी साझा करें और कॉपीराइट का सम्मान करें।","Communicate respectfully online, share accurate information and respect copyright."]
-],
-diagram:"<div class='diagram-box'>📱 Device</div><p class='arrow'>⬇</p><div class='diagram-box'>🌐 Internet</div><p class='arrow'>⬇</p><div class='diagram-row'><div class='diagram-box'>📧 Email</div><div class='diagram-box'>🔎 Search</div><div class='diagram-box'>🌍 Websites</div></div>",
-example:"आप Browser में शैक्षिक वेबसाइट खोलकर ऑनलाइन पढ़ाई कर सकते हैं।",
-qa:[["Email का पूरा नाम क्या है?","Electronic Mail।"],["Browser का क्या उपयोग है?","वेबसाइट खोलने के लिए।"],["Cyber Safety के दो नियम लिखिए।","मजबूत पासवर्ड रखें और OTP किसी से साझा न करें।"]],
-mcq:["Email का उपयोग किसलिए होता है?","संदेश भेजने के लिए","कंप्यूटर बंद करने के लिए","स्क्रीन साफ करने के लिए","संदेश भेजने के लिए"]
-}
+const chapterNames=[
+"कंप्यूटर का परिचय","कंप्यूटर का इतिहास","कंप्यूटर की पीढ़ियाँ",
+"कंप्यूटर के मुख्य भाग","इनपुट और आउटपुट डिवाइस","मेमोरी और स्टोरेज",
+"ऑपरेटिंग सिस्टम","इंटरनेट का परिचय","साइबर सुरक्षा","डिजिटल नागरिकता",
+"कंप्यूटर के दैनिक उपयोग","अभ्यास और पुनरावृत्ति"
 ];
 
-const list=document.getElementById("chapterList");
-const lessons=document.getElementById("lessons");
+const lessons={
+0:{
+intro:"कंप्यूटर एक इलेक्ट्रॉनिक मशीन है जो डेटा प्राप्त करती है, निर्देशों के अनुसार उसका प्रसंस्करण करती है और उपयोगी जानकारी प्रदान करती है।",
+sections:[
+["कंप्यूटर क्या है?","कंप्यूटर एक इलेक्ट्रॉनिक उपकरण है। यह इनपुट के रूप में डेटा लेता है, उसे प्रोसेस करता है और आउटपुट के रूप में परिणाम देता है।"],
+["कंप्यूटर की विशेषताएँ","कंप्यूटर बहुत तेजी से काम कर सकता है। यह बड़ी मात्रा में डेटा संग्रहित कर सकता है और लगातार एक जैसे निर्देशों का पालन कर सकता है।"],
+["कंप्यूटर के उपयोग","कंप्यूटर का उपयोग शिक्षा, बैंक, अस्पताल, रेलवे, कार्यालय, वैज्ञानिक अनुसंधान और संचार में किया जाता है।"],
+["कंप्यूटर की सीमाएँ","कंप्यूटर अपने आप मनुष्य की तरह नहीं सोचता। यह दिए गए निर्देशों के अनुसार काम करता है। गलत निर्देश मिलने पर गलत परिणाम भी दे सकता है।"]
+],
+example:"जब विद्यार्थी कंप्यूटर पर गणित का सवाल हल करता है, तो वह सवाल दर्ज करता है। कंप्यूटर निर्देशों के अनुसार गणना करके उत्तर दिखाता है।",
+questions:["कंप्यूटर क्या है?","कंप्यूटर की चार विशेषताएँ लिखिए।","कंप्यूटर के तीन उपयोग बताइए।"]
+},
+1:{
+intro:"कंप्यूटर का इतिहास गणना के सरल उपकरणों से शुरू होकर आधुनिक इलेक्ट्रॉनिक कंप्यूटर तक पहुँचा है।",
+sections:[
+["अबेकस","अबेकस एक प्राचीन गणना उपकरण है। इसका उपयोग जोड़ और घटाव जैसी गणनाओं में किया जाता था।"],
+["पास्कलाइन","ब्लेज पास्कल ने गणना में सहायता के लिए पास्कलाइन नामक यांत्रिक कैलकुलेटर बनाया था।"],
+["चार्ल्स बैबेज","चार्ल्स बैबेज ने डिफरेंस इंजन और एनालिटिकल इंजन की योजनाएँ बनाईं। उन्हें अक्सर कंप्यूटर का जनक कहा जाता है।"],
+["आधुनिक कंप्यूटर","इलेक्ट्रॉनिक तकनीक के विकास से कंप्यूटर अधिक तेज, छोटे और उपयोगी बनते गए।"]
+],
+example:"आज मोबाइल फोन में भी कंप्यूटर जैसी प्रोसेसिंग क्षमता होती है।",
+questions:["अबेकस क्या था?","चार्ल्स बैबेज को कंप्यूटर का जनक क्यों कहा जाता है?","पास्कलाइन किसने बनाई?"]
+},
+2:{
+intro:"कंप्यूटर की पीढ़ियाँ तकनीक में हुए महत्वपूर्ण बदलावों के आधार पर बाँटी जाती हैं।",
+sections:[
+["पहली पीढ़ी","पहली पीढ़ी के कंप्यूटरों में वैक्यूम ट्यूब का उपयोग होता था। ये आकार में बड़े होते थे और अधिक बिजली लेते थे।"],
+["दूसरी पीढ़ी","दूसरी पीढ़ी में ट्रांजिस्टर का उपयोग शुरू हुआ। इससे कंप्यूटर पहले की तुलना में छोटे और अधिक भरोसेमंद बने।"],
+["तीसरी पीढ़ी","तीसरी पीढ़ी में इंटीग्रेटेड सर्किट (IC) का उपयोग किया गया। इससे कंप्यूटर की क्षमता में सुधार हुआ।"],
+["चौथी और पाँचवीं पीढ़ी","माइक्रोप्रोसेसर ने चौथी पीढ़ी के कंप्यूटरों को लोकप्रिय बनाया। पाँचवीं पीढ़ी में कृत्रिम बुद्धिमत्ता जैसे क्षेत्रों पर काम किया जा रहा है।"]
+],
+example:"आज के पर्सनल कंप्यूटर में माइक्रोप्रोसेसर का उपयोग होता है।",
+questions:["पहली पीढ़ी में किस तकनीक का उपयोग हुआ?","ट्रांजिस्टर किस पीढ़ी से जुड़ा है?","माइक्रोप्रोसेसर का क्या महत्व है?"]
+},
+3:{
+intro:"कंप्यूटर कई भागों से मिलकर बनता है। हर भाग का अपना अलग कार्य होता है।",
+sections:[
+["CPU","CPU का पूरा नाम Central Processing Unit है। इसे कंप्यूटर का मस्तिष्क कहा जाता है क्योंकि यह निर्देशों को प्रोसेस करता है।"],
+["मॉनिटर","मॉनिटर एक आउटपुट डिवाइस है जो टेक्स्ट, चित्र और वीडियो दिखाता है।"],
+["कीबोर्ड और माउस","कीबोर्ड से अक्षर और अंक टाइप किए जाते हैं। माउस से स्क्रीन पर कर्सर चलाया और वस्तुएँ चुनी जाती हैं।"],
+["मदरबोर्ड","मदरबोर्ड कंप्यूटर का मुख्य सर्किट बोर्ड है। इससे कंप्यूटर के कई हिस्से जुड़े होते हैं।"]
+],
+example:"कंप्यूटर पर नाम टाइप करने के लिए कीबोर्ड और परिणाम देखने के लिए मॉनिटर का उपयोग किया जाता है।",
+questions:["CPU का पूरा नाम लिखिए।","मदरबोर्ड क्या है?","मॉनिटर का क्या कार्य है?"]
+},
+4:{
+intro:"इनपुट डिवाइस कंप्यूटर को डेटा देती हैं और आउटपुट डिवाइस कंप्यूटर का परिणाम उपयोगकर्ता तक पहुँचाती हैं।",
+sections:[
+["कीबोर्ड","कीबोर्ड का उपयोग अक्षर, अंक और विशेष निर्देश टाइप करने के लिए किया जाता है।"],
+["माउस","माउस एक पॉइंटिंग डिवाइस है। इससे कर्सर चलाया जाता है, क्लिक किया जाता है और फाइलें चुनी जाती हैं।"],
+["मॉनिटर और प्रिंटर","मॉनिटर स्क्रीन पर परिणाम दिखाता है। प्रिंटर जानकारी को कागज पर छापता है।"],
+["स्कैनर और स्पीकर","स्कैनर कागज पर मौजूद चित्र या टेक्स्ट को डिजिटल रूप में बदल सकता है। स्पीकर आवाज सुनाता है।"]
+],
+example:"कीबोर्ड इनपुट डिवाइस है जबकि मॉनिटर आउटपुट डिवाइस है।",
+questions:["इनपुट डिवाइस क्या है?","दो आउटपुट डिवाइस के नाम लिखिए।","स्कैनर का क्या उपयोग है?"]
+},
+5:{
+intro:"कंप्यूटर मेमोरी और स्टोरेज का उपयोग डेटा तथा निर्देशों को रखने के लिए किया जाता है।",
+sections:[
+["RAM","RAM अस्थायी मेमोरी है। कंप्यूटर बंद होने पर इसमें रखा डेटा सामान्यतः मिट जाता है।"],
+["ROM","ROM में ऐसी जानकारी रखी जाती है जिसकी आवश्यकता कंप्यूटर को शुरू होने के लिए होती है।"],
+["हार्ड डिस्क और SSD","हार्ड डिस्क और SSD डेटा को लंबे समय तक सुरक्षित रखने वाले स्टोरेज उपकरण हैं।"],
+["मेमोरी की इकाइयाँ","बिट और बाइट डेटा की छोटी इकाइयाँ हैं। किलोबाइट, मेगाबाइट और गीगाबाइट बड़ी इकाइयाँ हैं।"]
+],
+example:"किसी फोटो को कंप्यूटर में सेव करने पर वह स्टोरेज में रखी जाती है।",
+questions:["RAM क्या है?","ROM का एक उपयोग बताइए।","डेटा की दो इकाइयों के नाम लिखिए।"]
+},
+6:{
+intro:"ऑपरेटिंग सिस्टम ऐसा सिस्टम सॉफ्टवेयर है जो कंप्यूटर के हार्डवेयर और उपयोगकर्ता के बीच काम करता है।",
+sections:[
+["ऑपरेटिंग सिस्टम क्या है?","यह कंप्यूटर के संसाधनों का प्रबंधन करता है और दूसरे प्रोग्राम चलाने में सहायता करता है।"],
+["मुख्य कार्य","ऑपरेटिंग सिस्टम फाइलों, मेमोरी, उपकरणों और चल रहे प्रोग्रामों का प्रबंधन करता है।"],
+["उदाहरण","Windows, Linux, macOS, Android और iOS ऑपरेटिंग सिस्टम के उदाहरण हैं।"],
+["उपयोगकर्ता इंटरफेस","ऑपरेटिंग सिस्टम उपयोगकर्ता को मेनू, आइकन और विंडो के माध्यम से कंप्यूटर चलाने में मदद करता है।"]
+],
+example:"कंप्यूटर चालू करने के बाद Windows का दिखाई देना ऑपरेटिंग सिस्टम का उदाहरण है।",
+questions:["ऑपरेटिंग सिस्टम क्या है?","दो ऑपरेटिंग सिस्टम के नाम लिखिए।","इसके दो कार्य बताइए।"]
+},
+7:{
+intro:"इंटरनेट दुनिया भर के कंप्यूटर नेटवर्कों को जोड़ने वाला विशाल नेटवर्क है।",
+sections:[
+["इंटरनेट क्या है?","इंटरनेट की सहायता से लोग जानकारी खोज सकते हैं, संदेश भेज सकते हैं और ऑनलाइन सेवाओं का उपयोग कर सकते हैं।"],
+["वेब ब्राउज़र","वेब ब्राउज़र वेबसाइट खोलने वाला सॉफ्टवेयर है। उदाहरण: Chrome, Firefox और Edge।"],
+["सर्च इंजन","सर्च इंजन इंटरनेट पर जानकारी खोजने में मदद करता है। उदाहरण: Google और Bing।"],
+["ई-मेल","ई-मेल का उपयोग इंटरनेट के माध्यम से इलेक्ट्रॉनिक संदेश भेजने और प्राप्त करने के लिए होता है।"]
+],
+example:"किसी विषय की जानकारी खोजने के लिए वेब ब्राउज़र में सर्च इंजन का उपयोग किया जा सकता है।",
+questions:["इंटरनेट क्या है?","दो वेब ब्राउज़र के नाम लिखिए।","ई-मेल का क्या उपयोग है?"]
+},
+8:{
+intro:"साइबर सुरक्षा का उद्देश्य कंप्यूटर, नेटवर्क, अकाउंट और डिजिटल जानकारी को ऑनलाइन खतरों से सुरक्षित रखना है।",
+sections:[
+["मजबूत पासवर्ड","ऐसा पासवर्ड बनाएँ जिसका अनुमान लगाना कठिन हो। पासवर्ड किसी दूसरे व्यक्ति से साझा न करें।"],
+["फिशिंग","फिशिंग में नकली संदेश या वेबसाइट के माध्यम से निजी जानकारी हासिल करने की कोशिश की जाती है।"],
+["सॉफ्टवेयर अपडेट","सॉफ्टवेयर अपडेट सुरक्षा की कमियों को ठीक करने और कार्यक्षमता सुधारने में मदद करते हैं।"],
+["सुरक्षित व्यवहार","अनजान लिंक पर क्लिक न करें और किसी संदिग्ध व्यक्ति को OTP या पासवर्ड न बताएँ।"]
+],
+example:"बैंक का OTP किसी अनजान व्यक्ति को न बताना साइबर सुरक्षा का अच्छा उदाहरण है।",
+questions:["साइबर सुरक्षा क्या है?","फिशिंग क्या होती है?","मजबूत पासवर्ड क्यों जरूरी है?"]
+},
+9:{
+intro:"डिजिटल नागरिकता का अर्थ इंटरनेट और डिजिटल तकनीक का जिम्मेदारी, सम्मान और सुरक्षा के साथ उपयोग करना है।",
+sections:[
+["ऑनलाइन व्यवहार","इंटरनेट पर दूसरों से सम्मानपूर्वक बात करनी चाहिए और अपमानजनक भाषा से बचना चाहिए।"],
+["निजता","अपना पता, फोन नंबर, पासवर्ड और अन्य निजी जानकारी सार्वजनिक रूप से साझा नहीं करनी चाहिए।"],
+["डिजिटल पदचिह्न","इंटरनेट पर की गई गतिविधियों से डिजिटल रिकॉर्ड बन सकता है। कुछ जानकारी लंबे समय तक उपलब्ध रह सकती है।"],
+["कॉपीराइट","दूसरों की तस्वीर, लेख या सामग्री का उपयोग करते समय उनके अधिकारों का सम्मान करना चाहिए।"]
+],
+example:"किसी की तस्वीर पोस्ट करने से पहले उसकी अनुमति लेना जिम्मेदार डिजिटल व्यवहार है।",
+questions:["डिजिटल नागरिकता क्या है?","निजी जानकारी के दो उदाहरण दीजिए।","कॉपीराइट का सम्मान क्यों करना चाहिए?"]
+},
+10:{
+intro:"कंप्यूटर आज शिक्षा, स्वास्थ्य, व्यापार, संचार और मनोरंजन सहित अनेक क्षेत्रों में उपयोग किया जाता है।",
+sections:[
+["शिक्षा","ऑनलाइन कक्षाएँ, डिजिटल पुस्तकें और शैक्षिक वीडियो सीखने में सहायता करते हैं।"],
+["स्वास्थ्य","अस्पतालों में मरीजों का रिकॉर्ड रखने, जाँच और प्रबंधन में कंप्यूटर उपयोगी होते हैं।"],
+["बैंक और व्यापार","कंप्यूटर बैंकिंग, बिलिंग, रिकॉर्ड और व्यापारिक लेन-देन में मदद करते हैं।"],
+["संचार","ई-मेल, वीडियो कॉल और संदेश सेवाओं से लोग दूर रहते हुए भी संपर्क कर सकते हैं।"]
+],
+example:"ऑनलाइन कक्षा में विद्यार्थी घर से शिक्षक का पाठ सुन सकता है।",
+questions:["शिक्षा में कंप्यूटर के दो उपयोग बताइए।","अस्पताल में कंप्यूटर कैसे मदद करता है?","संचार के दो साधन लिखिए।"]
+},
+11:{
+intro:"इस अध्याय में कंप्यूटर के महत्वपूर्ण विषयों की पुनरावृत्ति और अभ्यास किया जाएगा।",
+sections:[
+["मुख्य शब्द","हार्डवेयर कंप्यूटर के भौतिक भाग हैं जबकि सॉफ्टवेयर निर्देशों और प्रोग्रामों का समूह है।"],
+["इनपुट और आउटपुट","कीबोर्ड और माउस इनपुट डिवाइस हैं। मॉनिटर और प्रिंटर आउटपुट डिवाइस हैं।"],
+["मेमोरी","RAM अस्थायी मेमोरी है जबकि SSD और हार्ड डिस्क डेटा स्टोर करने के लिए उपयोग होते हैं।"],
+["सुरक्षा","मजबूत पासवर्ड रखें, OTP साझा न करें और संदिग्ध लिंक से सावधान रहें।"]
+],
+example:"किसी नए विषय को पढ़ने के बाद प्रश्न हल करना पुनरावृत्ति का अच्छा तरीका है।",
+questions:["हार्डवेयर और सॉफ्टवेयर में अंतर लिखिए।","दो इनपुट डिवाइस के नाम लिखिए।","ऑनलाइन सुरक्षा के दो नियम लिखिए।"]
+}
+};
 
-chapters.forEach((ch,i)=>{
- const card=document.createElement("div");
- card.className="card";
- card.innerHTML=`<h3>Chapter ${i+1}</h3><p>${ch.title}</p><button onclick="openChapter(${i})">पढ़ें / Read Chapter</button>`;
- list.appendChild(card);
+let profile=null,page="home",currentClass=9,currentChapter=0,quizIndex=0,quizScore=0,quizFinished=false;
+const quiz=[
+{q:"कंप्यूटर को डेटा देने वाली डिवाइस कौन-सी है?",a:["मॉनिटर","कीबोर्ड","स्पीकर","प्रिंटर"],c:1,why:"कीबोर्ड से डेटा और निर्देश दर्ज किए जाते हैं।"},
+{q:"कंप्यूटर का मुख्य प्रोसेसिंग भाग कौन-सा है?",a:["CPU","माउस","प्रिंटर","स्कैनर"],c:0,why:"CPU निर्देशों को प्रोसेस करता है।"},
+{q:"इनमें से आउटपुट डिवाइस कौन-सी है?",a:["कीबोर्ड","माउस","मॉनिटर","माइक्रोफोन"],c:2,why:"मॉनिटर स्क्रीन पर परिणाम दिखाता है।"},
+{q:"RAM किस प्रकार की मेमोरी है?",a:["स्थायी","अस्थायी","कागजी","ऑप्टिकल"],c:1,why:"RAM में रखा डेटा बिजली बंद होने पर सामान्यतः मिट जाता है।"},
+{q:"इंटरनेट पर सुरक्षित रहने के लिए क्या करें?",a:["OTP साझा करें","अनजान लिंक खोलें","मजबूत पासवर्ड रखें","हर संदेश पर भरोसा करें"],c:2,why:"मजबूत पासवर्ड अकाउंट की सुरक्षा में मदद करता है।"}
+];
 
- const topics=ch.topics.map((t,j)=>`
- <div class="answer"><h3>${j+1}. ${t[0]}</h3>
- <p><b>हिंदी में समझें:</b> ${t[1]}</p>
- <p class="english"><b>English:</b> ${t[2]}</p></div>`).join("");
-
- const questions=ch.qa.map((q,j)=>`
- <div class="answer"><b>प्रश्न ${j+1}: ${q[0]}</b><br>
- <b>उत्तर:</b> ${q[1]}</div>`).join("");
-
- const section=document.createElement("section");
- section.className="chapter";
- section.id="chapter"+i;
- section.innerHTML=`
- <h2 class="chapter-title">Chapter ${i+1}: ${ch.title}</h2>
- <h3>इस अध्याय में आप क्या सीखेंगे?</h3>
- <p>${ch.intro}</p>
- <p class="english">${ch.eng}</p>
- <h2>विस्तार से समझिए / Detailed Explanation</h2>
- ${topics}
- <h2>चित्र द्वारा समझें / Diagram</h2>
- <div class="diagram">${ch.diagram}</div>
- <h2>आसान उदाहरण / Example</h2>
- <div class="note">${ch.example}</div>
- <h2>महत्वपूर्ण प्रश्न-उत्तर / Important Questions</h2>
- ${questions}
- <h2>अभ्यास प्रश्न / Multiple Choice Question</h2>
- <div class="answer"><b>${ch.mcq[0]}</b>
- <p>A. ${ch.mcq[1]}<br>B. ${ch.mcq[2]}<br>C. ${ch.mcq[3]}</p>
- <details><summary>सही उत्तर देखें</summary><p>${ch.mcq[4]}</p></details></div>
- <div class="no-print">
- <button onclick="window.print()">📄 Print / Save as PDF</button>
- <button onclick="backToContents()">विषय सूची पर वापस जाएँ</button>
- ${i>0?`<button onclick="openChapter(${i-1})">← पिछला Chapter</button>`:""}
- ${i<chapters.length-1?`<button onclick="openChapter(${i+1})">अगला Chapter →</button>`:""}
- </div>`;
- lessons.appendChild(section);
+function loadProfile(){
+ try{return JSON.parse(localStorage.getItem("kca_profile"))}catch(e){return null}
+}
+function save(){localStorage.setItem("kca_profile",JSON.stringify(profile))}
+function safe(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function init(){
+ profile=loadProfile();
+ if(profile){showApp()}else{document.getElementById("register").style.display="grid"}
+}
+document.getElementById("registerForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ profile={name:document.getElementById("nameInput").value.trim(),class:document.getElementById("classInput").value,language:document.getElementById("languageInput").value,points:0,visited:[],badges:[]};
+ if(!profile.name)return;
+ save();showApp();
+ document.getElementById("welcomeName").textContent="स्वागत है, "+profile.name+"!";
+ document.getElementById("welcome").style.display="grid";
 });
-
+function closeWelcome(){document.getElementById("welcome").style.display="none";go("home")}
+function showApp(){
+ document.getElementById("register").style.display="none";
+ document.getElementById("app").style.display="block";
+ document.getElementById("topName").textContent=profile.name;
+ document.getElementById("avatar").textContent=profile.name.charAt(0).toUpperCase();
+ go("home");
+}
+function toggleProfile(){document.getElementById("dropdown").classList.toggle("show")}
+function editProfile(){
+ document.getElementById("dropdown").classList.remove("show");
+ const name=prompt("अपना नाम बदलें:",profile.name);
+ if(name===null)return;
+ if(!name.trim())return alert("नाम खाली नहीं हो सकता।");
+ const cls=prompt("कक्षा 6 से 12 चुनें:",profile.class);
+ if(cls===null)return;
+ if(!/^(6|7|8|9|10|11|12)$/.test(cls))return alert("कृपया 6 से 12 के बीच कक्षा चुनें।");
+ profile.name=name.trim();profile.class=cls;save();showApp();
+}
+function signOut(){
+ if(confirm("क्या आप इस ब्राउज़र से अपनी प्रोफाइल हटाना चाहते हैं?")){
+ localStorage.removeItem("kca_profile");location.reload();
+ }
+}
+function go(next,button){
+ page=next;
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+ document.getElementById("sidebar").classList.remove("open");
+ render();
+}
+function render(){
+ const v=document.getElementById("view");
+ if(page==="home")v.innerHTML=homePage();
+ if(page==="books")v.innerHTML=booksPage();
+ if(page==="chapters")v.innerHTML=chapterPage();
+ if(page==="reader")v.innerHTML=readerPage();
+ if(page==="quiz")v.innerHTML=quizPage();
+ if(page==="progress")v.innerHTML=progressPage();
+ if(page==="badges")v.innerHTML=badgesPage();
+ if(page==="invite")v.innerHTML=invitePage();
+ if(page==="about")v.innerHTML=aboutPage();
+ if(page==="settings")v.innerHTML=settingsPage();
+}
+function footer(){
+ return `<footer><b>Karan Computer Academy</b><br>एक स्वतंत्र और निःशुल्क शैक्षिक प्लेटफॉर्म। यह किसी स्कूल, सरकारी संस्था, CBSE या अन्य शिक्षा बोर्ड की आधिकारिक वेबसाइट या पुस्तक नहीं है। सामग्री अतिरिक्त स्व-अध्ययन के लिए है और निर्धारित पाठ्यक्रम का विकल्प नहीं है।<br>© Karan Computer Academy</footer>`;
+}
+function homePage(){
+ return `<section class="hero"><h1>नमस्ते, ${safe(profile.name)}! 👋</h1><p>आपका स्वागत है। आज कुछ नया सीखें, अपना ज्ञान बढ़ाएँ और अपने लक्ष्य पूरे करें।</p><button class="whitebtn" onclick="go('books')">📚 पढ़ाई शुरू करें</button></section>
+ <div class="section"><h2>आपका Learning Dashboard</h2><span class="muted">कक्षा ${profile.class}</span></div>
+ <div class="grid">
+ <div class="card"><div class="icon">⭐</div><p>आपके Points</p><div class="stat">${profile.points}</div><p>क्विज़ और पढ़ाई से अंक पाएँ।</p></div>
+ <div class="card"><div class="icon">📖</div><p>पढ़े गए चैप्टर</p><div class="stat">${profile.visited.length}</div><p>अपनी पढ़ाई आगे बढ़ाएँ।</p></div>
+ <div class="card"><div class="icon">🏅</div><p>मिले हुए Badges</p><div class="stat">${profile.badges.length}</div><p>नए लक्ष्य पूरे करें।</p></div></div>
+ <div class="section"><h2>आज का Learning Mission 🎯</h2></div>
+ <div class="card"><h3>आज एक चैप्टर पढ़ें</h3><p>एक चैप्टर पढ़ें और अभ्यास प्रश्न हल करें।</p><button class="primary" onclick="go('books')">मिशन शुरू करें</button></div>
+ <div class="section"><h2>दोस्तों के साथ सीखें 🤝</h2></div>
+ <div class="card"><h3>अपने दोस्तों को भी बुलाएँ!</h3><p>उन्हें कंप्यूटर सीखने का मौका दें।</p><button class="primary" onclick="go('invite')">दोस्त को Invite करें</button></div>${footer()}`;
+}
+function booksPage(){
+ let html="";
+ for(let i=6;i<=12;i++){
+ html+=`<div class="card class-card" onclick="openBook(${i})"><div class="icon">📘</div><h3>कक्षा ${i} की कंप्यूटर किताब</h3><p>${i<=7?"शुरुआती स्तर":i<=9?"बुनियादी और मध्यम स्तर":i<=10?"उन्नत स्तर":"उन्नत कंप्यूटर ज्ञान"}</p><button class="lightbtn">किताब खोलें →</button></div>`;
+ }
+ return `<h1>मेरी किताबें 📚</h1><p class="muted">अपनी कक्षा की किताब चुनें और अपनी पसंद का चैप्टर पढ़ें।</p><div class="grid">${html}</div>${footer()}`;
+}
+function openBook(cls){
+ currentClass=cls;profile.class=String(cls);save();page="chapters";render();
+}
+function chapterPage(){
+ return `<button class="lightbtn" onclick="go('books')">← सभी किताबें</button><h1>कक्षा ${currentClass} — Computer Basics</h1><p class="muted">अपनी पसंद का चैप्टर चुनें।</p><input class="search" id="chapterSearch" placeholder="🔍 चैप्टर खोजें..." oninput="filterChapters()"><div id="chapterList">${chapterNames.map((n,i)=>`<div class="card chapter" onclick="openChapter(${i})"><div class="chapter-no">${i+1}</div><div class="chapter-info"><h3>${n}</h3><p class="muted">पढ़ें • समझें • अभ्यास करें</p></div><span>›</span></div>`).join("")}</div>${footer()}`;
+}
+function filterChapters(){
+ let q=document.getElementById("chapterSearch").value.toLowerCase();
+ document.querySelectorAll("#chapterList .chapter").forEach(el=>el.style.display=el.innerText.toLowerCase().includes(q)?"flex":"none");
+}
 function openChapter(i){
- document.querySelectorAll(".chapter").forEach(c=>c.classList.remove("active"));
- document.getElementById("chapter"+i).classList.add("active");
- document.getElementById("chapter"+i).scrollIntoView({behavior:"smooth"});
+ currentChapter=i;
+ if(!profile.visited.includes(i)){profile.visited.push(i);profile.points+=5}
+ if(profile.visited.length>=1&&!profile.badges.includes("first"))profile.badges.push("first");
+ save();page="reader";render();
 }
-function backToContents(){
- document.querySelectorAll(".chapter").forEach(c=>c.classList.remove("active"));
- document.getElementById("contents").scrollIntoView({behavior:"smooth"});
+function readerPage(){
+ let l=lessons[currentChapter];
+ return `<button class="lightbtn" onclick="go('chapters')">← चैप्टर सूची</button><h1>${currentChapter+1}. ${chapterNames[currentChapter]}</h1><p class="muted">कक्षा ${currentClass} • Computer Basics</p>
+ <article class="reader"><h2>अध्याय का परिचय</h2><p>${l.intro}</p>
+ ${l.sections.map(s=>`<h3>${s[0]}</h3><p>${s[1]}</p>`).join("")}
+ <div class="note"><b>उदाहरण:</b><br>${l.example}</div>
+ <h3>अभ्यास प्रश्न ✍️</h3><ol>${l.questions.map(q=>`<li>${q}</li>`).join("")}</ol>
+ <p class="muted">अध्याय पूरा पढ़ने के बाद अगले चैप्टर पर जाएँ।</p></article>
+ <div class="reader-actions"><button class="lightbtn" ${currentChapter===0?"disabled":""} onclick="openChapter(${Math.max(0,currentChapter-1)})">← पिछला</button><button class="primary" onclick="${currentChapter===11?"go('chapters'):`openChapter(${currentChapter+1})`}">अगला चैप्टर →</button></div>`;
 }
+function quizPage(){
+ if(quizFinished)return `<h1>Quiz पूरा हुआ! 🎉</h1><div class="card"><div class="stat">${quizScore} / ${quiz.length}</div><p>आपने ${quizScore} सही उत्तर दिए।</p><button class="primary" onclick="startQuiz()">फिर से खेलें</button></div>`;
+ if(quizIndex===0&&quizScore===0)return `<h1>Quiz Challenge 🧠</h1><p class="muted">अपने कंप्यूटर ज्ञान को परखें। हर सही उत्तर पर 10 points पाएँ।</p><div class="card"><div class="icon">🏆</div><h2>Computer Basics Quiz</h2><p>${quiz.length} सवाल • चार विकल्प</p><button class="primary" onclick="startQuiz()">Quiz शुरू करें</button></div>`;
+ let q=quiz[quizIndex];
+ return `<h1>Quiz Challenge 🧠</h1><p class="muted">सवाल ${quizIndex+1} / ${quiz.length}</p><div class="progress"><span style="width:${quizIndex/quiz.length*100}%"></span></div><div class="card"><h2>${q.q}</h2>${q.a.map((a,i)=>`<button class="lightbtn" style="display:block;width:100%;text-align:left;margin:9px 0" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${a}</button>`).join("")}<div id="feedback"></div></div>`;
+}
+function startQuiz(){quizIndex=0;quizScore=0;quizFinished=false;render()}
+function answerQuiz(i){
+ const q=quiz[quizIndex],f=document.getElementById("feedback");
+ if(f.dataset.done)return;f.dataset.done="1";
+ if(i===q.c){quizScore++;f.innerHTML="<p>✅ सही जवाब! "+q.why+"</p>"}
+ else f.innerHTML="<p>❌ सही जवाब: "+q.a[q.c]+". "+q.why+"</p>";
+ const b=document.createElement("button");b.className="primary";b.textContent=quizIndex===quiz.length-1?"परिणाम देखें":"अगला सवाल";
+ b.onclick=()=>{
+ quizIndex++;
+ if(quizIndex===quiz.length){
+ quizFinished=true;profile.points+=quizScore*10;
+ if(quizScore===quiz.length&&!profile.badges.includes("quiz"))profile.badges.push("quiz");
+ save();
+ }
+ render();
+ };
+ f.appendChild(b);
+}
+function progressPage(){
+ let n=profile.visited.length,p=Math.round(n/12*100);
+ return `<h1>मेरी प्रगति 📈</h1><p class="muted">आपकी सीखने की यात्रा।</p><div class="grid">
+ <div class="card"><p>कुल Points</p><div class="stat">${profile.points}</div></div>
+ <div class="card"><p>खोले गए चैप्टर</p><div class="stat">${n}</div></div>
+ <div class="card"><p>किताब की प्रगति</p><div class="stat">${p}%</div></div></div>
+ <div class="card" style="margin-top:18px"><h3>कक्षा ${profile.class} की पढ़ाई</h3><div class="progress"><span style="width:${p}%"></span></div><p>${n} में से 12 चैप्टर खोले गए।</p></div>`;
+}
+function badgesPage(){
+ return `<h1>मेरे Badges 🏅</h1><p class="muted">अपनी मेहनत से नए बैज हासिल करें।</p><div class="grid">
+ <div class="card"><div class="icon">🌱</div><h3>First Step</h3><p>पहला चैप्टर खोलें।</p>${profile.badges.includes("first")?'<span class="badge">प्राप्त</span>':'<span class="muted">अभी बाकी</span>'}</div>
+ <div class="card"><div class="icon">🧠</div><h3>Quiz Master</h3><p>Quiz में सभी सवाल सही करें।</p>${profile.badges.includes("quiz")?'<span class="badge">प्राप्त</span>':'<span class="muted">अभी बाकी</span>'}</div>
+ <div class="card"><div class="icon">⭐</div><h3>Point Collector</h3><p>100 Points हासिल करें।</p>${profile.points>=100?'<span class="badge">प्राप्त</span>':'<span class="muted">अभी बाकी</span>'}</div></div>`;
+}
+function invitePage(){
+ let link=location.href.split("?")[0];
+ return `<h1>दोस्तों को Invite करें 👥</h1><section class="hero"><h1>सीखना और सिखाना साथ-साथ!</h1><p>अपने दोस्तों के साथ कंप्यूटर सीखने का मज़ा बाँटें। उन्हें वेबसाइट का लिंक भेजें।</p><button class="whitebtn" onclick="shareSite()">WhatsApp पर Share करें</button></section>
+ <div class="card" style="margin-top:18px"><h3>वेबसाइट लिंक</h3><p style="overflow-wrap:anywhere">${link}</p><button class="primary" onclick="copyLink()">लिंक Copy करें</button></div>`;
+}
+function shareSite(){
+ let msg="मैं Karan Computer Academy पर कंप्यूटर सीख रहा/रही हूँ। तुम भी यहाँ सीख सकते हो: "+location.href.split("?")[0];
+ window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
+}
+async function copyLink(){
+ try{await navigator.clipboard.writeText(location.href.split("?")[0]);alert("लिंक कॉपी हो गया!")}
+ catch(e){prompt("लिंक कॉपी करें:",location.href.split("?")[0])}
+}
+function aboutPage(){
+ return `<h1>हमारे बारे में</h1><div class="card"><div class="logo">🎓</div><h2>Karan Computer Academy</h2><p>यह एक स्वतंत्र और निःशुल्क ऑनलाइन शैक्षिक प्लेटफॉर्म है। इसका उद्देश्य विद्यार्थियों को कंप्यूटर के बेसिक कॉन्सेप्ट्स, डिजिटल ज्ञान और तकनीकी शिक्षा सरल भाषा में समझाना है।</p><p>यह किसी स्कूल, सरकारी संस्था, CBSE या अन्य शिक्षा बोर्ड की आधिकारिक वेबसाइट या पुस्तक नहीं है। यहाँ दी गई सामग्री स्व-अध्ययन और अतिरिक्त ज्ञान के लिए है तथा स्कूल की निर्धारित पाठ्यपुस्तक या पाठ्यक्रम का विकल्प नहीं है।</p></div>`;
+}
+function settingsPage(){
+ return `<h1>Settings ⚙️</h1><div class="card"><h3>Display Settings</h3><p>वेबसाइट का रंग बदलें।</p><button class="primary" onclick="document.body.classList.toggle('dark')">🌙 Dark / Light Mode</button></div>
+ <div class="card" style="margin-top:15px"><h3>आपकी प्रोफाइल</h3><p>नाम: ${safe(profile.name)}<br>कक्षा: ${profile.class}<br>भाषा: ${profile.language==="hi"?"हिंदी":"English"}</p><p class="muted">प्रोफाइल इसी ब्राउज़र में सेव है। ब्राउज़र डेटा मिटाने या डिवाइस बदलने पर यह जानकारी उपलब्ध नहीं रह सकती।</p></div>`;
+}
+init();
 </script>
 </body>
 </html>
