@@ -6,471 +6,207 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Karan Computer Academy</title>
 <style>
-:root{--p:#5947df;--p2:#8978ff;--bg:#f5f6fc;--card:#fff;--ink:#24263b;--muted:#777d92;--line:#e9eaf2}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Noto Sans Devanagari",sans-serif}
-button,input,select{font:inherit}
-button{cursor:pointer}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #aaa0ff}
+body{margin:0;background:#f3f6fc;color:#17233f;font-family:Arial,sans-serif}
+header{background:linear-gradient(120deg,#101d42,#315efb);color:white;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+header h1{margin:0;font-size:22px}
+main{max-width:1100px;margin:auto;padding:18px}
+.card{background:white;border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 5px 20px #17233f12}
 .hidden{display:none!important}
-#register{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(130deg,#29219e,#6857e8,#b09cff)}
-.form{background:#fff;width:min(440px,100%);padding:32px;border-radius:22px;box-shadow:0 20px 55px #17134b44}
-.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--p),var(--p2));display:grid;place-items:center;color:white;font-size:25px}
-.form h1{font-size:25px;margin:16px 0 8px}
-.form p{color:#777d92;line-height:1.6}
-.form label{display:block;font-size:13px;font-weight:bold;margin:16px 0 7px}
-.form input,.form select{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:white}
-.primary{background:var(--p);color:white;padding:12px 18px;border-radius:10px;font-weight:bold}
-.submit{width:100%;margin-top:22px}
-#app{display:none}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:white;border-right:1px solid var(--line);padding:22px 15px;z-index:10;overflow:auto}
-.brand{display:flex;align-items:center;gap:10px;font-weight:bold;font-size:16px;margin:0 5px 30px}
-.nav-label{font-size:11px;color:#a0a3b4;letter-spacing:1px;font-weight:bold;margin:20px 10px 8px}
-.nav button{width:100%;text-align:left;padding:12px;border:0;background:transparent;color:#62677d;border-radius:10px;margin:3px 0}
-.nav button:hover,.nav button.active{background:#efedff;color:var(--p);font-weight:bold}
-.main{margin-left:245px;min-height:100vh}
-.topbar{height:70px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}
-.topbar small{color:var(--muted)}
-.profile-area{position:relative}
-.profile-btn{display:flex;align-items:center;gap:9px;background:white;color:var(--ink);font-weight:bold;border:0}
-.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#efedff;color:var(--p)}
-.dropdown{display:none;position:absolute;right:0;top:47px;width:180px;background:white;border:1px solid var(--line);border-radius:12px;padding:7px;box-shadow:0 12px 30px #2222}
-.dropdown.show{display:block}
-.dropdown button{display:block;width:100%;text-align:left;padding:11px;background:white;border:0;border-radius:8px}
-.dropdown button:hover{background:#f0efff;color:var(--p)}
-.content{max-width:1200px;margin:auto;padding:28px 30px 55px}
-.hero{padding:32px;border-radius:22px;color:white;background:linear-gradient(115deg,#4033c3,#7060ed 65%,#a18bff);position:relative;overflow:hidden}
-.hero:after{content:"💻";position:absolute;right:7%;top:18px;font-size:100px;opacity:.22}
-.hero h1{font-size:29px;margin:0 0 10px;max-width:700px}
-.hero p{line-height:1.7;color:#efedff;max-width:650px}
-.whitebtn{background:white;color:var(--p);padding:12px 17px;border-radius:9px;font-weight:bold}
-.lightbtn{background:#efedff;color:var(--p);padding:10px 14px;border-radius:9px;font-weight:bold}
-.section{display:flex;justify-content:space-between;align-items:center;margin:28px 0 15px}
-.section h2{font-size:20px;margin:0}
-.muted{font-size:13px;color:var(--muted);line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 20px #24245a09}
-.card h3{margin:10px 0 7px;font-size:16px}
-.card p{color:var(--muted);font-size:13px;line-height:1.7}
-.icon{width:46px;height:46px;border-radius:13px;background:#efedff;display:grid;place-items:center;font-size:24px}
-.stat{font-size:27px;font-weight:bold;color:var(--p);margin:9px 0}
-.class-card{cursor:pointer;transition:.2s}
-.class-card:hover{transform:translateY(-3px);border-color:#a69aff}
-.search{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;margin:18px 0;background:white}
-.chapter{display:flex;gap:13px;align-items:center;margin-bottom:12px;cursor:pointer}
-.chapter:hover{border-color:#aaa0ff}
-.chapter-no{width:42px;height:42px;flex-shrink:0;border-radius:12px;background:#efedff;color:var(--p);display:grid;place-items:center;font-weight:bold}
-.chapter-info{flex:1}
-.chapter-info h3{margin:0 0 5px}
-.chapter-info p{margin:0}
-.reader{background:white;border:1px solid var(--line);border-radius:16px;padding:25px;line-height:1.8}
-.reader h2{font-size:24px}
-.reader h3{color:var(--p);margin-top:25px}
-.reader p,.reader li{color:#555b70;line-height:1.9}
-.note{background:#f1efff;border-left:4px solid var(--p);padding:14px;border-radius:8px;margin:18px 0}
-.reader-actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
-.progress{height:9px;background:#ececf4;border-radius:20px;overflow:hidden;margin:12px 0}
-.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p2))}
-.welcome{display:none;position:fixed;inset:0;background:#211b85dc;z-index:30;place-items:center;padding:20px}
-.welcome-box{background:white;border-radius:20px;padding:30px;text-align:center;width:min(440px,100%)}
-.welcome-box p{color:#777d92;line-height:1.8}
-.flower{font-size:38px}
-.badge{display:inline-block;background:#fff3d7;color:#805b10;padding:7px 10px;border-radius:20px;font-size:12px;margin:5px}
-footer{border-top:1px solid var(--line);margin-top:35px;padding:22px 0;color:var(--muted);font-size:12px;line-height:1.8}
-.mobile{display:none;background:#efedff;color:var(--p);padding:9px;border:0;border-radius:8px}
-.dark{--bg:#171827;--card:#24263b;--ink:#f4f4ff;--muted:#b2b5c8;--line:#383a50}
-.dark .sidebar,.dark .topbar,.dark .dropdown,.dark .dropdown button,.dark .profile-btn{background:#202237;color:var(--ink)}
-.dark .reader{background:#24263b}
-.dark .reader p,.dark .reader li{color:#d2d3e0}
-@media(max-width:900px){.sidebar{transform:translateX(-100%);transition:.2s}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.mobile{display:block}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.content{padding:18px 13px}.topbar{padding:0 13px}.grid{grid-template-columns:1fr}.hero{padding:23px}.hero h1{font-size:23px}.reader{padding:16px}}
+h2,h3{color:#19336e}
+button{border:0;border-radius:9px;padding:11px 15px;background:#315efb;color:white;cursor:pointer;margin:4px}
+.secondary{background:#e8edff;color:#19336e}
+.danger{background:#d94343}
+input,select,textarea{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #d6deed;border-radius:9px;font:inherit}
+textarea{min-height:110px}
+label{font-weight:bold;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+.book{background:linear-gradient(140deg,#e8edff,#fff);border:1px solid #dbe3ff}
+nav{display:flex;flex-wrap:wrap;gap:5px;margin:15px 0}
+nav button{background:#e8edff;color:#19336e}
+nav button.active{background:#315efb;color:white}
+.chapter{border:1px solid #e0e6f1;border-radius:12px;padding:15px;margin:10px 0;background:white}
+.muted{color:#68758d;line-height:1.6}
+.chapter-content{line-height:1.9;white-space:pre-wrap}
+.option{display:block;width:100%;text-align:left;background:#edf1ff;color:#19336e;margin:8px 0}
+.stat{font-size:26px;color:#315efb;font-weight:bold}
+.welcome{text-align:center;background:linear-gradient(130deg,#e8edff,#fff);padding:30px 18px}
+#flowerShower{font-size:32px;animation:flowerFall 1.5s infinite alternate}
+@keyframes flowerFall{from{transform:translateY(-8px)}to{transform:translateY(12px)}}
+footer{text-align:center;color:#778198;padding:25px}
+.progressbar{height:12px;background:#e8ecf5;border-radius:20px;overflow:hidden}
+.progressbar span{display:block;height:100%;background:#315efb;width:0}
+@media(max-width:550px){header{padding:15px}main{padding:12px}.card{padding:15px}}
+@media print{
+ body{background:white}
+ header,nav,footer,.no-print,button{display:none!important}
+ main{padding:0;max-width:none}
+ .card{box-shadow:none;border:0}
+ #pdfArea{display:block!important}
+}
 </style>
 </head>
 <body>
+<header>
+ <div><h1>📘 Karan Computer Academy</h1><p>Learn • Practice • Grow</p></div>
+ <button id="profileButton" class="hidden" onclick="showProfile()">My Profile</button>
+</header>
 
-<div id="register">
- <form class="form" id="registerForm">
-  <div class="logo">🎓</div>
-  <h1>Karan Computer Academy</h1>
-  <p>सीखिए कंप्यूटर की दुनिया। अपनी सीखने की यात्रा आज ही शुरू करें!</p>
-  <label>आपका नाम</label>
-  <input id="nameInput" maxlength="45" placeholder="अपना नाम लिखें" required>
-  <label>अपनी कक्षा चुनें</label>
-  <select id="classInput">
-   <option value="6">कक्षा 6</option><option value="7">कक्षा 7</option>
-   <option value="8">कक्षा 8</option><option value="9" selected>कक्षा 9</option>
-   <option value="10">कक्षा 10</option><option value="11">कक्षा 11</option><option value="12">कक्षा 12</option>
+<main>
+
+<section id="registration" class="card">
+ <h2>Welcome to Karan Computer Academy</h2>
+ <p class="muted">अपनी जानकारी भरकर पढ़ाई शुरू करें।</p>
+ <form onsubmit="register(event)">
+  <label>पूरा नाम</label>
+  <input id="regName" placeholder="अपना नाम लिखें" required maxlength="50">
+  <label>कक्षा</label>
+  <select id="regClass" required>
+   <option value="">कक्षा चुनें</option>
+   <option>6</option><option>7</option><option>8</option>
+   <option>9</option><option>10</option><option>11</option><option>12</option>
   </select>
-  <label>भाषा चुनें</label>
-  <select id="languageInput"><option value="hi">हिंदी</option><option value="en">English</option></select>
-  <button class="primary submit" type="submit">Submit — शुरू करें →</button>
-  <p class="muted">आपकी प्रोफाइल इसी ब्राउज़र में सेव होगी।</p>
+  <label>भाषा</label>
+  <select id="regLanguage">
+   <option value="Hindi">हिंदी</option>
+   <option value="English">English</option>
+  </select>
+  <button type="submit">Registration करें</button>
  </form>
-</div>
+</section>
 
-<div id="welcome" class="welcome">
- <div class="welcome-box">
-  <div class="flower">🌸 🌼 🌸</div>
-  <h2 id="welcomeName">आपका स्वागत है!</h2>
-  <p>हमें खुशी है कि आपने Karan Computer Academy चुनी। आइए, कुछ नया सीखते हैं!</p>
-  <button class="primary" onclick="closeWelcome()">📖 किताब खोलें</button>
- </div>
-</div>
+<section id="welcome" class="card welcome hidden">
+ <div id="flowerShower">🌸 🌼 🌺 🌸 🌼 🌺</div>
+ <div id="welcomeMessage"></div>
+ <button onclick="openDashboard()">📖 किताब खोलें</button>
+</section>
 
-<div id="app">
- <aside class="sidebar" id="sidebar">
-  <div class="brand"><div class="logo">🎓</div><span>Karan Computer<br>Academy</span></div>
-  <div class="nav">
-   <div class="nav-label">LEARNING</div>
-   <button data-page="home" class="active" onclick="go('home',this)">🏠 Home / Dashboard</button>
-   <button data-page="books" onclick="go('books',this)">📚 मेरी किताबें</button>
-   <button data-page="quiz" onclick="go('quiz',this)">🧠 Quiz Challenge</button>
-   <button data-page="progress" onclick="go('progress',this)">📈 मेरी प्रगति</button>
-   <button data-page="badges" onclick="go('badges',this)">🏅 मेरे Badges</button>
-   <div class="nav-label">COMMUNITY</div>
-   <button data-page="invite" onclick="go('invite',this)">👥 दोस्तों को बुलाएँ</button>
-   <button data-page="about" onclick="go('about',this)">ℹ️ हमारे बारे में</button>
-   <button data-page="settings" onclick="go('settings',this)">⚙️ Settings</button>
+<section id="dashboard" class="hidden">
+ <div class="card">
+  <h2 id="helloName"></h2>
+  <p class="muted">आपकी पढ़ाई की नई शुरुआत यहाँ से होती है।</p>
+  <div class="grid">
+   <div class="card"><div class="stat" id="totalBooks">0</div>मेरी किताबें</div>
+   <div class="card"><div class="stat" id="totalChapters">0</div>कुल चैप्टर</div>
+   <div class="card"><div class="stat" id="totalScore">0</div>सही जवाब</div>
   </div>
- </aside>
- <main class="main">
-  <header class="topbar">
-   <div style="display:flex;align-items:center;gap:12px">
-    <button class="mobile" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
-    <small>Karan Computer Academy</small>
-   </div>
-   <div class="profile-area">
-    <button class="profile-btn" onclick="toggleProfile()"><span class="avatar" id="avatar">K</span><span id="topName">Student</span> ▾</button>
-    <div class="dropdown" id="dropdown">
-     <button onclick="editProfile()">✏️ Edit Profile</button>
-     <button onclick="signOut()">↪ Sign Out</button>
-    </div>
-   </div>
-  </header>
-  <div class="content" id="view"></div>
- </main>
-</div>
+ </div>
+ <nav>
+  <button class="active" onclick="tab('home',this)">Home</button>
+  <button onclick="tab('books',this)">My Books</button>
+  <button onclick="tab('progress',this)">Progress</button>
+  <button onclick="tab('about',this)">About</button>
+ </nav>
+ <section id="home" class="tab card">
+  <h2>📚 आपका Dashboard</h2>
+  <div class="grid">
+   <div class="card"><h3>📖 My Books</h3><p>अपनी किताबें बनाएँ और पढ़ें।</p><button onclick="tabById('books')">खोलें</button></div>
+   <div class="card"><h3>📝 Quiz</h3><p>अपने ज्ञान की जाँच करें।</p><button onclick="showQuizBooks()">Quiz शुरू करें</button></div>
+   <div class="card"><h3>📊 Progress</h3><p>अपना रिकॉर्ड देखें।</p><button onclick="tabById('progress')">देखें</button></div>
+  </div>
+  <h3>हाल की किताबें</h3><div id="recentBooks" class="grid"></div>
+ </section>
+ <section id="books" class="tab card hidden">
+  <h2>📚 मेरी किताबें</h2>
+  <button onclick="showAddBook()">+ नई किताब बनाएँ</button>
+  <div id="bookList" class="grid"></div>
+ </section>
+ <section id="progress" class="tab card hidden">
+  <h2>📊 My Progress</h2>
+  <p>पढ़े गए चैप्टर: <b id="readTotal">0</b></p>
+  <p>Quiz दिए गए: <b id="quizTotal">0</b></p>
+  <p>सही जवाब: <b id="correctTotal">0</b></p>
+  <p>गलत जवाब: <b id="wrongTotal">0</b></p>
+  <div class="progressbar"><span id="progressFill"></span></div>
+ </section>
+ <section id="about" class="tab card hidden">
+  <h2>About Karan Computer Academy</h2>
+  <p class="chapter-content">Karan Computer Academy एक स्वतंत्र शैक्षणिक पहल है। इसका उद्देश्य विद्यार्थियों को आसान भाषा में सीखने और अभ्यास करने की सुविधा देना है।</p>
+  <p class="muted">यह किसी स्कूल, सरकार, CBSE या शिक्षा बोर्ड की आधिकारिक वेबसाइट नहीं है।</p>
+ </section>
+</section>
+
+<section id="addBook" class="card hidden">
+ <button class="secondary" onclick="showBooks()">← वापस</button>
+ <h2>नई किताब बनाएँ</h2>
+ <label>किताब का नाम</label><input id="bookName" placeholder="जैसे: कक्षा 9 विज्ञान">
+ <label>विषय</label><input id="bookSubject" placeholder="जैसे: विज्ञान">
+ <button onclick="saveBook()">किताब सेव करें</button>
+</section>
+
+<section id="bookPage" class="hidden">
+ <div class="card">
+  <button class="secondary" onclick="showBooks()">← मेरी किताबें</button>
+  <h2 id="bookTitle"></h2><p id="bookSubjectTitle"></p>
+  <button onclick="showAddChapter()">+ नया चैप्टर</button>
+  <button onclick="downloadBookPDF()">पूरी किताब PDF</button>
+  <button class="secondary" onclick="shareBook()">Share किताब</button>
+ </div>
+ <div class="card"><h3>📖 इस किताब के चैप्टर</h3><div id="chapterList"></div></div>
+</section>
+
+<section id="addChapter" class="card hidden">
+ <button class="secondary" onclick="openBook(currentBook)">← वापस</button>
+ <h2>नया चैप्टर जोड़ें</h2>
+ <label>चैप्टर का नाम</label><input id="chapterName">
+ <label>चैप्टर के नोट्स</label><textarea id="chapterNotes"></textarea>
+ <h3>Quiz Questions</h3>
+ <label>प्रश्न</label><input id="questionText">
+ <label>विकल्प 1</label><input id="option1">
+ <label>विकल्प 2</label><input id="option2">
+ <label>विकल्प 3</label><input id="option3">
+ <label>विकल्प 4</label><input id="option4">
+ <label>सही विकल्प का नंबर</label>
+ <select id="correctOption"><option value="">चुनें</option><option value="0">1</option><option value="1">2</option><option value="2">3</option><option value="3">4</option></select>
+ <button class="secondary" onclick="addQuestion()">+ सवाल जोड़ें</button>
+ <p id="questionCount">जोड़े गए सवाल: 0</p>
+ <button onclick="saveChapter()">चैप्टर सेव करें</button>
+</section>
+
+<section id="reader" class="card hidden">
+ <button class="secondary" onclick="openBook(currentBook)">← सभी चैप्टर</button>
+ <h2 id="readerTitle"></h2>
+ <h3>📖 नोट्स</h3><div id="readerNotes" class="chapter-content"></div>
+ <h3>📝 अभ्यास प्रश्न</h3><div id="readerQuestions"></div>
+ <button onclick="downloadChapterPDF()">इस चैप्टर का PDF</button>
+ <button class="secondary" onclick="shareChapter()">Share करें</button>
+ <button onclick="startChapterQuiz()">इस चैप्टर का Quiz दें</button>
+</section>
+
+<section id="quizPage" class="card hidden">
+ <button class="secondary" onclick="openBook(currentBook)">← किताब पर वापस</button>
+ <h2 id="quizTitle"></h2>
+ <p id="quizCounter"></p>
+ <h3 id="quizQuestion"></h3>
+ <div id="quizOptions"></div>
+ <p id="quizFeedback"></p>
+ <button id="nextQuiz" onclick="nextQuizQuestion()" disabled>अगला सवाल</button>
+</section>
+
+<section id="resultPage" class="card hidden">
+ <h2>🏆 Quiz Result</h2>
+ <div class="grid">
+  <div class="card"><div class="stat" id="resultCorrect">0</div>सही जवाब</div>
+  <div class="card"><div class="stat" id="resultWrong">0</div>गलत जवाब</div>
+  <div class="card"><div class="stat" id="resultMarks">0</div>कुल अंक</div>
+ </div>
+ <h3 id="resultPercent"></h3><p id="resultMessage"></p>
+ <button onclick="openBook(currentBook)">किताब पर वापस</button>
+ <button class="secondary" onclick="showQuizBooks()">दूसरा Quiz दें</button>
+</section>
+
+<section id="profile" class="card hidden">
+ <h2>My Profile</h2><p id="profileDetails"></p>
+ <button onclick="editProfile()">Edit Profile</button>
+ <button class="danger" onclick="signOut()">Sign Out</button>
+ <button class="secondary" onclick="openDashboard()">वापस</button>
+</section>
+
+<section id="pdfArea" class="hidden"></section>
+</main>
+<footer>© 2026 Karan Computer Academy</footer>
 
 <script>
-const chapterNames=[
-"कंप्यूटर का परिचय","कंप्यूटर का इतिहास","कंप्यूटर की पीढ़ियाँ",
-"कंप्यूटर के मुख्य भाग","इनपुट और आउटपुट डिवाइस","मेमोरी और स्टोरेज",
-"ऑपरेटिंग सिस्टम","इंटरनेट का परिचय","साइबर सुरक्षा","डिजिटल नागरिकता",
-"कंप्यूटर के दैनिक उपयोग","अभ्यास और पुनरावृत्ति"
-];
-
-const lessons={
-0:{
-intro:"कंप्यूटर एक इलेक्ट्रॉनिक मशीन है जो डेटा प्राप्त करती है, निर्देशों के अनुसार उसका प्रसंस्करण करती है और उपयोगी जानकारी प्रदान करती है।",
-sections:[
-["कंप्यूटर क्या है?","कंप्यूटर एक इलेक्ट्रॉनिक उपकरण है। यह इनपुट के रूप में डेटा लेता है, उसे प्रोसेस करता है और आउटपुट के रूप में परिणाम देता है।"],
-["कंप्यूटर की विशेषताएँ","कंप्यूटर बहुत तेजी से काम कर सकता है। यह बड़ी मात्रा में डेटा संग्रहित कर सकता है और लगातार एक जैसे निर्देशों का पालन कर सकता है।"],
-["कंप्यूटर के उपयोग","कंप्यूटर का उपयोग शिक्षा, बैंक, अस्पताल, रेलवे, कार्यालय, वैज्ञानिक अनुसंधान और संचार में किया जाता है।"],
-["कंप्यूटर की सीमाएँ","कंप्यूटर अपने आप मनुष्य की तरह नहीं सोचता। यह दिए गए निर्देशों के अनुसार काम करता है। गलत निर्देश मिलने पर गलत परिणाम भी दे सकता है।"]
-],
-example:"जब विद्यार्थी कंप्यूटर पर गणित का सवाल हल करता है, तो वह सवाल दर्ज करता है। कंप्यूटर निर्देशों के अनुसार गणना करके उत्तर दिखाता है।",
-questions:["कंप्यूटर क्या है?","कंप्यूटर की चार विशेषताएँ लिखिए।","कंप्यूटर के तीन उपयोग बताइए।"]
-},
-1:{
-intro:"कंप्यूटर का इतिहास गणना के सरल उपकरणों से शुरू होकर आधुनिक इलेक्ट्रॉनिक कंप्यूटर तक पहुँचा है।",
-sections:[
-["अबेकस","अबेकस एक प्राचीन गणना उपकरण है। इसका उपयोग जोड़ और घटाव जैसी गणनाओं में किया जाता था।"],
-["पास्कलाइन","ब्लेज पास्कल ने गणना में सहायता के लिए पास्कलाइन नामक यांत्रिक कैलकुलेटर बनाया था।"],
-["चार्ल्स बैबेज","चार्ल्स बैबेज ने डिफरेंस इंजन और एनालिटिकल इंजन की योजनाएँ बनाईं। उन्हें अक्सर कंप्यूटर का जनक कहा जाता है।"],
-["आधुनिक कंप्यूटर","इलेक्ट्रॉनिक तकनीक के विकास से कंप्यूटर अधिक तेज, छोटे और उपयोगी बनते गए।"]
-],
-example:"आज मोबाइल फोन में भी कंप्यूटर जैसी प्रोसेसिंग क्षमता होती है।",
-questions:["अबेकस क्या था?","चार्ल्स बैबेज को कंप्यूटर का जनक क्यों कहा जाता है?","पास्कलाइन किसने बनाई?"]
-},
-2:{
-intro:"कंप्यूटर की पीढ़ियाँ तकनीक में हुए महत्वपूर्ण बदलावों के आधार पर बाँटी जाती हैं।",
-sections:[
-["पहली पीढ़ी","पहली पीढ़ी के कंप्यूटरों में वैक्यूम ट्यूब का उपयोग होता था। ये आकार में बड़े होते थे और अधिक बिजली लेते थे।"],
-["दूसरी पीढ़ी","दूसरी पीढ़ी में ट्रांजिस्टर का उपयोग शुरू हुआ। इससे कंप्यूटर पहले की तुलना में छोटे और अधिक भरोसेमंद बने।"],
-["तीसरी पीढ़ी","तीसरी पीढ़ी में इंटीग्रेटेड सर्किट (IC) का उपयोग किया गया। इससे कंप्यूटर की क्षमता में सुधार हुआ।"],
-["चौथी और पाँचवीं पीढ़ी","माइक्रोप्रोसेसर ने चौथी पीढ़ी के कंप्यूटरों को लोकप्रिय बनाया। पाँचवीं पीढ़ी में कृत्रिम बुद्धिमत्ता जैसे क्षेत्रों पर काम किया जा रहा है।"]
-],
-example:"आज के पर्सनल कंप्यूटर में माइक्रोप्रोसेसर का उपयोग होता है।",
-questions:["पहली पीढ़ी में किस तकनीक का उपयोग हुआ?","ट्रांजिस्टर किस पीढ़ी से जुड़ा है?","माइक्रोप्रोसेसर का क्या महत्व है?"]
-},
-3:{
-intro:"कंप्यूटर कई भागों से मिलकर बनता है। हर भाग का अपना अलग कार्य होता है।",
-sections:[
-["CPU","CPU का पूरा नाम Central Processing Unit है। इसे कंप्यूटर का मस्तिष्क कहा जाता है क्योंकि यह निर्देशों को प्रोसेस करता है।"],
-["मॉनिटर","मॉनिटर एक आउटपुट डिवाइस है जो टेक्स्ट, चित्र और वीडियो दिखाता है।"],
-["कीबोर्ड और माउस","कीबोर्ड से अक्षर और अंक टाइप किए जाते हैं। माउस से स्क्रीन पर कर्सर चलाया और वस्तुएँ चुनी जाती हैं।"],
-["मदरबोर्ड","मदरबोर्ड कंप्यूटर का मुख्य सर्किट बोर्ड है। इससे कंप्यूटर के कई हिस्से जुड़े होते हैं।"]
-],
-example:"कंप्यूटर पर नाम टाइप करने के लिए कीबोर्ड और परिणाम देखने के लिए मॉनिटर का उपयोग किया जाता है।",
-questions:["CPU का पूरा नाम लिखिए।","मदरबोर्ड क्या है?","मॉनिटर का क्या कार्य है?"]
-},
-4:{
-intro:"इनपुट डिवाइस कंप्यूटर को डेटा देती हैं और आउटपुट डिवाइस कंप्यूटर का परिणाम उपयोगकर्ता तक पहुँचाती हैं।",
-sections:[
-["कीबोर्ड","कीबोर्ड का उपयोग अक्षर, अंक और विशेष निर्देश टाइप करने के लिए किया जाता है।"],
-["माउस","माउस एक पॉइंटिंग डिवाइस है। इससे कर्सर चलाया जाता है, क्लिक किया जाता है और फाइलें चुनी जाती हैं।"],
-["मॉनिटर और प्रिंटर","मॉनिटर स्क्रीन पर परिणाम दिखाता है। प्रिंटर जानकारी को कागज पर छापता है।"],
-["स्कैनर और स्पीकर","स्कैनर कागज पर मौजूद चित्र या टेक्स्ट को डिजिटल रूप में बदल सकता है। स्पीकर आवाज सुनाता है।"]
-],
-example:"कीबोर्ड इनपुट डिवाइस है जबकि मॉनिटर आउटपुट डिवाइस है।",
-questions:["इनपुट डिवाइस क्या है?","दो आउटपुट डिवाइस के नाम लिखिए।","स्कैनर का क्या उपयोग है?"]
-},
-5:{
-intro:"कंप्यूटर मेमोरी और स्टोरेज का उपयोग डेटा तथा निर्देशों को रखने के लिए किया जाता है।",
-sections:[
-["RAM","RAM अस्थायी मेमोरी है। कंप्यूटर बंद होने पर इसमें रखा डेटा सामान्यतः मिट जाता है।"],
-["ROM","ROM में ऐसी जानकारी रखी जाती है जिसकी आवश्यकता कंप्यूटर को शुरू होने के लिए होती है।"],
-["हार्ड डिस्क और SSD","हार्ड डिस्क और SSD डेटा को लंबे समय तक सुरक्षित रखने वाले स्टोरेज उपकरण हैं।"],
-["मेमोरी की इकाइयाँ","बिट और बाइट डेटा की छोटी इकाइयाँ हैं। किलोबाइट, मेगाबाइट और गीगाबाइट बड़ी इकाइयाँ हैं।"]
-],
-example:"किसी फोटो को कंप्यूटर में सेव करने पर वह स्टोरेज में रखी जाती है।",
-questions:["RAM क्या है?","ROM का एक उपयोग बताइए।","डेटा की दो इकाइयों के नाम लिखिए।"]
-},
-6:{
-intro:"ऑपरेटिंग सिस्टम ऐसा सिस्टम सॉफ्टवेयर है जो कंप्यूटर के हार्डवेयर और उपयोगकर्ता के बीच काम करता है।",
-sections:[
-["ऑपरेटिंग सिस्टम क्या है?","यह कंप्यूटर के संसाधनों का प्रबंधन करता है और दूसरे प्रोग्राम चलाने में सहायता करता है।"],
-["मुख्य कार्य","ऑपरेटिंग सिस्टम फाइलों, मेमोरी, उपकरणों और चल रहे प्रोग्रामों का प्रबंधन करता है।"],
-["उदाहरण","Windows, Linux, macOS, Android और iOS ऑपरेटिंग सिस्टम के उदाहरण हैं।"],
-["उपयोगकर्ता इंटरफेस","ऑपरेटिंग सिस्टम उपयोगकर्ता को मेनू, आइकन और विंडो के माध्यम से कंप्यूटर चलाने में मदद करता है।"]
-],
-example:"कंप्यूटर चालू करने के बाद Windows का दिखाई देना ऑपरेटिंग सिस्टम का उदाहरण है।",
-questions:["ऑपरेटिंग सिस्टम क्या है?","दो ऑपरेटिंग सिस्टम के नाम लिखिए।","इसके दो कार्य बताइए।"]
-},
-7:{
-intro:"इंटरनेट दुनिया भर के कंप्यूटर नेटवर्कों को जोड़ने वाला विशाल नेटवर्क है।",
-sections:[
-["इंटरनेट क्या है?","इंटरनेट की सहायता से लोग जानकारी खोज सकते हैं, संदेश भेज सकते हैं और ऑनलाइन सेवाओं का उपयोग कर सकते हैं।"],
-["वेब ब्राउज़र","वेब ब्राउज़र वेबसाइट खोलने वाला सॉफ्टवेयर है। उदाहरण: Chrome, Firefox और Edge।"],
-["सर्च इंजन","सर्च इंजन इंटरनेट पर जानकारी खोजने में मदद करता है। उदाहरण: Google और Bing।"],
-["ई-मेल","ई-मेल का उपयोग इंटरनेट के माध्यम से इलेक्ट्रॉनिक संदेश भेजने और प्राप्त करने के लिए होता है।"]
-],
-example:"किसी विषय की जानकारी खोजने के लिए वेब ब्राउज़र में सर्च इंजन का उपयोग किया जा सकता है।",
-questions:["इंटरनेट क्या है?","दो वेब ब्राउज़र के नाम लिखिए।","ई-मेल का क्या उपयोग है?"]
-},
-8:{
-intro:"साइबर सुरक्षा का उद्देश्य कंप्यूटर, नेटवर्क, अकाउंट और डिजिटल जानकारी को ऑनलाइन खतरों से सुरक्षित रखना है।",
-sections:[
-["मजबूत पासवर्ड","ऐसा पासवर्ड बनाएँ जिसका अनुमान लगाना कठिन हो। पासवर्ड किसी दूसरे व्यक्ति से साझा न करें।"],
-["फिशिंग","फिशिंग में नकली संदेश या वेबसाइट के माध्यम से निजी जानकारी हासिल करने की कोशिश की जाती है।"],
-["सॉफ्टवेयर अपडेट","सॉफ्टवेयर अपडेट सुरक्षा की कमियों को ठीक करने और कार्यक्षमता सुधारने में मदद करते हैं।"],
-["सुरक्षित व्यवहार","अनजान लिंक पर क्लिक न करें और किसी संदिग्ध व्यक्ति को OTP या पासवर्ड न बताएँ।"]
-],
-example:"बैंक का OTP किसी अनजान व्यक्ति को न बताना साइबर सुरक्षा का अच्छा उदाहरण है।",
-questions:["साइबर सुरक्षा क्या है?","फिशिंग क्या होती है?","मजबूत पासवर्ड क्यों जरूरी है?"]
-},
-9:{
-intro:"डिजिटल नागरिकता का अर्थ इंटरनेट और डिजिटल तकनीक का जिम्मेदारी, सम्मान और सुरक्षा के साथ उपयोग करना है।",
-sections:[
-["ऑनलाइन व्यवहार","इंटरनेट पर दूसरों से सम्मानपूर्वक बात करनी चाहिए और अपमानजनक भाषा से बचना चाहिए।"],
-["निजता","अपना पता, फोन नंबर, पासवर्ड और अन्य निजी जानकारी सार्वजनिक रूप से साझा नहीं करनी चाहिए।"],
-["डिजिटल पदचिह्न","इंटरनेट पर की गई गतिविधियों से डिजिटल रिकॉर्ड बन सकता है। कुछ जानकारी लंबे समय तक उपलब्ध रह सकती है।"],
-["कॉपीराइट","दूसरों की तस्वीर, लेख या सामग्री का उपयोग करते समय उनके अधिकारों का सम्मान करना चाहिए।"]
-],
-example:"किसी की तस्वीर पोस्ट करने से पहले उसकी अनुमति लेना जिम्मेदार डिजिटल व्यवहार है।",
-questions:["डिजिटल नागरिकता क्या है?","निजी जानकारी के दो उदाहरण दीजिए।","कॉपीराइट का सम्मान क्यों करना चाहिए?"]
-},
-10:{
-intro:"कंप्यूटर आज शिक्षा, स्वास्थ्य, व्यापार, संचार और मनोरंजन सहित अनेक क्षेत्रों में उपयोग किया जाता है।",
-sections:[
-["शिक्षा","ऑनलाइन कक्षाएँ, डिजिटल पुस्तकें और शैक्षिक वीडियो सीखने में सहायता करते हैं।"],
-["स्वास्थ्य","अस्पतालों में मरीजों का रिकॉर्ड रखने, जाँच और प्रबंधन में कंप्यूटर उपयोगी होते हैं।"],
-["बैंक और व्यापार","कंप्यूटर बैंकिंग, बिलिंग, रिकॉर्ड और व्यापारिक लेन-देन में मदद करते हैं।"],
-["संचार","ई-मेल, वीडियो कॉल और संदेश सेवाओं से लोग दूर रहते हुए भी संपर्क कर सकते हैं।"]
-],
-example:"ऑनलाइन कक्षा में विद्यार्थी घर से शिक्षक का पाठ सुन सकता है।",
-questions:["शिक्षा में कंप्यूटर के दो उपयोग बताइए।","अस्पताल में कंप्यूटर कैसे मदद करता है?","संचार के दो साधन लिखिए।"]
-},
-11:{
-intro:"इस अध्याय में कंप्यूटर के महत्वपूर्ण विषयों की पुनरावृत्ति और अभ्यास किया जाएगा।",
-sections:[
-["मुख्य शब्द","हार्डवेयर कंप्यूटर के भौतिक भाग हैं जबकि सॉफ्टवेयर निर्देशों और प्रोग्रामों का समूह है।"],
-["इनपुट और आउटपुट","कीबोर्ड और माउस इनपुट डिवाइस हैं। मॉनिटर और प्रिंटर आउटपुट डिवाइस हैं।"],
-["मेमोरी","RAM अस्थायी मेमोरी है जबकि SSD और हार्ड डिस्क डेटा स्टोर करने के लिए उपयोग होते हैं।"],
-["सुरक्षा","मजबूत पासवर्ड रखें, OTP साझा न करें और संदिग्ध लिंक से सावधान रहें।"]
-],
-example:"किसी नए विषय को पढ़ने के बाद प्रश्न हल करना पुनरावृत्ति का अच्छा तरीका है।",
-questions:["हार्डवेयर और सॉफ्टवेयर में अंतर लिखिए।","दो इनपुट डिवाइस के नाम लिखिए।","ऑनलाइन सुरक्षा के दो नियम लिखिए।"]
-}
-};
-
-let profile=null,page="home",currentClass=9,currentChapter=0,quizIndex=0,quizScore=0,quizFinished=false;
-const quiz=[
-{q:"कंप्यूटर को डेटा देने वाली डिवाइस कौन-सी है?",a:["मॉनिटर","कीबोर्ड","स्पीकर","प्रिंटर"],c:1,why:"कीबोर्ड से डेटा और निर्देश दर्ज किए जाते हैं।"},
-{q:"कंप्यूटर का मुख्य प्रोसेसिंग भाग कौन-सा है?",a:["CPU","माउस","प्रिंटर","स्कैनर"],c:0,why:"CPU निर्देशों को प्रोसेस करता है।"},
-{q:"इनमें से आउटपुट डिवाइस कौन-सी है?",a:["कीबोर्ड","माउस","मॉनिटर","माइक्रोफोन"],c:2,why:"मॉनिटर स्क्रीन पर परिणाम दिखाता है।"},
-{q:"RAM किस प्रकार की मेमोरी है?",a:["स्थायी","अस्थायी","कागजी","ऑप्टिकल"],c:1,why:"RAM में रखा डेटा बिजली बंद होने पर सामान्यतः मिट जाता है।"},
-{q:"इंटरनेट पर सुरक्षित रहने के लिए क्या करें?",a:["OTP साझा करें","अनजान लिंक खोलें","मजबूत पासवर्ड रखें","हर संदेश पर भरोसा करें"],c:2,why:"मजबूत पासवर्ड अकाउंट की सुरक्षा में मदद करता है।"}
-];
-
-function loadProfile(){
- try{return JSON.parse(localStorage.getItem("kca_profile"))}catch(e){return null}
-}
-function save(){localStorage.setItem("kca_profile",JSON.stringify(profile))}
-function safe(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function init(){
- profile=loadProfile();
- if(profile){showApp()}else{document.getElementById("register").style.display="grid"}
-}
-document.getElementById("registerForm").addEventListener("submit",e=>{
- e.preventDefault();
- profile={name:document.getElementById("nameInput").value.trim(),class:document.getElementById("classInput").value,language:document.getElementById("languageInput").value,points:0,visited:[],badges:[]};
- if(!profile.name)return;
- save();showApp();
- document.getElementById("welcomeName").textContent="स्वागत है, "+profile.name+"!";
- document.getElementById("welcome").style.display="grid";
-});
-function closeWelcome(){document.getElementById("welcome").style.display="none";go("home")}
-function showApp(){
- document.getElementById("register").style.display="none";
- document.getElementById("app").style.display="block";
- document.getElementById("topName").textContent=profile.name;
- document.getElementById("avatar").textContent=profile.name.charAt(0).toUpperCase();
- go("home");
-}
-function toggleProfile(){document.getElementById("dropdown").classList.toggle("show")}
-function editProfile(){
- document.getElementById("dropdown").classList.remove("show");
- const name=prompt("अपना नाम बदलें:",profile.name);
- if(name===null)return;
- if(!name.trim())return alert("नाम खाली नहीं हो सकता।");
- const cls=prompt("कक्षा 6 से 12 चुनें:",profile.class);
- if(cls===null)return;
- if(!/^(6|7|8|9|10|11|12)$/.test(cls))return alert("कृपया 6 से 12 के बीच कक्षा चुनें।");
- profile.name=name.trim();profile.class=cls;save();showApp();
-}
-function signOut(){
- if(confirm("क्या आप इस ब्राउज़र से अपनी प्रोफाइल हटाना चाहते हैं?")){
- localStorage.removeItem("kca_profile");location.reload();
- }
-}
-function go(next,button){
- page=next;
- document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
- if(button)button.classList.add("active");
- document.getElementById("sidebar").classList.remove("open");
- render();
-}
-function render(){
- const v=document.getElementById("view");
- if(page==="home")v.innerHTML=homePage();
- if(page==="books")v.innerHTML=booksPage();
- if(page==="chapters")v.innerHTML=chapterPage();
- if(page==="reader")v.innerHTML=readerPage();
- if(page==="quiz")v.innerHTML=quizPage();
- if(page==="progress")v.innerHTML=progressPage();
- if(page==="badges")v.innerHTML=badgesPage();
- if(page==="invite")v.innerHTML=invitePage();
- if(page==="about")v.innerHTML=aboutPage();
- if(page==="settings")v.innerHTML=settingsPage();
-}
-function footer(){
- return `<footer><b>Karan Computer Academy</b><br>एक स्वतंत्र और निःशुल्क शैक्षिक प्लेटफॉर्म। यह किसी स्कूल, सरकारी संस्था, CBSE या अन्य शिक्षा बोर्ड की आधिकारिक वेबसाइट या पुस्तक नहीं है। सामग्री अतिरिक्त स्व-अध्ययन के लिए है और निर्धारित पाठ्यक्रम का विकल्प नहीं है।<br>© Karan Computer Academy</footer>`;
-}
-function homePage(){
- return `<section class="hero"><h1>नमस्ते, ${safe(profile.name)}! 👋</h1><p>आपका स्वागत है। आज कुछ नया सीखें, अपना ज्ञान बढ़ाएँ और अपने लक्ष्य पूरे करें।</p><button class="whitebtn" onclick="go('books')">📚 पढ़ाई शुरू करें</button></section>
- <div class="section"><h2>आपका Learning Dashboard</h2><span class="muted">कक्षा ${profile.class}</span></div>
- <div class="grid">
- <div class="card"><div class="icon">⭐</div><p>आपके Points</p><div class="stat">${profile.points}</div><p>क्विज़ और पढ़ाई से अंक पाएँ।</p></div>
- <div class="card"><div class="icon">📖</div><p>पढ़े गए चैप्टर</p><div class="stat">${profile.visited.length}</div><p>अपनी पढ़ाई आगे बढ़ाएँ।</p></div>
- <div class="card"><div class="icon">🏅</div><p>मिले हुए Badges</p><div class="stat">${profile.badges.length}</div><p>नए लक्ष्य पूरे करें।</p></div></div>
- <div class="section"><h2>आज का Learning Mission 🎯</h2></div>
- <div class="card"><h3>आज एक चैप्टर पढ़ें</h3><p>एक चैप्टर पढ़ें और अभ्यास प्रश्न हल करें।</p><button class="primary" onclick="go('books')">मिशन शुरू करें</button></div>
- <div class="section"><h2>दोस्तों के साथ सीखें 🤝</h2></div>
- <div class="card"><h3>अपने दोस्तों को भी बुलाएँ!</h3><p>उन्हें कंप्यूटर सीखने का मौका दें।</p><button class="primary" onclick="go('invite')">दोस्त को Invite करें</button></div>${footer()}`;
-}
-function booksPage(){
- let html="";
- for(let i=6;i<=12;i++){
- html+=`<div class="card class-card" onclick="openBook(${i})"><div class="icon">📘</div><h3>कक्षा ${i} की कंप्यूटर किताब</h3><p>${i<=7?"शुरुआती स्तर":i<=9?"बुनियादी और मध्यम स्तर":i<=10?"उन्नत स्तर":"उन्नत कंप्यूटर ज्ञान"}</p><button class="lightbtn">किताब खोलें →</button></div>`;
- }
- return `<h1>मेरी किताबें 📚</h1><p class="muted">अपनी कक्षा की किताब चुनें और अपनी पसंद का चैप्टर पढ़ें।</p><div class="grid">${html}</div>${footer()}`;
-}
-function openBook(cls){
- currentClass=cls;profile.class=String(cls);save();page="chapters";render();
-}
-function chapterPage(){
- return `<button class="lightbtn" onclick="go('books')">← सभी किताबें</button><h1>कक्षा ${currentClass} — Computer Basics</h1><p class="muted">अपनी पसंद का चैप्टर चुनें।</p><input class="search" id="chapterSearch" placeholder="🔍 चैप्टर खोजें..." oninput="filterChapters()"><div id="chapterList">${chapterNames.map((n,i)=>`<div class="card chapter" onclick="openChapter(${i})"><div class="chapter-no">${i+1}</div><div class="chapter-info"><h3>${n}</h3><p class="muted">पढ़ें • समझें • अभ्यास करें</p></div><span>›</span></div>`).join("")}</div>${footer()}`;
-}
-function filterChapters(){
- let q=document.getElementById("chapterSearch").value.toLowerCase();
- document.querySelectorAll("#chapterList .chapter").forEach(el=>el.style.display=el.innerText.toLowerCase().includes(q)?"flex":"none");
-}
-function openChapter(i){
- currentChapter=i;
- if(!profile.visited.includes(i)){profile.visited.push(i);profile.points+=5}
- if(profile.visited.length>=1&&!profile.badges.includes("first"))profile.badges.push("first");
- save();page="reader";render();
-}
-function readerPage(){
- let l=lessons[currentChapter];
- return `<button class="lightbtn" onclick="go('chapters')">← चैप्टर सूची</button><h1>${currentChapter+1}. ${chapterNames[currentChapter]}</h1><p class="muted">कक्षा ${currentClass} • Computer Basics</p>
- <article class="reader"><h2>अध्याय का परिचय</h2><p>${l.intro}</p>
- ${l.sections.map(s=>`<h3>${s[0]}</h3><p>${s[1]}</p>`).join("")}
- <div class="note"><b>उदाहरण:</b><br>${l.example}</div>
- <h3>अभ्यास प्रश्न ✍️</h3><ol>${l.questions.map(q=>`<li>${q}</li>`).join("")}</ol>
- <p class="muted">अध्याय पूरा पढ़ने के बाद अगले चैप्टर पर जाएँ।</p></article>
- <div class="reader-actions"><button class="lightbtn" ${currentChapter===0?"disabled":""} onclick="openChapter(${Math.max(0,currentChapter-1)})">← पिछला</button><button class="primary" onclick="${currentChapter===11?"go('chapters'):`openChapter(${currentChapter+1})`}">अगला चैप्टर →</button></div>`;
-}
-function quizPage(){
- if(quizFinished)return `<h1>Quiz पूरा हुआ! 🎉</h1><div class="card"><div class="stat">${quizScore} / ${quiz.length}</div><p>आपने ${quizScore} सही उत्तर दिए।</p><button class="primary" onclick="startQuiz()">फिर से खेलें</button></div>`;
- if(quizIndex===0&&quizScore===0)return `<h1>Quiz Challenge 🧠</h1><p class="muted">अपने कंप्यूटर ज्ञान को परखें। हर सही उत्तर पर 10 points पाएँ।</p><div class="card"><div class="icon">🏆</div><h2>Computer Basics Quiz</h2><p>${quiz.length} सवाल • चार विकल्प</p><button class="primary" onclick="startQuiz()">Quiz शुरू करें</button></div>`;
- let q=quiz[quizIndex];
- return `<h1>Quiz Challenge 🧠</h1><p class="muted">सवाल ${quizIndex+1} / ${quiz.length}</p><div class="progress"><span style="width:${quizIndex/quiz.length*100}%"></span></div><div class="card"><h2>${q.q}</h2>${q.a.map((a,i)=>`<button class="lightbtn" style="display:block;width:100%;text-align:left;margin:9px 0" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${a}</button>`).join("")}<div id="feedback"></div></div>`;
-}
-function startQuiz(){quizIndex=0;quizScore=0;quizFinished=false;render()}
-function answerQuiz(i){
- const q=quiz[quizIndex],f=document.getElementById("feedback");
- if(f.dataset.done)return;f.dataset.done="1";
- if(i===q.c){quizScore++;f.innerHTML="<p>✅ सही जवाब! "+q.why+"</p>"}
- else f.innerHTML="<p>❌ सही जवाब: "+q.a[q.c]+". "+q.why+"</p>";
- const b=document.createElement("button");b.className="primary";b.textContent=quizIndex===quiz.length-1?"परिणाम देखें":"अगला सवाल";
- b.onclick=()=>{
- quizIndex++;
- if(quizIndex===quiz.length){
- quizFinished=true;profile.points+=quizScore*10;
- if(quizScore===quiz.length&&!profile.badges.includes("quiz"))profile.badges.push("quiz");
- save();
- }
- render();
- };
- f.appendChild(b);
-}
-function progressPage(){
- let n=profile.visited.length,p=Math.round(n/12*100);
- return `<h1>मेरी प्रगति 📈</h1><p class="muted">आपकी सीखने की यात्रा।</p><div class="grid">
- <div class="card"><p>कुल Points</p><div class="stat">${profile.points}</div></div>
- <div class="card"><p>खोले गए चैप्टर</p><div class="stat">${n}</div></div>
- <div class="card"><p>किताब की प्रगति</p><div class="stat">${p}%</div></div></div>
- <div class="card" style="margin-top:18px"><h3>कक्षा ${profile.class} की पढ़ाई</h3><div class="progress"><span style="width:${p}%"></span></div><p>${n} में से 12 चैप्टर खोले गए।</p></div>`;
-}
-function badgesPage(){
- return `<h1>मेरे Badges 🏅</h1><p class="muted">अपनी मेहनत से नए बैज हासिल करें।</p><div class="grid">
- <div class="card"><div class="icon">🌱</div><h3>First Step</h3><p>पहला चैप्टर खोलें।</p>${profile.badges.includes("first")?'<span class="badge">प्राप्त</span>':'<span class="muted">अभी बाकी</span>'}</div>
- <div class="card"><div class="icon">🧠</div><h3>Quiz Master</h3><p>Quiz में सभी सवाल सही करें।</p>${profile.badges.includes("quiz")?'<span class="badge">प्राप्त</span>':'<span class="muted">अभी बाकी</span>'}</div>
- <div class="card"><div class="icon">⭐</div><h3>Point Collector</h3><p>100 Points हासिल करें।</p>${profile.points>=100?'<span class="badge">प्राप्त</span>':'<span class="muted">अभी बाकी</span>'}</div></div>`;
-}
-function invitePage(){
- let link=location.href.split("?")[0];
- return `<h1>दोस्तों को Invite करें 👥</h1><section class="hero"><h1>सीखना और सिखाना साथ-साथ!</h1><p>अपने दोस्तों के साथ कंप्यूटर सीखने का मज़ा बाँटें। उन्हें वेबसाइट का लिंक भेजें।</p><button class="whitebtn" onclick="shareSite()">WhatsApp पर Share करें</button></section>
- <div class="card" style="margin-top:18px"><h3>वेबसाइट लिंक</h3><p style="overflow-wrap:anywhere">${link}</p><button class="primary" onclick="copyLink()">लिंक Copy करें</button></div>`;
-}
-function shareSite(){
- let msg="मैं Karan Computer Academy पर कंप्यूटर सीख रहा/रही हूँ। तुम भी यहाँ सीख सकते हो: "+location.href.split("?")[0];
- window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
-}
-async function copyLink(){
- try{await navigator.clipboard.writeText(location.href.split("?")[0]);alert("लिंक कॉपी हो गया!")}
- catch(e){prompt("लिंक कॉपी करें:",location.href.split("?")[0])}
-}
-function aboutPage(){
- return `<h1>हमारे बारे में</h1><div class="card"><div class="logo">🎓</div><h2>Karan Computer Academy</h2><p>यह एक स्वतंत्र और निःशुल्क ऑनलाइन शैक्षिक प्लेटफॉर्म है। इसका उद्देश्य विद्यार्थियों को कंप्यूटर के बेसिक कॉन्सेप्ट्स, डिजिटल ज्ञान और तकनीकी शिक्षा सरल भाषा में समझाना है।</p><p>यह किसी स्कूल, सरकारी संस्था, CBSE या अन्य शिक्षा बोर्ड की आधिकारिक वेबसाइट या पुस्तक नहीं है। यहाँ दी गई सामग्री स्व-अध्ययन और अतिरिक्त ज्ञान के लिए है तथा स्कूल की निर्धारित पाठ्यपुस्तक या पाठ्यक्रम का विकल्प नहीं है।</p></div>`;
-}
-function settingsPage(){
- return `<h1>Settings ⚙️</h1><div class="card"><h3>Display Settings</h3><p>वेबसाइट का रंग बदलें।</p><button class="primary" onclick="document.body.classList.toggle('dark')">🌙 Dark / Light Mode</button></div>
- <div class="card" style="margin-top:15px"><h3>आपकी प्रोफाइल</h3><p>नाम: ${safe(profile.name)}<br>कक्षा: ${profile.class}<br>भाषा: ${profile.language==="hi"?"हिंदी":"English"}</p><p class="muted">प्रोफाइल इसी ब्राउज़र में सेव है। ब्राउज़र डेटा मिटाने या डिवाइस बदलने पर यह जानकारी उपलब्ध नहीं रह सकती।</p></div>`;
-}
-init();
-</script>
-</body>
-</html>
+let user=JSON.parse(localStorage.getItem("kcaUser")||"null");
+let books=JSON.parse(localStorage.getItem("kcaBooks")||"[]");
+let read=JSON.parse(localStorage
